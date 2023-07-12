@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */; };
+		DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */; };
+		DB5ECDBC2A5E8F8D0091E9E3 /* Allergy+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDBB2A5E8F8D0091E9E3 /* Allergy+CoreData.swift */; };
+		DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */; };
 		DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */; };
 		DB7AB88D2A5BE2D50074CBBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB88C2A5BE2D50074CBBF /* ContentView.swift */; };
 		DB7AB88F2A5BE2D60074CBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
+		DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewContext+Entity.swift"; sourceTree = "<group>"; };
+		DB5ECDBB2A5E8F8D0091E9E3 /* Allergy+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allergy+CoreData.swift"; sourceTree = "<group>"; };
+		DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyword+CoreData.swift"; sourceTree = "<group>"; };
 		DB7AB8872A5BE2D50074CBBF /* AllerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllerViewApp.swift; sourceTree = "<group>"; };
 		DB7AB88C2A5BE2D50074CBBF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +44,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB5ECDB62A5E86470091E9E3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */,
+				DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */,
+				DB5ECDBB2A5E8F8D0091E9E3 /* Allergy+CoreData.swift */,
+				DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		DB7AB87E2A5BE2D50074CBBF = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +74,7 @@
 		DB7AB8892A5BE2D50074CBBF /* AllerView */ = {
 			isa = PBXGroup;
 			children = (
+				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
 				DB7AB88C2A5BE2D50074CBBF /* ContentView.swift */,
 				DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */,
@@ -147,6 +167,10 @@
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				DB7AB88D2A5BE2D50074CBBF /* ContentView.swift in Sources */,
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
+				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
+				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
+				DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */,
+				DB5ECDBC2A5E8F8D0091E9E3 /* Allergy+CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
