@@ -6,12 +6,40 @@
 //
 
 import SwiftUI
+import CarBode
 
 struct CameraView: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        ZStack {
+            // MARK: - Barcode Scanner
+            
+            CBScanner(
+                supportBarcode: .constant([.codabar, .code39, .code39Mod43, .code93, .code128, .ean8, .ean13, .gs1DataBar, .gs1DataBarLimited, .gs1DataBarExpanded, .interleaved2of5, .itf14, .upce]),
+                scanInterval: .constant(5)
+            ) { barcode in
+                print("BarCodeType =", barcode.type.rawValue, "Value =", barcode.value)
+            } onDraw: { barcodeView in
+                print("Preview View Size =", barcodeView.cameraPreviewView.bounds)
+                print("Barcode Corners =", barcodeView.corners)
+                
+                // line width
+                let lineWidth: CGFloat = 2
+                
+                // line color
+                let lineColor = UIColor.red
+                
+                // Fill color with opacity
+                // You also can use UIColor.clear if you don't want to draw fill color
+                let fillColor = UIColor(red: 0, green: 1, blue: 0.2, alpha: 0.4)
+                
+                barcodeView.draw(lineWidth: lineWidth, lineColor: lineColor, fillColor: fillColor)
+            }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
+
 
 struct CameraView_Previews: PreviewProvider {
     static var previews: some View {
