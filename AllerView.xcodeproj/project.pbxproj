@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		467EB4002A5FD64C0056EC0C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EB3FF2A5FD64C0056EC0C /* CameraView.swift */; };
 		DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */; };
 		DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */; };
 		DB5ECDBC2A5E8F8D0091E9E3 /* Allergy+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDBB2A5E8F8D0091E9E3 /* Allergy+CoreData.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		467EB3FF2A5FD64C0056EC0C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewContext+Entity.swift"; sourceTree = "<group>"; };
 		DB5ECDBB2A5E8F8D0091E9E3 /* Allergy+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allergy+CoreData.swift"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			children = (
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
+				467EB3FF2A5FD64C0056EC0C /* CameraView.swift */,
 				DB7AB88C2A5BE2D50074CBBF /* ContentView.swift */,
 				DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */,
 				DB7AB8932A5BE2D60074CBBF /* Persistence.swift */,
@@ -166,6 +169,7 @@
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				DB7AB88D2A5BE2D50074CBBF /* ContentView.swift in Sources */,
+				467EB4002A5FD64C0056EC0C /* CameraView.swift in Sources */,
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
 				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
@@ -299,8 +303,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
+				DEVELOPMENT_TEAM = XKDG839GBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -327,8 +333,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
+				DEVELOPMENT_TEAM = XKDG839GBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
