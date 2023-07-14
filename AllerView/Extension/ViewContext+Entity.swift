@@ -22,31 +22,20 @@ extension NSManagedObjectContext {
         }
     }
     
-    func createUser(name: String, allergies: [Allergy] = []) {
+    func createUser(name: String, keywords: [Keyword] = []) {
         let user = User(context: self)
         user.id = UUID()
         user.name = name
-        for allergy in allergies {
-            user.addToAllergies(allergy)
-        }
-        self.saveChanges()
-    }
-    
-    func createAllergy(name: String, user: User, keywords: [Keyword] = []) {
-        let allergy = Allergy(context: self)
-        allergy.id = UUID()
-        allergy.name = name
-        allergy.user = user
         for keyword in keywords {
-            allergy.addToKeywords(keyword)
+            user.addToKeywords(keyword)
         }
         self.saveChanges()
     }
     
-    func createKeyword(name: String, allergy: Allergy) {
+    func createKeyword(name: String, user: User) {
         let keyword = Keyword(context: self)
         keyword.id = UUID()
-        keyword.allergy = allergy
+        keyword.user = user
         self.saveChanges()
     }
 }
