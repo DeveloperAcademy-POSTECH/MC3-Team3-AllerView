@@ -23,39 +23,39 @@ extension User {
     
     // MARK: - add
     
-    func addAllergy(_ allergy: Allergy) {
-        self.addToAllergies(allergy)
+    func addKeyword(_ keyword: Keyword) {
+        self.addToKeywords(keyword)
         viewContext.saveChanges()
     }
     
-    func addAllergies(_ allergies: [Allergy]) {
-        for allergy in allergies {
-            self.addToAllergies(allergy)
+    func addKeywords(_ keywords: [Keyword]) {
+        for keyword in keywords {
+            self.addToKeywords(keyword)
         }
         viewContext.saveChanges()
     }
     
-    func addAllergies(_ allergies: NSSet) {
-        self.addToAllergies(allergies)
+    func addKeywords(_ keywords: NSSet) {
+        self.addToKeywords(keywords)
         viewContext.saveChanges()
     }
     
     // MARK: - remove
     
-    func removeAllergy(_ allergy: Allergy) {
-        self.removeFromAllergies(allergy)
+    func removeKeyword(_ keyword: Keyword) {
+        self.removeFromKeywords(keyword)
         viewContext.saveChanges()
     }
     
-    func removeAllergies(_ allergies: [Allergy]) {
-        for allergy in allergies {
-            self.removeFromAllergies(allergy)
+    func removeKeywords(_ keywords: [Keyword]) {
+        for keyword in keywords {
+            self.removeFromKeywords(keyword)
         }
         viewContext.saveChanges()
     }
     
-    func removeAllergies(_ allergies: NSSet) {
-        self.removeFromAllergies(allergies)
+    func removeKeywords(_ keywords: NSSet) {
+        self.removeFromKeywords(keywords)
         viewContext.saveChanges()
     }
     
