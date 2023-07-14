@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4007782A5FD15500CE3739 /* AllergySearchView.swift */; };
 		DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */; };
 		DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */; };
 		DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E4007782A5FD15500CE3739 /* AllergySearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergySearchView.swift; sourceTree = "<group>"; };
 		DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewContext+Entity.swift"; sourceTree = "<group>"; };
 		DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyword+CoreData.swift"; sourceTree = "<group>"; };
@@ -42,6 +44,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E4007762A5FD15500CE3739 /* AllergeSearch */ = {
+			isa = PBXGroup;
+			children = (
+				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
+			);
+			path = AllergeSearch;
+			sourceTree = "<group>";
+		};
 		DB5ECDB62A5E86470091E9E3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +81,7 @@
 		DB7AB8892A5BE2D50074CBBF /* AllerView */ = {
 			isa = PBXGroup;
 			children = (
+				5E4007762A5FD15500CE3739 /* AllergeSearch */,
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
 				DB7AB88C2A5BE2D50074CBBF /* ContentView.swift */,
@@ -161,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
+				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				DB7AB88D2A5BE2D50074CBBF /* ContentView.swift in Sources */,
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
@@ -295,6 +307,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
+				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -323,6 +336,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
+				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

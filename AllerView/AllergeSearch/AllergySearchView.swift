@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct AllergySearchView {
-    @State var selectedAllergies: [String] = ["Hello", "World"]
-    @State var dummyData = [
-        "Wheat", "Gluten", "Milk", "Lactose", "Casein", "Eggs", "Peanuts", "Tree nuts", "Almonds", "Cashews", "Walnuts", "Pecans", "Pistachios", "Hazelnuts", "Brazil nuts", "Macadamia nuts", "Pine nuts", "Soy", "Fish", "Shellfish", "Crab", "Lobster", "Shrimp", "Oysters", "Clams", "Mussels", "Scallops", "Sesame", "Mustard", "Celery", "Lupin", "Molluscs", "Sulphites", "Kiwi", "Banana", "Avocado", "Strawberry", "Citrus fruits", "Beef", "Chicken", "Pork", "Lamb", "Turkey", "Duck", "Venison", "Bison", "Rabbit", "Quinoa", "Rice", "Barley", "Oats", "Rye", "Corn", "Potatoes", "Sweet Potatoes", "Yams", "Carrots", "Onions", "Garlic", "Bell Peppers", "Tomatoes", "Eggplant", "Squash", "Zucchini", "Cucumbers", "Lettuce", "Spinach", "Broccoli", "Cauliflower", "Cabbage", "Brussels Sprouts", "Asparagus", "Peas", "Green Beans", "Mushrooms", "Olives", "Apple", "Pear", "Peach", "Plum", "Cherries", "Grapes", "Watermelon", "Cantaloupe", "Honeydew Melon", "Pineapple", "Papaya", "Mango", "Coconut", "Pomegranate", "Blueberries", "Raspberries", "Blackberries", "Cranberries", "Strawberries", "Oranges", "Lemons", "Limes", "Grapefruit", "Tangerines", "Sugar", "Salt", "Black Pepper", "Turmeric", "Cinnamon", "Basil", "Oregano", "Parsley", "Thyme", "Rosemary", "Cilantro", "Dill", "Ginger", "Paprika", "Cumin", "Nutmeg",
-        "Cloves"
+    @Environment(\.managedObjectContext) var managedContext
+    // MARK: - Allergy dummyData
+
+    var dummyData = [
+        "wheat", "gluten", "milk", "lactose", "casein", "eggs", "peanuts", "tree nuts", "almonds", "cashews", "walnuts", "pecans", "pistachios", "hazelnuts", "brazil nuts", "macadamia nuts", "pine nuts", "soy", "fish", "shellfish", "crab", "lobster", "shrimp", "oysters", "clams", "mussels", "scallops", "sesame", "mustard", "celery", "lupin", "molluscs", "sulphites", "kiwi", "banana", "avocado", "strawberry", "citrus fruits", "beef", "chicken", "pork", "lamb", "turkey", "duck", "venison", "bison", "rabbit", "quinoa", "rice", "barley", "oats", "rye", "corn", "potatoes", "sweet potatoes", "yams", "carrots", "onions", "garlic", "bell peppers", "tomatoes", "eggplant", "squash", "zucchini", "cucumbers", "lettuce", "spinach", "broccoli", "cauliflower", "cabbage", "brussels sprouts", "asparagus", "peas", "green beans", "mushrooms", "olives", "apple", "pear", "peach", "plum", "cherries", "grapes", "watermelon", "cantaloupe", "honeydew melon", "pineapple", "papaya", "mango", "coconut", "pomegranate", "blueberries", "raspberries", "blackberries", "cranberries", "strawberries", "oranges", "lemons", "limes", "grapefruit", "tangerines", "sugar", "salt", "black pepper", "turmeric", "cinnamon", "basil", "oregano", "parsley", "thyme", "rosemary", "cilantro", "dill", "ginger", "paprika", "cumin", "nutmeg", "cloves"
     ]
+    // MARK: - Fetch
+    @FetchRequest(
+        entity: Keyword.entity(),
+        sortDescriptors: [],
+        predicate: NSPredicate(format: "user.name == %@", "user")
+    ) var userKeywords: FetchedResults<Keyword>
+    @FetchRequest(
+        entity: User.entity(),
+        sortDescriptors: [],
+        predicate: NSPredicate(format: "name == %@", "user")
+    ) var user: FetchedResults<User>
     @State var searchText: String = ""
-    
     
 }
 extension AllergySearchView : View{
@@ -23,34 +34,27 @@ extension AllergySearchView : View{
             Text("Seleted")
                 .foregroundColor(Color(red: 0.42, green: 0.42, blue: 0.42))
                 .padding(.top)
-            
+// MARK: - selected keywords
             ScrollView(.horizontal, showsIndicators: false){
                 HStack{
-                    ForEach($selectedAllergies, id: \.self){ $allergyName in
-                        Text(allergyName)
+                    ForEach(userKeywords) { keyword in
+                        Text(keyword.name ?? "Unknown")
                             .foregroundColor(.white)
                             .frame(height: 45)
                             .background(Color.black)
                             .onTapGesture {
-                                dummyData.append(allergyName)
-                                if let index = selectedAllergies.firstIndex(of: allergyName) {
-                                    selectedAllergies.remove(at: index)
-                                }
+                                user.first?.removeKeyword(keyword)
                             }
-                        
                     }
                 }
-                
             }
+            // MARK: - search Field
             searchTextField
-            
             ScrollView(.vertical, showsIndicators: false){
                 VStack(spacing: 20.0){
                     if searchText != "" {
-                        ForEach(dummyData.filter {
-                            $0.lowercased().hasPrefix(searchText.lowercased())},id: \.self) { data in
+                        ForEach(getFilteredData(),id: \.self) { data in
                                 let temp = data.replacingOccurrences(of: searchText, with: "")
-                                //                                searchResult(boldText: searchText, plainText: temp)
                                 HStack{
                                     Text(searchText)
                                         .bold()
@@ -60,11 +64,7 @@ extension AllergySearchView : View{
                                     Image(systemName: "plus.circle")
                                         .font(.system(size: 20))
                                         .onTapGesture {
-                                            selectedAllergies.append(data)
-                                            if let index = dummyData.firstIndex(of: data) {
-                                                dummyData.remove(at: index)
-                                            }
-                                            searchText = ""
+                                            addKeyword(keywordName: data)
                                         }
                                 }
                                 .font(.system(size: 17))
@@ -80,20 +80,15 @@ extension AllergySearchView : View{
                             Image(systemName: "plus.circle")
                                 .font(.system(size: 20))
                                 .onTapGesture {
-                                    selectedAllergies.append(searchText)
+                                    addKeyword(keywordName: searchText)
                                     searchText = ""
                                 }
                         }
-                        
                         .padding(.horizontal,15)
                     }
-                    //                    .padding(.top, 10)
                 }
                 .padding(.top)
             }
-            
-            //            .frame(height: 300)
-            
             Spacer()
         }
         .padding(.horizontal, 26.0)
@@ -103,9 +98,12 @@ extension AllergySearchView : View{
                 naviagtionBarTitle
             }
             
-        }
+        }.onAppear(){
+    }
         
     }
+// MARK: - navigation bar custom
+
     var naviagtionBarTitle: some View {
         HStack{
             Text("Choose my Allergy")
@@ -123,13 +121,11 @@ extension AllergySearchView : View{
         }
         .padding(.horizontal, 7)
     }
-    //    func searchResult(boldText: String, plainText:String) -> some View {
-    //
-    //
-    //    }
+    
     var searchTextField: some View{
         HStack(alignment: .center, spacing: 15) {
             TextField("Please enter your allergy", text: $searchText)
+                .autocapitalization(.none)
                 .padding(.vertical, 3)
             Spacer()
             Image(systemName: "magnifyingglass")
@@ -143,9 +139,33 @@ extension AllergySearchView : View{
         .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)
     }
     
+// MARK: - keyword add function
+    func addKeyword(keywordName: String){
+        let isDuplicate = userKeywords.contains { keyword in
+            keyword.name == keywordName.lowercased()
+            }
+        if !isDuplicate{
+            managedContext.createKeyword(
+                name: keywordName.lowercased(),
+                user: user.first!
+            )
+        }
+    }
+    
+// MARK: - ArrayFilter for Search
+    func getFilteredData() -> [String]{
+        return dummyData.filter { data in
+               let isUserKeyword = userKeywords.contains { keyword in
+                   keyword.name == data
+               }
+               let isMatchingPrefix = data.lowercased().hasPrefix(searchText.lowercased())
+               
+               return !isUserKeyword && isMatchingPrefix
+           }
+    }
 }
 
-
+// MARK: - preview
 struct AllergySearchView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
