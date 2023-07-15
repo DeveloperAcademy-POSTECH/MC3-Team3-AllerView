@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4007782A5FD15500CE3739 /* AllergySearchView.swift */; };
+		467EB4002A5FD64C0056EC0C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EB3FF2A5FD64C0056EC0C /* CameraView.swift */; };
+		467EB4032A605D2B0056EC0C /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 467EB4022A605D2B0056EC0C /* CarBode */; };
 		DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */; };
 		DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */; };
 		DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */; };
@@ -20,7 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+
 		5E4007782A5FD15500CE3739 /* AllergySearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergySearchView.swift; sourceTree = "<group>"; };
+		467EB3FF2A5FD64C0056EC0C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewContext+Entity.swift"; sourceTree = "<group>"; };
 		DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyword+CoreData.swift"; sourceTree = "<group>"; };
@@ -38,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				467EB4032A605D2B0056EC0C /* CarBode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +89,7 @@
 				5E4007762A5FD15500CE3739 /* AllergeSearch */,
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
+				467EB3FF2A5FD64C0056EC0C /* CameraView.swift */,
 				DB7AB88C2A5BE2D50074CBBF /* ContentView.swift */,
 				DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */,
 				DB7AB8932A5BE2D60074CBBF /* Persistence.swift */,
@@ -117,6 +123,9 @@
 			dependencies = (
 			);
 			name = AllerView;
+			packageProductDependencies = (
+				467EB4022A605D2B0056EC0C /* CarBode */,
+			);
 			productName = AllerView;
 			productReference = DB7AB8872A5BE2D50074CBBF /* AllerView.app */;
 			productType = "com.apple.product-type.application";
@@ -145,6 +154,9 @@
 				Base,
 			);
 			mainGroup = DB7AB87E2A5BE2D50074CBBF;
+			packageReferences = (
+				467EB4012A605D2B0056EC0C /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */,
+			);
 			productRefGroup = DB7AB8882A5BE2D50074CBBF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -175,6 +187,7 @@
 				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				DB7AB88D2A5BE2D50074CBBF /* ContentView.swift in Sources */,
+				467EB4002A5FD64C0056EC0C /* CameraView.swift in Sources */,
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
 				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
@@ -307,9 +320,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				DEVELOPMENT_TEAM = XKDG839GBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -336,9 +350,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				DEVELOPMENT_TEAM = XKDG839GBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -379,6 +394,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		467EB4012A605D2B0056EC0C /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/heart/CarBode-Barcode-Scanner-For-SwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		467EB4022A605D2B0056EC0C /* CarBode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 467EB4012A605D2B0056EC0C /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */;
+			productName = CarBode;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DB7AB8952A5BE2D60074CBBF /* AllerView.xcdatamodeld */ = {
