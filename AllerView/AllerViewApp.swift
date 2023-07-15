@@ -13,7 +13,7 @@ struct AllerViewApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ResultView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

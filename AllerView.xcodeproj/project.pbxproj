@@ -13,6 +13,9 @@
 		DB7AB8922A5BE2D60074CBBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */; };
 		DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8932A5BE2D60074CBBF /* Persistence.swift */; };
 		DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8952A5BE2D60074CBBF /* AllerView.xcdatamodeld */; };
+		FDC1BAD22A5F0C52008C7F16 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1BAD12A5F0C52008C7F16 /* Network.swift */; };
+		FDC1BAD42A5F0C69008C7F16 /* Allergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1BAD32A5F0C69008C7F16 /* Allergy.swift */; };
+		FDC1BADC2A5FD597008C7F16 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1BADB2A5FD597008C7F16 /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,10 @@
 		DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB7AB8932A5BE2D60074CBBF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DB7AB8962A5BE2D60074CBBF /* AllerView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AllerView.xcdatamodel; sourceTree = "<group>"; };
+		FDBBECB22A6132AF00A7EC72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FDC1BAD12A5F0C52008C7F16 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		FDC1BAD32A5F0C69008C7F16 /* Allergy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allergy.swift; sourceTree = "<group>"; };
+		FDC1BADB2A5FD597008C7F16 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +62,12 @@
 		DB7AB8892A5BE2D50074CBBF /* AllerView */ = {
 			isa = PBXGroup;
 			children = (
+				FDBBECB22A6132AF00A7EC72 /* Info.plist */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
 				DB7AB88C2A5BE2D50074CBBF /* ContentView.swift */,
+				FDC1BAD12A5F0C52008C7F16 /* Network.swift */,
+				FDC1BAD32A5F0C69008C7F16 /* Allergy.swift */,
+				FDC1BADB2A5FD597008C7F16 /* ResultView.swift */,
 				DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */,
 				DB7AB8932A5BE2D60074CBBF /* Persistence.swift */,
 				DB7AB8952A5BE2D60074CBBF /* AllerView.xcdatamodeld */,
@@ -143,9 +154,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDC1BAD22A5F0C52008C7F16 /* Network.swift in Sources */,
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				DB7AB88D2A5BE2D50074CBBF /* ContentView.swift in Sources */,
+				FDC1BAD42A5F0C69008C7F16 /* Allergy.swift in Sources */,
+				FDC1BADC2A5FD597008C7F16 /* ResultView.swift in Sources */,
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +291,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AllerView/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -305,6 +320,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AllerView/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
