@@ -35,7 +35,7 @@ struct ContentView: View {
                 }
                 .padding(.horizontal, 25)
                 
-                ZStack{
+                ZStack {
                     ListView()
                     Rectangle()
                         .foregroundColor(.clear)
@@ -50,10 +50,9 @@ struct ContentView: View {
                         .offset(y: 250)
                     VStack {
                         Spacer()
-//                        NavigationLink(destination: CameraView()) {
-                                Image("blackLongBarcord")
-                                    .background(.clear)
-//                        }
+                            //바코드 촬영 버튼
+                            Image("blackLongBarcord")
+                                .background(.clear)
                     }
                 }
                 
@@ -71,51 +70,10 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-// MARK: - Components
-
-extension ContentView {
-    struct Chip: View {
-        var name: String
-        var height: CGFloat
-        var isRemovable: Bool
-        var color: Color
-        var fontSize: CGFloat
-        
-        var body: some View {
-            HStack{
-                if isRemovable {
-                    HStack {
-                        Text(name)
-                            .padding(.vertical, 8)
-                            .padding(.leading)
-                            .font(.system(size: fontSize))
-                        Image(systemName: "minus.circle.fill")
-                        Spacer()
-                    }
-                    .background(color)
-                    .cornerRadius(35)
-                    .frame(height: height)
-                    .padding(.trailing, 1)
-                } else {
-                    Text(name)
-                        .frame(height: height)
-                        .padding(.horizontal)
-                        .font(.system(size: fontSize))
-                        .background(color)
-                        .cornerRadius(35)
-                        
-                        
-                }
-            }
-        }
-    }
-}
-
 
 // MARK: - Views
 
 extension ContentView {
-    //각 리스트 뷰..
     func ListView(items: [RecentData] = RecentData.recentsDummyData()) -> some View {
         List {
             Section(header: Text("Recent").font(.system(size: 17)).fontWeight(.semibold)) {
@@ -130,8 +88,7 @@ extension ContentView {
     
     
     func RecentFoodView(item: RecentData) -> some View {
-        HStack{
-            //원 그려야 댐
+        HStack {
             Image(item.ItemImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
