@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-extension Font {
-    public static let customTitle: Font = .system(size: 30, weight: .bold)
-    
-    public static let customHeadline: Font = .system(size: 20, weight: .semibold)
-    
-    public static let customBody: Font = .system(size: 17)
+public extension Font {
+    static let customTitle: Font = .system(size: 30, weight: .bold)
+
+    static let customHeadline: Font = .system(size: 20, weight: .semibold)
+
+    static let customBody: Font = .system(size: 17)
 }

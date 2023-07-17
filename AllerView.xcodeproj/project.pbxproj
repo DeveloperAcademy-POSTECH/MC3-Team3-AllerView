@@ -61,6 +61,7 @@
 			children = (
 				92D5AE992A5FE22900D30288 /* ContentView.swift */,
 				467EB3FF2A5FD64C0056EC0C /* CameraView.swift */,
+				DB5ECDC02A5FD7780091E9E3 /* ProductDetailView.swift */,
 				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
 			);
 			path = View;
@@ -85,15 +86,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		DB5ECDBF2A5FD7620091E9E3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DB7AB88C2A5BE2D50074CBBF /* ContentView.swift */,
-				DB5ECDC02A5FD7780091E9E3 /* ProductDetailView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		DB7AB87E2A5BE2D50074CBBF = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +108,6 @@
 				DB19B3BC2A6510B100933C30 /* Component */,
 				DB19B3BB2A65109F00933C30 /* View */,
 				92D5AE9B2A5FE26B00D30288 /* DummyData.swift */,
-				DB5ECDBF2A5FD7620091E9E3 /* View */,
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
 				DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */,
@@ -222,7 +213,6 @@
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
 				DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */,
 				92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */,
-				DB5ECDBC2A5E8F8D0091E9E3 /* Allergy+CoreData.swift in Sources */,
 				DB5ECDC12A5FD7780091E9E3 /* ProductDetailView.swift in Sources */,
 				DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */,
 			);
@@ -353,7 +343,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
@@ -383,7 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";

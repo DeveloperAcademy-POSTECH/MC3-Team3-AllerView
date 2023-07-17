@@ -9,25 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var viewContext
-    
+
     @FetchRequest(
         entity: User.entity(),
         sortDescriptors: [],
         predicate: NSPredicate(format: "name == %@", "user")
     )
     var users: FetchedResults<User>
-    
+
     @FetchRequest(
         entity: Keyword.entity(),
         sortDescriptors: []
     )
+
     var keywords: FetchedResults<Keyword>
-    
+
     // MARK: - DummyData Array For UserTest
-//    @State var check: [Bool] = [false, false, false]
+
     @State var check: [Bool] = [false, false, false]
-    
-    
+
     var body: some View {
         VStack {
             VStack {
@@ -45,7 +45,7 @@ struct ContentView: View {
                     }
                 }
                 .padding(.vertical, 10)
-                
+
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(keywords) { keyword in
@@ -56,13 +56,13 @@ struct ContentView: View {
                 }
             }
             .padding(.horizontal, 25)
-            
+
             ZStack {
                 ListView()
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(height: 136)
-                    .background(LinearGradient (
+                    .background(LinearGradient(
                         stops: [
                             Gradient.Stop(color: .white.opacity(0), location: 0.00),
                             Gradient.Stop(color: .white.opacity(0.8), location: 0.81),
@@ -73,9 +73,9 @@ struct ContentView: View {
                     .offset(y: 250)
                 VStack {
                     Spacer()
-                    //바코드 촬영 버튼
+                    // 바코드 촬영 버튼
                     NavigationLink {
-                        CameraView(check: $check)
+                        CameraView(check: $check, keywords: keywords)
                     } label: {
                         Image("blackLongBarcord")
                             .background(.clear)
@@ -85,7 +85,7 @@ struct ContentView: View {
         }
         .navigationTitle("AllerView")
         .onAppear {
-            if (users.isEmpty) {
+            if users.isEmpty {
                 viewContext.createUser(name: "user")
             }
         }
@@ -98,7 +98,6 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
 // MARK: - Views
 
 extension ContentView {
@@ -106,42 +105,60 @@ extension ContentView {
         List {
             Section(header: Text("Recent").font(.system(size: 17)).fontWeight(.semibold)) {
                 ForEach(items.indices, id: \.self) { index in
-                    if check[index]{
-                        RecentFoodView(item: items[index])
+                    if check[index] {
+                        ZStack {
+                            NavigationLink {
+                                ProductDetailView(recentData: items[index], keywords: keywords)
+                            } label: {
+                                EmptyView()
+                            }
+                            .opacity(0)
+
+                            RecentFoodView(item: items[index])
+                        }
                     }
                 }
             }
         }
         .listStyle(.inset)
-        
     }
-    
-    
+
     func RecentFoodView(item: RecentData) -> some View {
         HStack {
-            Image(item.itemImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 80, height: 80)
-                .clipShape(Circle())
-                .overlay {
-                    Circle()
-                        .stroke(.blue, lineWidth: 1)
-                }
-                .padding(.horizontal, 10)
-                .padding(.vertical, 8)
-            
+            AsyncImage(
+                url: URL(string: item.imageUrl),
+                content: { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 80, height: 80)
+                        .clipShape(Circle())
+                        .overlay {
+                            Circle()
+                                .stroke(.blue, lineWidth: 1)
+                        }
+                },
+                placeholder: { ProgressView() }
+            )
+            .padding(.horizontal, 10)
+            .padding(.vertical, 8)
+
             VStack(alignment: .leading) {
-                Text(item.itemName)
+                Text(item.name)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(item.allergen, id: \.self) { allergy in
-                            Chip(name: allergy, height: 25, isRemovable: false, color: Color.blue, fontSize: 13)
-                            
+                        ForEach(item.allergen + item.ingredients, id: \.self) { allergy in
+                            if keywords.contains(where: { $0.name!.lowercased() == allergy.lowercased() }) {
+                                Chip(name: allergy.lowercased(), height: 25, isRemovable: false, color: Color.orange, fontSize: 13)
+                            }
                         }
-                        ForEach(item.ingredients, id: \.self) { ingredient in
-                            Chip(name: ingredient, height: 25, isRemovable: false, color: Color.blue, fontSize: 13)
+
+                        ForEach(item.allergen + item.ingredients, id: \.self) { allergy in
+                            if !(keywords.contains(where: { $0.name!.lowercased() == allergy.lowercased() })) {
+                                Chip(name: allergy.lowercased(), height: 25, isRemovable: false, color: Color.blue, fontSize: 13)
+                            }
                         }
+
                         if item.ingredients.isEmpty {
                             Chip(name: "none", height: 25, isRemovable: false, color: Color.gray, fontSize: 13)
                         }
@@ -154,6 +171,5 @@ extension ContentView {
         .cornerRadius(10)
         .shadow(color: .gray, radius: 3, x: 2, y: 2)
         .listRowSeparator(.hidden)
-        
     }
 }
