@@ -35,6 +35,7 @@ extension NSManagedObjectContext {
     func createKeyword(name: String, user: User) {
         let keyword = Keyword(context: self)
         keyword.id = UUID()
+        keyword.name = name
         keyword.user = user
         self.saveChanges()
     }

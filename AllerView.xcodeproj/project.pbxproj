@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4007782A5FD15500CE3739 /* AllergySearchView.swift */; };
 		467EB4002A5FD64C0056EC0C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EB3FF2A5FD64C0056EC0C /* CameraView.swift */; };
 		467EB4032A605D2B0056EC0C /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 467EB4022A605D2B0056EC0C /* CarBode */; };
 		DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+
+		5E4007782A5FD15500CE3739 /* AllergySearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergySearchView.swift; sourceTree = "<group>"; };
 		467EB3FF2A5FD64C0056EC0C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewContext+Entity.swift"; sourceTree = "<group>"; };
@@ -46,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E4007762A5FD15500CE3739 /* AllergeSearch */ = {
+			isa = PBXGroup;
+			children = (
+				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
+			);
+			path = AllergeSearch;
+			sourceTree = "<group>";
+		};
 		DB5ECDB62A5E86470091E9E3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +86,7 @@
 		DB7AB8892A5BE2D50074CBBF /* AllerView */ = {
 			isa = PBXGroup;
 			children = (
+				5E4007762A5FD15500CE3739 /* AllergeSearch */,
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
 				467EB3FF2A5FD64C0056EC0C /* CameraView.swift */,
@@ -172,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
+				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				DB7AB88D2A5BE2D50074CBBF /* ContentView.swift in Sources */,
 				467EB4002A5FD64C0056EC0C /* CameraView.swift in Sources */,
