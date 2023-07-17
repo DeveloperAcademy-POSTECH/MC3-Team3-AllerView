@@ -11,7 +11,7 @@ import CarBode
 struct CameraView: View {
     
     // MARK: - Variables
-        
+    
     @State private var isFlashOn = false
     
     var body: some View {
