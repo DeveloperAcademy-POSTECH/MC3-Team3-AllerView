@@ -10,6 +10,7 @@
 		92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE992A5FE22900D30288 /* ContentView.swift */; };
 		92D5AE9C2A5FE26C00D30288 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE9B2A5FE26B00D30288 /* DummyData.swift */; };
 		92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE9D2A64265E00D30288 /* Chip.swift */; };
+		5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4007782A5FD15500CE3739 /* AllergySearchView.swift */; };
 		467EB4002A5FD64C0056EC0C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EB3FF2A5FD64C0056EC0C /* CameraView.swift */; };
 		467EB4032A605D2B0056EC0C /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 467EB4022A605D2B0056EC0C /* CarBode */; };
 		DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */; };
@@ -26,6 +27,7 @@
 		92D5AE992A5FE22900D30288 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		92D5AE9B2A5FE26B00D30288 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		92D5AE9D2A64265E00D30288 /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
+		5E4007782A5FD15500CE3739 /* AllergySearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergySearchView.swift; sourceTree = "<group>"; };
 		467EB3FF2A5FD64C0056EC0C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewContext+Entity.swift"; sourceTree = "<group>"; };
@@ -50,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E4007762A5FD15500CE3739 /* AllergeSearch */ = {
+			isa = PBXGroup;
+			children = (
+				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
+			);
+			path = AllergeSearch;
+			sourceTree = "<group>";
+		};
 		DB5ECDB62A5E86470091E9E3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +92,7 @@
 				92D5AE9B2A5FE26B00D30288 /* DummyData.swift */,
 				92D5AE992A5FE22900D30288 /* ContentView.swift */,
 				92D5AE9D2A64265E00D30288 /* Chip.swift */,
+				5E4007762A5FD15500CE3739 /* AllergeSearch */,
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
 				467EB3FF2A5FD64C0056EC0C /* CameraView.swift */,
@@ -180,6 +191,7 @@
 			files = (
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,
+				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				92D5AE9C2A5FE26C00D30288 /* DummyData.swift in Sources */,
 				DB7AB88D2A5BE2D50074CBBF /* ContentView.swift in Sources */,
