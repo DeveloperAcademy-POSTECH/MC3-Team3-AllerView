@@ -13,9 +13,9 @@ struct Chip: View {
     var isRemovable: Bool
     var color: Color
     var fontSize: CGFloat
-    
+
     var body: some View {
-        HStack{
+        HStack {
             if isRemovable {
                 HStack {
                     Text(name)
@@ -25,10 +25,10 @@ struct Chip: View {
                     Image(systemName: "minus.circle.fill")
                     Spacer()
                 }
-                .background(color)
-                .cornerRadius(35)
-                .frame(height: height)
-                .padding(.trailing, 1)
+                    .background(color)
+                    .cornerRadius(35)
+                    .frame(height: height)
+                    .padding(.trailing, 1)
             } else {
                 Text(name)
                     .frame(height: height)
@@ -36,8 +36,6 @@ struct Chip: View {
                     .font(.system(size: fontSize))
                     .background(color)
                     .cornerRadius(35)
-                    
-                    
             }
         }
     }

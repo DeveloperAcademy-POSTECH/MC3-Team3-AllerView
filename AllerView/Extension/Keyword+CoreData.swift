@@ -18,4 +18,9 @@ extension Keyword {
         self.name = name
         viewContext.saveChanges()
     }
+    
+    func delete() {
+        viewContext.delete(self)
+        viewContext.saveChanges()
+    }
 }
