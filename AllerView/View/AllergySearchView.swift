@@ -35,10 +35,11 @@ extension AllergySearchView: View {
                 HStack {
                     
                     ForEach(keywords) { keyword in
-                        Text(keyword.name ?? "Unknown")
-                            .foregroundColor(.white)
-                            .frame(height: 45)
-                            .background(Color.black)
+                        Chip(name: keyword.name ?? "Unknown", height: 25, isRemovable: true, color: Color.blue, fontSize: 13)
+//                        Text(keyword.name ?? "Unknown")
+//                            .foregroundColor(.white)
+//                            .frame(height: 45)
+//                            .background(Color.black)
                             .onTapGesture {
                                 keyword.delete()
                             }

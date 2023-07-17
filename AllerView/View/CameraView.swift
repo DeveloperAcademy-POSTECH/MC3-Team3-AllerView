@@ -11,8 +11,12 @@ import CarBode
 struct CameraView: View {
     
     // MARK: - Variables
-    
+    @Environment(\.presentationMode) var presentationMode
     @State private var isFlashOn = false
+    
+    // MARK: - DummyCheckArray For UserTest
+    @Binding var check: [Bool]
+    private let barcodes = ["8801062870509", "4001686375754", "8801043035989"]
     
     var body: some View {
         
@@ -25,6 +29,11 @@ struct CameraView: View {
                 scanInterval: .constant(5)
             ) { barcode in
                 print("BarCodeType =", barcode.type.rawValue, "Value =", barcode.value)
+                if let barcodeIndex = barcodes.firstIndex(of: barcode.value) {
+                    print("current barcode idx: \(barcodeIndex)")
+                    check[barcodeIndex] = true
+                    self.presentationMode.wrappedValue.dismiss()
+                }
             } onDraw: { barcodeView in
                 print("Preview View Size =", barcodeView.cameraPreviewView.bounds)
                 print("Barcode Corners =", barcodeView.corners)
@@ -68,9 +77,3 @@ struct CameraView: View {
     }
 }
 
-
-struct CameraView_Previews: PreviewProvider {
-    static var previews: some View {
-        CameraView()
-    }
-}

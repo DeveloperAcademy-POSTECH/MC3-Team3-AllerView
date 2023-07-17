@@ -13,30 +13,33 @@ struct Chip: View {
     var isRemovable: Bool
     var color: Color
     var fontSize: CGFloat
-
+    
     var body: some View {
         HStack {
-            if isRemovable {
-                HStack {
-                    Text(name)
-                        .padding(.vertical, 8)
-                        .padding(.leading)
-                        .font(.system(size: fontSize))
-                    Image(systemName: "minus.circle.fill")
-                    Spacer()
-                }
-                    .background(color)
-                    .cornerRadius(35)
-                    .frame(height: height)
-                    .padding(.trailing, 1)
-            } else {
+            HStack {
                 Text(name)
-                    .frame(height: height)
-                    .padding(.horizontal)
+                    .padding(.vertical, 8)
                     .font(.system(size: fontSize))
-                    .background(color)
-                    .cornerRadius(35)
+                if isRemovable{
+                    Image(systemName: "minus.circle.fill")
+                }
             }
+            .padding(.horizontal, 8)
+            .background(color)
+            .frame(height: height)
+            .cornerRadius(35)
+            
+        }
+    }
+    
+    
+}
+
+struct Previews_Chip_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack{
+            Chip(name: "testddddd", height: 25, isRemovable: false, color: Color.blue, fontSize: 14)
+            Chip(name: "test", height: 25, isRemovable: true, color: Color.blue, fontSize: 14)
         }
     }
 }

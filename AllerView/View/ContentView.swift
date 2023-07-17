@@ -23,7 +23,11 @@ struct ContentView: View {
     )
     var keywords: FetchedResults<Keyword>
     
-    var chips = ChipData.chipsDummyData()
+    // MARK: - DummyData Array For UserTest
+//    @State var check: [Bool] = [false, false, false]
+    @State var check: [Bool] = [false, false, false]
+    
+    
     var body: some View {
         VStack {
             VStack {
@@ -71,7 +75,7 @@ struct ContentView: View {
                     Spacer()
                     //바코드 촬영 버튼
                     NavigationLink {
-                        CameraView()
+                        CameraView(check: $check)
                     } label: {
                         Image("blackLongBarcord")
                             .background(.clear)
@@ -101,8 +105,10 @@ extension ContentView {
     func ListView(items: [RecentData] = RecentData.recentsDummyData()) -> some View {
         List {
             Section(header: Text("Recent").font(.system(size: 17)).fontWeight(.semibold)) {
-                ForEach(items) { item in
-                    RecentFoodView(item: item)
+                ForEach(items.indices, id: \.self) { index in
+                    if check[index]{
+                        RecentFoodView(item: items[index])
+                    }
                 }
             }
         }
@@ -113,7 +119,7 @@ extension ContentView {
     
     func RecentFoodView(item: RecentData) -> some View {
         HStack {
-            Image(item.ItemImage)
+            Image(item.itemImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 80, height: 80)
@@ -126,13 +132,17 @@ extension ContentView {
                 .padding(.vertical, 8)
             
             VStack(alignment: .leading) {
-                Text(item.ItemName)
+                Text(item.itemName)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(item.chips, id: \.self) { chip in
-                            Chip(name: chip.chipText, height: 25, isRemovable: false, color: Color.blue, fontSize: 13)
+                        ForEach(item.allergen, id: \.self) { allergy in
+                            Chip(name: allergy, height: 25, isRemovable: false, color: Color.blue, fontSize: 13)
+                            
                         }
-                        if item.chips.isEmpty {
+                        ForEach(item.ingredients, id: \.self) { ingredient in
+                            Chip(name: ingredient, height: 25, isRemovable: false, color: Color.blue, fontSize: 13)
+                        }
+                        if item.ingredients.isEmpty {
                             Chip(name: "none", height: 25, isRemovable: false, color: Color.gray, fontSize: 13)
                         }
                     }
