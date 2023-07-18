@@ -52,6 +52,7 @@ extension ProductDetailView: View {
                         Divider()
                         ForEach(recentData.allergen + recentData.ingredients, id: \.self) { ingredient in
                             Chip(name: ingredient.lowercased(), height: 25, isRemovable: false, color: Color.blue, fontSize: 13)
+                                .foregroundColor(.white)
                         }
                     }
                     .padding(.leading, 25)

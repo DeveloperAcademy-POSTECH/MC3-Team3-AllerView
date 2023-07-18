@@ -35,7 +35,7 @@ extension AllergySearchView: View {
                 HStack {
                     
                     ForEach(keywords) { keyword in
-                        Chip(name: keyword.name ?? "Unknown", height: 25, isRemovable: true, color: Color.blue, fontSize: 13)
+                        Chip(name: keyword.name ?? "Unknown", height: 25, isRemovable: true, color: Color.orange, fontSize: 13)
 //                        Text(keyword.name ?? "Unknown")
 //                            .foregroundColor(.white)
 //                            .frame(height: 45)

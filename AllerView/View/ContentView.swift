@@ -49,7 +49,7 @@ struct ContentView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(keywords) { keyword in
-                            Chip(name: keyword.name ?? "None", height: 38, isRemovable: false, color: .blue, fontSize: 20)
+                            Chip(name: keyword.name ?? "None", height: 38, isRemovable: false, color: .orange, fontSize: 20)
                         }
                         Spacer()
                     }
@@ -78,6 +78,9 @@ struct ContentView: View {
                         CameraView(check: $check, keywords: keywords)
                     } label: {
                         Image("blackLongBarcord")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(.horizontal, 20)
                             .background(.clear)
                     }
                 }
@@ -116,6 +119,7 @@ extension ContentView {
 
                             RecentFoodView(item: items[index])
                         }
+                        .listRowSeparator(.hidden)
                     }
                 }
             }
@@ -156,6 +160,7 @@ extension ContentView {
                         ForEach(item.allergen + item.ingredients, id: \.self) { allergy in
                             if !(keywords.contains(where: { $0.name!.lowercased() == allergy.lowercased() })) {
                                 Chip(name: allergy.lowercased(), height: 25, isRemovable: false, color: Color.blue, fontSize: 13)
+                                    .foregroundColor(.white)
                             }
                         }
 
