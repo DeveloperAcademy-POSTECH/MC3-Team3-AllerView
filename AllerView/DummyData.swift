@@ -23,7 +23,7 @@ struct RecentData: Identifiable {
                 barcode: "8801062870509",
                 name: "LotteSand",
                 allergen: ["Wheat", "Milk", "Soybean"],
-                ingredients: ["Vegetable Oil", "Dextrose", "Shortening", "Sugar", "Lactose", "Other processed products I", "Other glucose", "Refined Salt", "Acid regulator I", "Pineapple Juice Powder", "Mixed substances (Natural coloring agents, Synthetic flavorings, Triacetin, Propylene glycol, Essence)", "Lecithin", "Acid regulator II", "Vanillin", "Citric acid, DL-Apple acid", "Emulsifier", "Other processed products II"]
+                ingredients: ["Vegetable Oil", "Dextrose", "Shortening", "Sugar", "Lactose", "Other processed products I", "Other glucose", "Refined Salt", "Acid regulator I", "Pineapple Juice Powder", "Mixed substances", "Lecithin", "Acid regulator II", "Vanillin", "Citric acid, DL-Apple acid", "Emulsifier", "Other processed products II"]
             ),
             RecentData(
                 imageUrl: "https://firebasestorage.googleapis.com/v0/b/steady-copilot-206205.appspot.com/o/goods%2Fe47a72f6-2752-4519-25bf-0440d0cc8dc1%2Fe47a72f6-2752-4519-25bf-0440d0cc8dc1_front_angle_1000_w.jpg?alt=media&token=75380fe1-a5dd-40a4-aecf-c194946ffd6a",

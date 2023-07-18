@@ -31,12 +31,14 @@ struct CameraView: View {
                 torchLightIsOn: $isFlashOn,
                 scanInterval: .constant(5)
             ) { barcode in
+                if isSheet == true {
+                    return
+                }
+                
                 if let barcodeIndex = barcodes.firstIndex(of: barcode.value) {
                     check[barcodeIndex] = true
                     searchedBarcode = barcode.value
-                    if isSheet != true {
-                        isSheet.toggle()
-                    }
+                    isSheet.toggle()
                 }
             } onDraw: { barcodeView in
                 // line width
