@@ -24,6 +24,10 @@
 		DB7AB8922A5BE2D60074CBBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */; };
 		DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8932A5BE2D60074CBBF /* Persistence.swift */; };
 		DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8952A5BE2D60074CBBF /* AllerView.xcdatamodeld */; };
+		FD1CE9492A67D1DB00BAD054 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1CE9482A67D1DB00BAD054 /* ScannerView.swift */; };
+		FD8C19F22A6846980071155F /* ScanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8C19F12A6846980071155F /* ScanData.swift */; };
+		FD8C19F42A684D090071155F /* ScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8C19F32A684D090071155F /* ScanningView.swift */; };
+		FD8C19F62A6852A80071155F /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8C19F52A6852A80071155F /* TextRecognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB7AB8932A5BE2D60074CBBF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DB7AB8962A5BE2D60074CBBF /* AllerView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AllerView.xcdatamodel; sourceTree = "<group>"; };
+		FD1CE9482A67D1DB00BAD054 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		FD8C19F12A6846980071155F /* ScanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanData.swift; sourceTree = "<group>"; };
+		FD8C19F32A684D090071155F /* ScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningView.swift; sourceTree = "<group>"; };
+		FD8C19F52A6852A80071155F /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,8 @@
 			children = (
 				92D5AE992A5FE22900D30288 /* ContentView.swift */,
 				467EB3FF2A5FD64C0056EC0C /* CameraView.swift */,
+				FD1CE9482A67D1DB00BAD054 /* ScannerView.swift */,
+				FD8C19F32A684D090071155F /* ScanningView.swift */,
 				DB5ECDC02A5FD7780091E9E3 /* ProductDetailView.swift */,
 				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
 			);
@@ -111,6 +121,8 @@
 				DB19B3BC2A6510B100933C30 /* Component */,
 				DB19B3BB2A65109F00933C30 /* View */,
 				92D5AE9B2A5FE26B00D30288 /* DummyData.swift */,
+				FD8C19F52A6852A80071155F /* TextRecognizer.swift */,
+				FD8C19F12A6846980071155F /* ScanData.swift */,
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
 				DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */,
@@ -211,14 +223,18 @@
 				924874D92A6FBB980076FA41 /* Colors.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				92D5AE9C2A5FE26C00D30288 /* DummyData.swift in Sources */,
+				FD1CE9492A67D1DB00BAD054 /* ScannerView.swift in Sources */,
 				467EB4002A5FD64C0056EC0C /* CameraView.swift in Sources */,
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
 				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
+				FD8C19F42A684D090071155F /* ScanningView.swift in Sources */,
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
 				DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */,
 				92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */,
+				FD8C19F62A6852A80071155F /* TextRecognizer.swift in Sources */,
 				DB5ECDC12A5FD7780091E9E3 /* ProductDetailView.swift in Sources */,
 				DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */,
+				FD8C19F22A6846980071155F /* ScanData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +364,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
 				DEVELOPMENT_TEAM = 7FSJ5JJVGQ;
+				DEVELOPMENT_TEAM = Q535Z3S7Z3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
@@ -378,6 +395,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
 				DEVELOPMENT_TEAM = 7FSJ5JJVGQ;
+				DEVELOPMENT_TEAM = Q535Z3S7Z3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
