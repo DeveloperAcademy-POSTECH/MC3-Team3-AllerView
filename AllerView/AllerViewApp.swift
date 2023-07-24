@@ -15,7 +15,7 @@ struct AllerViewApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                CustomScannerView()
+                ScannerView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
         }
