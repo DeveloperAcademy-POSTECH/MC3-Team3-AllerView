@@ -39,50 +39,48 @@ struct ScannerView: View {
             VStack {
                 Spacer()
                 
-                HStack {
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(.clear)
-                            .frame(width: 390, height: 280)
-                            .background(.black.opacity(0.7))
-                            .cornerRadius(15)
-                        
-                        
-                        VStack(spacing: 26) {
-                            ZStack {
-                                Button(action: {}, label: {
-                                    ZStack {
-                                        Circle()
-                                            .fill(Color.white)
-                                            .frame(width: 82, height: 82)
-
-                                        Circle()
-                                            .stroke(.black, lineWidth: 3)
-                                            .frame(width: 70, height: 70)
-                                    }
-                                })
-                                
-                                HStack {
-                                    Spacer()
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 390, height: 280)
+                        .background(.black.opacity(0.7))
+                        .cornerRadius(15)
+                    
+                    
+                    VStack(spacing: 26) {
+                        ZStack {
+                            Button(action: {}, label: {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.white)
+                                        .frame(width: 82, height: 82)
                                     
-                                    Button {
-                                        //
-                                    } label: {
-                                        Image("icon_flash_off")
-                                    }
+                                    Circle()
+                                        .stroke(.black, lineWidth: 3)
+                                        .frame(width: 70, height: 70)
                                 }
-                                .padding(.horizontal, 25)
-                            }
+                            })
                             
-                            Text("Please take a photo of the section labeled '원재료명(Ingredients)'")
-                                .font(
-                                    Font.custom("SF Pro", size: 20)
-                                        .weight(.medium)
-                                )
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.white)
-                                .frame(width: 340.00012, height: 75, alignment: .center)
+                            HStack {
+                                Spacer()
+                                
+                                Button {
+                                    //
+                                } label: {
+                                    Image("icon_flash_off")
+                                }
+                            }
+                            .padding(.horizontal, 25)
                         }
+                        
+                        Text("Please take a photo of the section labeled '원재료명(Ingredients)'")
+                            .font(
+                                Font.custom("SF Pro", size: 20)
+                                    .weight(.medium)
+                            )
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.white)
+                            .frame(width: 340.00012, height: 75, alignment: .center)
                     }
                 }
             }
