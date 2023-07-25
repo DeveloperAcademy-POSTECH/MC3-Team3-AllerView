@@ -11,8 +11,9 @@ struct Chip: View {
     var name: String
     var height: CGFloat
     var isRemovable: Bool
-    var color: Color
+    var chipColor: Color
     var fontSize: CGFloat
+    var fontColor: Color
     
     var body: some View {
         HStack {
@@ -20,12 +21,17 @@ struct Chip: View {
                 Text(name)
                     .padding(.vertical, 8)
                     .font(.system(size: fontSize))
+                    .foregroundColor(Color.white)
                 if isRemovable{
                     Image(systemName: "minus.circle.fill")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(Color.white)
                 }
             }
-            .padding(.horizontal, 8)
-            .background(color)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 5)
+            .background(chipColor)
             .frame(height: height)
             .cornerRadius(35)
             
@@ -38,8 +44,8 @@ struct Chip: View {
 struct Previews_Chip_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            Chip(name: "testddddd", height: 25, isRemovable: false, color: Color.blue, fontSize: 14)
-            Chip(name: "test", height: 25, isRemovable: true, color: Color.blue, fontSize: 14)
+            Chip(name: "testddddd", height: 25, isRemovable: false, chipColor: Color.blue, fontSize: 14, fontColor: Color.white)
+            Chip(name: "test", height: 25, isRemovable: true, chipColor: Color.blue, fontSize: 14, fontColor: Color.white)
         }
     }
 }

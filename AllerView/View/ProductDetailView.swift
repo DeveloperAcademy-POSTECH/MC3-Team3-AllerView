@@ -43,7 +43,7 @@ extension ProductDetailView: View {
                         Divider()
                         ForEach(recentData.allergen + recentData.ingredients, id: \.self) { allergy in
                             if keywords.contains(where: { $0.name!.lowercased() == allergy.lowercased() }) {
-                                Chip(name: allergy.lowercased(), height: 25, isRemovable: false, color: Color.orange, fontSize: 13)
+                                Chip(name: allergy.lowercased(), height: 25, isRemovable: false, chipColor: Color.deepOrange, fontSize: 13, fontColor: Color.white)
                             }
                         }
 
@@ -51,7 +51,7 @@ extension ProductDetailView: View {
                             .font(.customHeadline)
                         Divider()
                         ForEach(recentData.allergen + recentData.ingredients, id: \.self) { ingredient in
-                            Chip(name: ingredient.lowercased(), height: 25, isRemovable: false, color: Color.blue, fontSize: 13)
+                            Chip(name: ingredient.lowercased(), height: 25, isRemovable: false, chipColor: Color.blue, fontSize: 13, fontColor: Color.white)
                                 .foregroundColor(.white)
                         }
                     }
