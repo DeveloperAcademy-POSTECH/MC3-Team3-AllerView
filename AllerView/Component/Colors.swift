@@ -22,7 +22,7 @@ extension Color {
       }
     
     static let deepOrange = Color(hex: "fdab00")
-    static let defaltOrange = Color(hex: "ffba2d")
+    static let defaultOrange = Color(hex: "ffba2d")
     static let deepYellow = Color(hex: "ffd12d")
     static let yellow = Color(hex: "ffde68")
     static let lightYellow = Color(hex: "fff1bf")
@@ -33,7 +33,7 @@ extension Color {
     static let black = Color(hex: "000000")
     static let deepGray1 = Color(hex: "323232")
     static let deepGray2 = Color(hex: "646464")
-    static let defaltGray = Color(hex: "969696")
+    static let defaultGray = Color(hex: "969696")
     static let lightGray1 = Color(hex: "C8C8C8")
     static let lightGray2 = Color(hex: "EBEBEB")
     static let White = Color(hex: "FFFFFF")
