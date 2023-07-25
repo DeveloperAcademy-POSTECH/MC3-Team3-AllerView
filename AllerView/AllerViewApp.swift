@@ -15,7 +15,7 @@ struct AllerViewApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+                GPTView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
         }

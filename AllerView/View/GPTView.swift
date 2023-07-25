@@ -8,8 +8,32 @@
 import SwiftUI
 
 struct GPTView: View {
+    
+    @ObservedObject var viewModel = ViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ScrollView {
+                ForEach(viewModel.messages.filter({$0.role != .system}), id: \.id) { message in
+                    HStack {
+                        if message.role == .user { Spacer() }
+                        Text(message.content)
+                        if message.role == .assistant { Spacer() }
+                    }
+                    .padding(.vertical)
+                }
+            }
+            HStack {
+                TextField("enter a messages...", text: $viewModel.currentInput)
+                Button {
+                    viewModel.sendMessage()
+                } label: {
+                    Text("Send")
+                }
+
+            }
+        }
+        .padding()
     }
 }
 

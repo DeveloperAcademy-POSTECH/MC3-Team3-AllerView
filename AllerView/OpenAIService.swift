@@ -14,7 +14,7 @@ class OpenAIService {
     func sendMessage(messages: [Message]) async -> OpenAIChatResponse? {
         let openAIMessages = messages.map({OpenAIChatMessage(role: $0.role, content: $0.content)})
         
-        let body = OpenAIChatBody(model: "gpt-3.5-turbo", messages: <#T##[OpenAIChatMessage]#>)
+        let body = OpenAIChatBody(model: "gpt-3.5-turbo", messages: openAIMessages)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(Constants.openAIAPIKey)"
         ]
@@ -27,12 +27,12 @@ struct OpenAIChatBody: Encodable {
     let messages: [OpenAIChatMessage]
 }
 
-struct OpenAIChatMessage: Encodable {
+struct OpenAIChatMessage: Codable {
     let role: SenderRole
     let content: String
 }
 
-enum SenderRole: String, Encodable {
+enum SenderRole: String, Codable {
     case system
     case user
     case assistant
