@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		467EB4032A605D2B0056EC0C /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 467EB4022A605D2B0056EC0C /* CarBode */; };
 		469351BC2A6E58F40029A1F5 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469351BB2A6E58F40029A1F5 /* ScannerView.swift */; };
+		5E1421112A700262004A2AD8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421102A700262004A2AD8 /* MainView.swift */; };
 		5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4007782A5FD15500CE3739 /* AllergySearchView.swift */; };
 		924874D92A6FBB980076FA41 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924874D82A6FBB980076FA41 /* Colors.swift */; };
 		92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE992A5FE22900D30288 /* ContentView.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		469351BB2A6E58F40029A1F5 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		5E1421102A700262004A2AD8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5E4007782A5FD15500CE3739 /* AllergySearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergySearchView.swift; sourceTree = "<group>"; };
 		924874D82A6FBB980076FA41 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		92D5AE992A5FE22900D30288 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				DB5ECDC02A5FD7780091E9E3 /* ProductDetailView.swift */,
 				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
 				469351BB2A6E58F40029A1F5 /* ScannerView.swift */,
+				5E1421102A700262004A2AD8 /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
+				5E1421112A700262004A2AD8 /* MainView.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,
 				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
 				924874D92A6FBB980076FA41 /* Colors.swift in Sources */,
@@ -352,6 +356,7 @@
 				DEVELOPMENT_TEAM = 7FSJ5JJVGQ;
 				DEVELOPMENT_TEAM = Q535Z3S7Z3;
 				DEVELOPMENT_TEAM = XKDG839GBD;
+				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
@@ -384,6 +389,7 @@
 				DEVELOPMENT_TEAM = 7FSJ5JJVGQ;
 				DEVELOPMENT_TEAM = Q535Z3S7Z3;
 				DEVELOPMENT_TEAM = XKDG839GBD;
+				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
