@@ -9,7 +9,6 @@ import SwiftUI
 import AVFoundation
 
 struct ScannerView: View {
-
     @StateObject var camera = CameraModel()
 
     var body: some View {
@@ -40,13 +39,14 @@ struct ScannerView: View {
                 Spacer()
                 
                 ZStack {
+                    // MARK: Bottom Rentangle Box
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: 390, height: 280)
                         .background(.black.opacity(0.7))
                         .cornerRadius(15)
                     
-                    
+                    // MARK: Buttons and Description
                     VStack(spacing: 26) {
                         ZStack {
                             Button(action: {}, label: {
@@ -64,10 +64,20 @@ struct ScannerView: View {
                             HStack {
                                 Spacer()
                                 
-                                Button {
-                                    //
-                                } label: {
-                                    Image("icon_flash_off")
+                                if camera.isFlash {
+                                    Button(action: {
+                                        camera.isFlash.toggle()
+                                        camera.toggleTorch(on: camera.isFlash)
+                                    }, label: {
+                                        Image("icon_flash_on")
+                                    })
+                                } else {
+                                    Button(action: {
+                                        camera.isFlash.toggle()
+                                        camera.toggleTorch(on: camera.isFlash)
+                                    }, label: {
+                                        Image("icon_flash_off")
+                                    })
                                 }
                             }
                             .padding(.horizontal, 25)
@@ -115,6 +125,8 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     @Published var isSaved = false
     @Published var picData = Data(count: 0)
     
+    @Published var isFlash: Bool = false
+    
     func Check() {
         
         // first check cameras got permission
@@ -153,15 +165,11 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
             let input = try AVCaptureDeviceInput(device: device!)
             
             // checking and adding to session...
-            
             if self.session.canAddInput(input) {
                 self.session.addInput(input)
             }
             
-            /// 가이딩 하이라이트 띄워주는 부분
-            
             // same for output...
-            
             if self.session.canAddOutput(self.output) {
                 self.session.addOutput(self.output)
             }
@@ -171,6 +179,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
             print(error.localizedDescription)
         }
     }
+
     
     func takePic() {
         
@@ -215,6 +224,23 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         self.isSaved = true
         print("saved successfully...")
+    }
+    
+    func toggleTorch(on: Bool) {
+        guard let device = AVCaptureDevice.default(for: .video) else { return }
+        if device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+
+                device.torchMode = on ? .on : .off
+
+                device.unlockForConfiguration()
+            } catch {
+                print("Torch could not be used")
+            }
+        } else {
+            print("Torch is not available")
+        }
     }
 }
 
