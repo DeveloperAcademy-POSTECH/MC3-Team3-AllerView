@@ -66,8 +66,8 @@ extension AllergySearchView: View {
                 
                 // MARK: - search results Field
                 
-                VStack(spacing: 20) {
-                    ZStack {
+                VStack(spacing: 15) {
+//                    ZStack {
                         ScrollView {
                             VStack {
                                 if !searchText.isEmpty {
@@ -112,6 +112,8 @@ extension AllergySearchView: View {
                                                     .font(.system(size: 20))
                                                     .foregroundColor(Color.deepOrange)
                                             }
+                                            .padding(.bottom, 4.8)
+                                            .padding(.top, 3.5)
                                             .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
                                             .contentShape(Rectangle())
                                             .onTapGesture {
@@ -122,31 +124,28 @@ extension AllergySearchView: View {
                                         }
                                     }
                                 }
-                                
-                                
                             }
                             .padding(.top)
                         }
                         .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
                         // MARK: - arrow for scrolling animation
                         
-                        if !searchText.isEmpty && getFilteredData().count > 5 {
-                            Image(systemName: "arrow.up.and.down.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 130, height: 130)
-                                .foregroundColor(Color.green)
-                                .opacity(showImage ? 0.6 : 0.0)
-                                .animation(.easeInOut(duration: 0.3))
-                                .offset(y: showImage ? +5 : -5)
-                                .onAppear {
-                                    showImage = true
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        showImage = false
-                                    }
-                                }
-                        }
-                    }
+//                        if !searchText.isEmpty && getFilteredData().count > 5 {
+//                            Image(systemName: "hand.point.up")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: 80, height: 80)
+//                                .opacity(showImage ? 0.6 : 0.0)
+//                                .animation(.easeInOut(duration: 0.3))
+//                                .offset(y: showImage ? +5 : -5)
+//                                .onAppear {
+//                                    showImage = true
+//                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                                        showImage = false
+//                                    }
+//                                }
+//                        }
+//                    }
                     
                     searchTextField
                         .padding(.bottom, 10)
@@ -230,3 +229,12 @@ extension AllergySearchView: View {
         
     }
 }
+//struct AllergySearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//
+//
+////        AllergySearchView(user: user, keywords: keywords)
+////            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//    }
+//}
+

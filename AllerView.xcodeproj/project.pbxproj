@@ -10,6 +10,7 @@
 		467EB4002A5FD64C0056EC0C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EB3FF2A5FD64C0056EC0C /* CameraView.swift */; };
 		467EB4032A605D2B0056EC0C /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 467EB4022A605D2B0056EC0C /* CarBode */; };
 		5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4007782A5FD15500CE3739 /* AllergySearchView.swift */; };
+		924874D92A6FBB980076FA41 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924874D82A6FBB980076FA41 /* Colors.swift */; };
 		92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE992A5FE22900D30288 /* ContentView.swift */; };
 		92D5AE9C2A5FE26C00D30288 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE9B2A5FE26B00D30288 /* DummyData.swift */; };
 		92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE9D2A64265E00D30288 /* Chip.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		467EB3FF2A5FD64C0056EC0C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		5E4007782A5FD15500CE3739 /* AllergySearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergySearchView.swift; sourceTree = "<group>"; };
+		924874D82A6FBB980076FA41 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		92D5AE992A5FE22900D30288 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		92D5AE9B2A5FE26B00D30288 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		92D5AE9D2A64265E00D30288 /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				92D5AE9D2A64265E00D30288 /* Chip.swift */,
+				924874D82A6FBB980076FA41 /* Colors.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,
 				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
+				924874D92A6FBB980076FA41 /* Colors.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				92D5AE9C2A5FE26C00D30288 /* DummyData.swift in Sources */,
 				467EB4002A5FD64C0056EC0C /* CameraView.swift in Sources */,
@@ -343,7 +347,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = YZCVM66B66;
+				DEVELOPMENT_TEAM = 7FSJ5JJVGQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
@@ -357,7 +361,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daejeon-people.AllerView";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.daejeon-people.AllerView2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -373,7 +377,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = YZCVM66B66;
+				DEVELOPMENT_TEAM = 7FSJ5JJVGQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
@@ -387,7 +391,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daejeon-people.AllerView";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.daejeon-people.AllerView2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
