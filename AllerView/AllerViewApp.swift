@@ -11,10 +11,11 @@ import SwiftUI
 @main
 struct AllerViewApp: App {
     let persistenceController = PersistenceController.shared
+    
 
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            NavigationStack {
                 ContentView()
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)

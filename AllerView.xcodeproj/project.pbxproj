@@ -30,6 +30,7 @@
 		DB6AA9852A72B78300E86884 /* GPTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9842A72B78300E86884 /* GPTModel.swift */; };
 		DB6AA9882A72B7C700E86884 /* GPTViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */; };
 		DB6AA98B2A72B83300E86884 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DB6AA98A2A72B83300E86884 /* Alamofire */; };
+		DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */; };
 		DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */; };
 		DB7AB88F2A5BE2D60074CBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */; };
 		DB7AB8922A5BE2D60074CBBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		DB6AA9822A72B76100E86884 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		DB6AA9842A72B78300E86884 /* GPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTModel.swift; sourceTree = "<group>"; };
 		DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTViewModel.swift; sourceTree = "<group>"; };
+		DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		DB7AB8872A5BE2D50074CBBF /* AllerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllerViewApp.swift; sourceTree = "<group>"; };
 		DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */,
+				DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				DB23A1E62A6E5DB0002E0A8B /* Color+Custom.swift in Sources */,
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
 				5E1421112A700262004A2AD8 /* MainView.swift in Sources */,
+				DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */,
 				DB6AA9882A72B7C700E86884 /* GPTViewModel.swift in Sources */,
 				5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,

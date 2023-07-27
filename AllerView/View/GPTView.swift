@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GPTView: View {
     
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject var viewModel = GPTViewModel()
     
     var body: some View {
         VStack {
@@ -21,14 +21,6 @@ struct GPTView: View {
                         Text(result.content)
                     }
                 }
-                //                ForEach(viewModel.messages.filter({$0.role != .system}), id: \.id) { message in
-                //                    HStack {
-                //                        if message.role == .user { Spacer() }
-                //                        Text(message.content)
-                //                        if message.role == .assistant { Spacer() }
-                //                    }
-                //                    .padding(.vertical)
-                //                }
             }
             Button {
                 viewModel.sendMessage()
