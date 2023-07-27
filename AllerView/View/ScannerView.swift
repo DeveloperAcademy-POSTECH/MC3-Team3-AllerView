@@ -5,31 +5,31 @@
 //  Created by Eojin Choi on 2023/07/24.
 //
 
-import SwiftUI
 import AVFoundation
+import SwiftUI
 import Vision
 
 struct ScannerView: View {
     @StateObject var camera = CameraModel()
-    
+
     var body: some View {
-        
         ZStack {
-            
             // MARK: Camera Previews
+
             CameraPreview(camera: camera)
                 .ignoresSafeArea(.all)
-                .overlay(
-                    ForEach(camera.recognizedTexts) { recognizedText in
-                        BoundingBoxOverlay(box: recognizedText.boundingBox)
-                    }
-                )
-            
+//                .overlay(
+//                    ForEach(camera.recognizedTexts) { recognizedText in
+//                        BoundingBoxOverlay(box: recognizedText.boundingBox)
+//                    }
+//                )
+
             // MARK: My Allergy Text
+
             VStack {
                 HStack {
                     Spacer()
-                    
+
                     Button {
                         //
                     } label: {
@@ -37,28 +37,29 @@ struct ScannerView: View {
                     }
                 }
                 .padding(.horizontal, 25)
-                
+
                 Spacer()
             }
             .padding(.vertical, 16)
-            
+
             // MARK: Control Area
+
             VStack {
                 Spacer()
-                
+
                 ZStack {
                     // MARK: Bottom Rentangle Box
+
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: 390, height: 280)
                         .background(.black.opacity(0.7))
                         .cornerRadius(15)
-                    
+
                     // MARK: Buttons and Description
+
                     if camera.isTaken {
-                        
                         VStack(spacing: 26) {
-                            
                             Text("Please crop the section\nof ‘원재료명(Ingredients)’")
                                 .font(
                                     Font.custom("SF Pro", size: 20)
@@ -67,19 +68,18 @@ struct ScannerView: View {
                                 .multilineTextAlignment(.center)
                                 .foregroundColor(.white)
                                 .frame(width: 340.00012, height: 75, alignment: .center)
-                            
+
                             HStack {
                                 Button(action: camera.reTake, label: {
                                     Text("Cancel")
                                 })
-                                
+
                                 Button(action: {}, label: {
                                     Text("Next")
                                 })
                             }
                         }
                     } else {
-                        
                         VStack(spacing: 26) {
                             ZStack {
                                 Button(action: camera.takePic, label: {
@@ -87,16 +87,16 @@ struct ScannerView: View {
                                         Circle()
                                             .fill(Color.white)
                                             .frame(width: 82, height: 82)
-                                        
+
                                         Circle()
                                             .stroke(.black, lineWidth: 3)
                                             .frame(width: 70, height: 70)
                                     }
                                 })
-                                
+
                                 HStack {
                                     Spacer()
-                                    
+
                                     if camera.isFlash {
                                         Button(action: {
                                             camera.isFlash.toggle()
@@ -115,7 +115,7 @@ struct ScannerView: View {
                                 }
                                 .padding(.horizontal, 25)
                             }
-                            
+
                             Text("Please take a photo of the section\nlabeled '원재료명(Ingredients)'")
                                 .font(
                                     Font.custom("SF Pro", size: 20)
@@ -146,7 +146,7 @@ struct RecognizedText: Identifiable {
 
 struct BoundingBoxOverlay: View {
     var box: CGRect
-    
+
     var body: some View {
         GeometryReader { geometry in
             Rectangle()
@@ -160,118 +160,115 @@ struct BoundingBoxOverlay: View {
 }
 
 class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
-    
     @Published var isTaken: Bool = false
-    
+
     @Published var session = AVCaptureSession()
-    
+
     @Published var alert: Bool = false
-    
+
     @Published var output = AVCapturePhotoOutput()
     @Published var videoOutput = AVCaptureVideoDataOutput()
     @Published var recognizedTexts: [RecognizedText] = []
-    
+
     @Published var preview = AVCaptureVideoPreviewLayer()
-    
+
     @Published var isSaved = false
     @Published var picData = Data(count: 0)
-    
+
     @Published var isFlash: Bool = false
-    
+
     func Check() {
-        
         // check camera permission
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             setUp()
             return
-            
-            // setting up session
+
+        // setting up session
         case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video, completionHandler: {(status) in
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { status in
                 if status {
                     self.setUp()
                 }
             })
         case .denied:
-            self.alert.toggle()
+            alert.toggle()
             return
-            
+
         default:
             break
         }
     }
-    
+
     func setUp() {
         // setting up camera...
-        
+
         do {
-            self.session.beginConfiguration()
-            
+            session.beginConfiguration()
+
             session.sessionPreset = .photo
-            
+
             let device = AVCaptureDevice.default(for: .video)
             let input = try AVCaptureDeviceInput(device: device!)
-            
-            if self.session.canAddInput(input) {
-                self.session.addInput(input)
+
+            if session.canAddInput(input) {
+                session.addInput(input)
             }
-            
-            self.output = AVCapturePhotoOutput()
-            if self.session.canAddOutput(self.output) {
-                self.session.addOutput(self.output)
+
+            output = AVCapturePhotoOutput()
+            if session.canAddOutput(output) {
+                session.addOutput(output)
             }
-            
-            self.videoOutput = AVCaptureVideoDataOutput()
-            self.videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sample buffer delegate", attributes: []))
-            if self.session.canAddOutput(self.videoOutput) {
-                self.session.addOutput(self.videoOutput)
+
+            videoOutput = AVCaptureVideoDataOutput()
+            videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sample buffer delegate", attributes: []))
+            if session.canAddOutput(videoOutput) {
+                session.addOutput(videoOutput)
             }
-            
-            self.session.commitConfiguration()
-            
+
+            session.commitConfiguration()
+
         } catch {
             print(error.localizedDescription)
         }
     }
 
-    
     func takePic() {
         DispatchQueue.global(qos: .background).async {
             self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
             self.session.stopRunning()
-            
+
             DispatchQueue.main.async {
-                withAnimation{self.isTaken.toggle()}
+                withAnimation { self.isTaken.toggle() }
             }
         }
     }
-    
+
     func reTake() {
         DispatchQueue.global(qos: .background).async {
             self.session.startRunning()
-            
+
             DispatchQueue.main.async {
-                withAnimation{self.isTaken.toggle()}
+                withAnimation { self.isTaken.toggle() }
                 self.isSaved = false
             }
         }
     }
-    
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+
+    func photoOutput(_: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if error != nil {
             return
         }
-        
-        guard let imageData = photo.fileDataRepresentation() else {return}
-        self.picData = imageData
+
+        guard let imageData = photo.fileDataRepresentation() else { return }
+        picData = imageData
     }
-    
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+
+    func captureOutput(_: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from _: AVCaptureConnection) {
         // Sample buffer에서 이미지 처리 및 텍스트 인식 작업 수행
         let requestHandler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer, orientation: .down)
         let request = VNRecognizeTextRequest(completionHandler: textDetectHandler)
-        
+
         request.recognitionLanguages = ["ko"]
         do {
             try requestHandler.perform([request])
@@ -280,35 +277,35 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
         }
     }
 
-    func textDetectHandler(request: VNRequest, error: Error?) {
+    func textDetectHandler(request: VNRequest, error _: Error?) {
         // 텍스트 인식 결과 처리
         guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
-        
+
         DispatchQueue.main.async {
             self.recognizedTexts.removeAll()
-            
+
             for observation in observations {
                 guard let topCandidate = observation.topCandidates(1).first else { continue }
-                
+
                 if topCandidate.string.contains("원재료명") {
-                    var boundingBox = observation.boundingBox
-                    
+                    let boundingBox = observation.boundingBox
+
                     // UIKit에서 SwiftUI로 좌표계 변환
                     self.recognizedTexts.append(RecognizedText(text: topCandidate.string, boundingBox: boundingBox))
                 }
             }
         }
     }
-    
+
     func savePic() {
-        let image = UIImage(data: self.picData)!
-        
+        let image = UIImage(data: picData)!
+
         // saving image...
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        self.isSaved = true
+        isSaved = true
         print("saved successfully...")
     }
-    
+
     func toggleTorch(on: Bool) {
         guard let device = AVCaptureDevice.default(for: .video) else { return }
         if device.hasTorch {
@@ -328,23 +325,26 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AV
 }
 
 struct CameraPreview: UIViewRepresentable {
-    
     @ObservedObject var camera: CameraModel
-    
-    func makeUIView(context: Context) -> some UIView {
+    var isFirst = true
+
+    func makeUIView(context _: Context) -> some UIView {
         let view = UIView(frame: UIScreen.main.bounds)
-        
-        camera.preview = AVCaptureVideoPreviewLayer(session: camera.session)
-        camera.preview.frame = view.frame
-        
-        camera.preview.videoGravity = .resizeAspectFill
-        view.layer.addSublayer(camera.preview)
-        
-        camera.session.startRunning()
-        
+
+        if isFirst {
+            DispatchQueue.main.async {
+                camera.preview = AVCaptureVideoPreviewLayer(session: camera.session)
+                camera.preview.frame = view.frame
+
+                camera.preview.videoGravity = .resizeAspectFill
+                view.layer.addSublayer(camera.preview)
+            }
+            Task.detached(priority: .background) {
+                await camera.session.startRunning()
+            }
+        }
         return view
     }
-    
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-    }
+
+    func updateUIView(_: UIViewType, context _: Context) {}
 }

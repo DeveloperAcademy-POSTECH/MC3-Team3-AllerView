@@ -13,15 +13,15 @@ struct ContentView {
     @Environment(\.managedObjectContext) var viewContext
 
     @State private var showAllergyDetail: Bool = false
-    
+
     // MARK: - Fetch CoreData
-    
+
     @FetchRequest(
         entity: User.entity(),
         sortDescriptors: []
     )
     var users: FetchedResults<User>
-    
+
     @FetchRequest(
         entity: Keyword.entity(),
         sortDescriptors: []
@@ -35,26 +35,26 @@ extension ContentView: View {
     var body: some View {
         ZStack {
             ScannerView()
-            
+
             VStack {
                 HStack {
                     Spacer()
-                    
+
                     NavigationLink {
                         AllergySearchView(user: users.first, keywords: keywords)
                     } label: {
                         MyAllergyButton()
                     }
                 }
-                
+
                 Spacer()
             }
             .padding(.top, 16)
             .padding(.horizontal, 25)
-        }
-        .sheet(isPresented: $showAllergyDetail) {
-            AllergyDetailView(imageUrl: "https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*",
-                              gptResult: GPTResult.sampleData)
+            .sheet(isPresented: $showAllergyDetail) {
+                AllergyDetailView(imageUrl: "https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*",
+                                  gptResult: GPTResult.sampleData)
+            }
         }
         .onAppear {
             if users.isEmpty {
