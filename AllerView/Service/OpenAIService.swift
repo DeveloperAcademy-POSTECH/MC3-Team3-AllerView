@@ -9,17 +9,35 @@ import Alamofire
 import SwiftUI
 
 class OpenAIService {
+    
+    let bundle = Bundle()
     private let endPointURL = "https://api.openai.com/v1/chat/completions"
     func sendMessage(message: Message) async -> OpenAIChatResponse? {
         let openAIMessage = OpenAIChatMessage(role: message.role, content: message.content)
         let body = OpenAIChatBody(model: "gpt-3.5-turbo-0613", messages: [openAIMessage])
 
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer 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",
+            "Authorization": "Bearer \(bundle.freeAPIKey)"
         ]
         return try? await AF.request(endPointURL, method: .post, parameters: body, encoder: .json, headers: headers)
             .serializingDecodable(OpenAIChatResponse.self)
             .value
+    }
+}
+
+extension Bundle {
+    var freeAPIKey: String {
+        get {
+            guard let filePath = Bundle.main.path(forResource: "SecretKey", ofType: "plist") else {
+                fatalError("Couldn't find file 'SecretKey.plist'.")
+            }
+            let plist = NSDictionary(contentsOfFile: filePath)
+            
+            guard let value = plist?.object(forKey: "FreeAPIKey") as? String else {
+                fatalError("Couldn't find key 'FreeAPIKey' in 'SecretKey.plist'.")
+            }
+            return value
+        }
     }
 }
 
