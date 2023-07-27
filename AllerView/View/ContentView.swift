@@ -11,8 +11,9 @@ import SwiftUI
 
 struct ContentView {
     @Environment(\.managedObjectContext) var viewContext
+    @StateObject private var gptModel = GPTModel()
 
-    @State private var showAllergyDetail: Bool = false
+    @State private var isSheetPresented: Bool = false
 
     // MARK: - Fetch CoreData
 
@@ -34,7 +35,7 @@ struct ContentView {
 extension ContentView: View {
     var body: some View {
         ZStack {
-            ScannerView()
+            ScannerView(gptModel: gptModel, isSheetPresented: $isSheetPresented, keywords: keywords)
 
             VStack {
                 HStack {
@@ -51,15 +52,17 @@ extension ContentView: View {
             }
             .padding(.top, 16)
             .padding(.horizontal, 25)
-            .sheet(isPresented: $showAllergyDetail) {
-                AllergyDetailView(imageUrl: "https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*",
-                                  gptResult: GPTResult.sampleData)
-            }
         }
         .onAppear {
             if users.isEmpty {
                 viewContext.createUser(name: "user")
             }
+        }
+        .sheet(isPresented: $isSheetPresented, onDismiss: {
+            gptModel.clear()
+        }) {
+            AllergyDetailView(gptModel: gptModel, imageUrl: "https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*",
+                              gptResult: GPTResult.sampleData)
         }
     }
 }

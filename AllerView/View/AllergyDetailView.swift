@@ -11,6 +11,8 @@ import WrappingHStack
 // MARK: - Property
 
 struct AllergyDetailView {
+    @ObservedObject var gptModel: GPTModel
+
     let imageUrl: String
     let gptResult: GPTResult
 }
@@ -45,29 +47,32 @@ extension AllergyDetailView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundColor(.white)
+                            if let responseData = gptModel.responseData {
+                                VStack(alignment: .leading) {
+                                    Text("There is ")
+                                    WrappingHStack(responseData.avoidIngredients, id: \.self) { avoidIngredients in
+                                        Chip(name: avoidIngredients, height: 29, isRemovable: false, chipColor: .deepOrange, fontSize: 20, fontColor: .black)
+                                    }
+                                    
+                                    Text("watch out for")
+                                    WrappingHStack(responseData.warningAllergies, id: \.self) { warnAllergy in
+                                        Chip(name: warnAllergy, height: 29, isRemovable: false, chipColor: .orange, fontSize: 20, fontColor: .white)
+                                    }
 
-                            VStack(alignment: .leading) {
-                                Text("There is ")
-                                WrappingHStack(gptResult.warnIngredients, id: \.self) { warnIngredient in
-                                    Chip(name: warnIngredient, height: 29, isRemovable: false, chipColor: .deepOrange, fontSize: 20, fontColor: .black)
+                                    Divider()
+
+                                    Text("More Ingredient")
+                                    WrappingHStack(responseData.allIngredients, id: \.self) { ingredient in
+                                        Text(ingredient)
+                                            .font(.customBody)
+                                            .foregroundColor(gptResult.warnIngredients.contains(where: { $0 == ingredient }) ? .deepOrange : .black)
+                                    }
                                 }
-
-                                Text("watch out for")
-                                WrappingHStack(gptResult.warnAllergies, id: \.self) { warnAllergy in
-                                    Chip(name: warnAllergy, height: 29, isRemovable: false, chipColor: .orange, fontSize: 20, fontColor: .white)
-                                }
-
-                                Divider()
-
-                                Text("More Ingredient")
-                                WrappingHStack(gptResult.allIngredients, id: \.self) { ingredient in
-                                    Text(ingredient)
-                                        .font(.customBody)
-                                        .foregroundColor(gptResult.warnIngredients.contains(where: { $0 == ingredient }) ? .deepOrange : .black)
-                                }
+                                .font(.customHeadline)
+                                .padding(20)
+                            } else {
+                                ProgressView()
                             }
-                            .font(.customHeadline)
-                            .padding(20)
                         }
                     }
                     .padding(.horizontal, 25)
@@ -89,7 +94,8 @@ extension AllergyDetailView {
             Spacer()
 
             Button {
-                // Re-Request ChapGPT
+                gptModel.responseData = nil
+                gptModel.sendMessage()
             } label: {
                 Circle()
                     .foregroundColor(.white)
@@ -101,16 +107,5 @@ extension AllergyDetailView {
                     }
             }
         }
-    }
-}
-
-// MARK: - Previews
-
-struct AllergyDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        AllergyDetailView(
-            imageUrl: "https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*",
-            gptResult: GPTResult.sampleData
-        )
     }
 }
