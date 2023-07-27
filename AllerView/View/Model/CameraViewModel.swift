@@ -23,6 +23,7 @@ extension ScannerView {
 
         @Published var isSaved = false
         @Published var picData = Data(count: 0)
+        @Published var isCaptureComplete = false
 
         @Published var isFlash: Bool = false
 
@@ -87,10 +88,10 @@ extension ScannerView {
         }
 
         func takePic() {
-            DispatchQueue.main.async {
-                self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
-                self.session.stopRunning()
-            }
+            print("takePic() start")
+            self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
+//            self.session.stopRunning()
+            print("takePic() end")
         }
 
         func reTake() {
@@ -105,23 +106,25 @@ extension ScannerView {
                 }
             }
         }
-
-        func photoOutput(_: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-            if error != nil {
+        
+        func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+            print("photoOutput() delegate start")
+            
+            if let error = error {
+                print("Error capturing photo: \(error.localizedDescription)")
                 return
             }
-
-            guard let imageData = photo.fileDataRepresentation() else { return }
-            picData = imageData
-        }
-
-        func savePic() {
-            let image = UIImage(data: picData)!
-
-            // saving image...
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-            isSaved = true
-            print("saved successfully...")
+            
+            if let imageData = photo.fileDataRepresentation() {
+                picData = imageData
+                print("photoOutput() delegate end")
+            }
+//            guard let imageData = photo.fileDataRepresentation() else { return }
+            
+            // 촬영 완료 시점에 상태 업데이트
+            DispatchQueue.main.async {
+                self.isCaptureComplete = true
+            }
         }
 
         func toggleTorch(on: Bool) {

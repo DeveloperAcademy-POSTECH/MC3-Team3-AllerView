@@ -53,9 +53,9 @@ struct ScannerView: View {
 
                     VStack(spacing: 26) {
                         ZStack {
-                            NavigationLink {
+                            NavigationLink(isActive: $camera.isCaptureComplete) {
                                 ImageCropView(picData: $camera.picData)
-                                    .navigationBarHidden(true)
+//                                    .navigationBarHidden(true)
                             } label: {
                                 ZStack {
                                     Circle()
