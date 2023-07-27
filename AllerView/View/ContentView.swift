@@ -75,7 +75,7 @@ struct ContentView: View {
                     Spacer()
                     // 바코드 촬영 버튼
                     NavigationLink {
-                        CameraView(check: $check, keywords: keywords)
+//                        CameraView(check: $check, keywords: keywords)
                     } label: {
                         Image("blackLongBarcord")
                             .resizable()
