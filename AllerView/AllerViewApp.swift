@@ -5,19 +5,19 @@
 //  Created by 조기연 on 2023/07/10.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
 @main
 struct AllerViewApp: App {
     let persistenceController = PersistenceController.shared
-    
+
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ScannerView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                ContentView()
             }
+            .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

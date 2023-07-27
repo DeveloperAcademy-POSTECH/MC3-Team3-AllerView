@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		467EB4032A605D2B0056EC0C /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 467EB4022A605D2B0056EC0C /* CarBode */; };
-		469351BC2A6E58F40029A1F5 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469351BB2A6E58F40029A1F5 /* ScannerView.swift */; };
 		5E1421112A700262004A2AD8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421102A700262004A2AD8 /* MainView.swift */; };
 		5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421132A7104CD004A2AD8 /* VisionUtility.swift */; };
 		5E14211C2A710701004A2AD8 /* AllerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E14211B2A710701004A2AD8 /* AllerViewTests.swift */; };
@@ -16,21 +15,23 @@
 		5E1421272A711CB3004A2AD8 /* ImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421262A711CB3004A2AD8 /* ImageCropView.swift */; };
 		5E1421292A723A86004A2AD8 /* ImageUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421282A723A86004A2AD8 /* ImageUtility.swift */; };
 		5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4007782A5FD15500CE3739 /* AllergySearchView.swift */; };
-		924874D92A6FBB980076FA41 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924874D82A6FBB980076FA41 /* Colors.swift */; };
 		924874DC2A723DC90076FA41 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 924874DB2A723DC90076FA41 /* WrappingHStack */; };
 		92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE992A5FE22900D30288 /* ContentView.swift */; };
-		92D5AE9C2A5FE26C00D30288 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE9B2A5FE26B00D30288 /* DummyData.swift */; };
 		92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE9D2A64265E00D30288 /* Chip.swift */; };
+		DB23A1E42A6E5A1A002E0A8B /* GPTResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB23A1E32A6E5A1A002E0A8B /* GPTResult.swift */; };
+		DB23A1E62A6E5DB0002E0A8B /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB23A1E52A6E5DB0002E0A8B /* Color+Custom.swift */; };
 		DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */; };
 		DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */; };
 		DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */; };
-		DB5ECDC12A5FD7780091E9E3 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDC02A5FD7780091E9E3 /* ProductDetailView.swift */; };
+		DB5ECDC12A5FD7780091E9E3 /* AllergyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */; };
 		DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */; };
 		DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */; };
 		DB7AB88F2A5BE2D60074CBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */; };
 		DB7AB8922A5BE2D60074CBBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */; };
 		DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8932A5BE2D60074CBBF /* Persistence.swift */; };
 		DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8952A5BE2D60074CBBF /* AllerView.xcdatamodeld */; };
+		DB818DC12A729C0B000C1579 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB818DC02A729C0B000C1579 /* ScannerView.swift */; };
+		DB9380B72A6660AC00A7C4C0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9380B62A6660AC00A7C4C0 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		469351BB2A6E58F40029A1F5 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		5E1421102A700262004A2AD8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5E1421132A7104CD004A2AD8 /* VisionUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtility.swift; sourceTree = "<group>"; };
 		5E1421192A710701004A2AD8 /* AllerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,14 +53,14 @@
 		5E1421262A711CB3004A2AD8 /* ImageCropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropView.swift; sourceTree = "<group>"; };
 		5E1421282A723A86004A2AD8 /* ImageUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtility.swift; sourceTree = "<group>"; };
 		5E4007782A5FD15500CE3739 /* AllergySearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergySearchView.swift; sourceTree = "<group>"; };
-		924874D82A6FBB980076FA41 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		92D5AE992A5FE22900D30288 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		92D5AE9B2A5FE26B00D30288 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		92D5AE9D2A64265E00D30288 /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
+		DB23A1E32A6E5A1A002E0A8B /* GPTResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTResult.swift; sourceTree = "<group>"; };
+		DB23A1E52A6E5DB0002E0A8B /* Color+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Custom.swift"; sourceTree = "<group>"; };
 		DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewContext+Entity.swift"; sourceTree = "<group>"; };
 		DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyword+CoreData.swift"; sourceTree = "<group>"; };
-		DB5ECDC02A5FD7780091E9E3 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+		DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyDetailView.swift; sourceTree = "<group>"; };
 		DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Custom.swift"; sourceTree = "<group>"; };
 		DB7AB8872A5BE2D50074CBBF /* AllerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllerViewApp.swift; sourceTree = "<group>"; };
@@ -68,7 +68,8 @@
 		DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB7AB8932A5BE2D60074CBBF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DB7AB8962A5BE2D60074CBBF /* AllerView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AllerView.xcdatamodel; sourceTree = "<group>"; };
-		FD1CE9482A67D1DB00BAD054 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		DB818DC02A729C0B000C1579 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		DB9380B62A6660AC00A7C4C0 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +114,11 @@
 			isa = PBXGroup;
 			children = (
 				92D5AE992A5FE22900D30288 /* ContentView.swift */,
-				FD1CE9482A67D1DB00BAD054 /* ScannerView.swift */,
-				DB5ECDC02A5FD7780091E9E3 /* ProductDetailView.swift */,
+				DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */,
 				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
-				469351BB2A6E58F40029A1F5 /* ScannerView.swift */,
 				5E1421102A700262004A2AD8 /* MainView.swift */,
 				5E1421262A711CB3004A2AD8 /* ImageCropView.swift */,
+				DB818DC02A729C0B000C1579 /* ScannerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				92D5AE9D2A64265E00D30288 /* Chip.swift */,
-				924874D82A6FBB980076FA41 /* Colors.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -139,6 +138,7 @@
 				DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */,
 				DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */,
 				DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */,
+				DB23A1E52A6E5DB0002E0A8B /* Color+Custom.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -165,9 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				5E1421122A710499004A2AD8 /* Utility */,
+				DB9380B52A6660A400A7C4C0 /* Model */,
 				DB19B3BC2A6510B100933C30 /* Component */,
 				DB19B3BB2A65109F00933C30 /* View */,
-				92D5AE9B2A5FE26B00D30288 /* DummyData.swift */,
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
 				DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */,
@@ -184,6 +184,15 @@
 				DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DB9380B52A6660A400A7C4C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DB9380B62A6660AC00A7C4C0 /* Product.swift */,
+				DB23A1E32A6E5A1A002E0A8B /* GPTResult.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,22 +313,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E1421272A711CB3004A2AD8 /* ImageCropView.swift in Sources */,
+				DB818DC12A729C0B000C1579 /* ScannerView.swift in Sources */,
+				DB23A1E62A6E5DB0002E0A8B /* Color+Custom.swift in Sources */,
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
 				5E1421112A700262004A2AD8 /* MainView.swift in Sources */,
 				5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,
 				5E1421292A723A86004A2AD8 /* ImageUtility.swift in Sources */,
 				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
-				924874D92A6FBB980076FA41 /* Colors.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
-				92D5AE9C2A5FE26C00D30288 /* DummyData.swift in Sources */,
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
+				DB23A1E42A6E5A1A002E0A8B /* GPTResult.swift in Sources */,
 				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
 				DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */,
 				92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */,
-				DB5ECDC12A5FD7780091E9E3 /* ProductDetailView.swift in Sources */,
+				DB5ECDC12A5FD7780091E9E3 /* AllergyDetailView.swift in Sources */,
 				DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */,
+				DB9380B72A6660AC00A7C4C0 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,10 +503,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = 7FSJ5JJVGQ;
-				DEVELOPMENT_TEAM = Q535Z3S7Z3;
-				DEVELOPMENT_TEAM = XKDG839GBD;
-				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
@@ -509,7 +517,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daejeon-people.AllerView2";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.daejeon-people.AllerView";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -525,10 +533,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = 7FSJ5JJVGQ;
-				DEVELOPMENT_TEAM = Q535Z3S7Z3;
-				DEVELOPMENT_TEAM = XKDG839GBD;
-				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
@@ -542,7 +547,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.daejeon-people.AllerView2";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.daejeon-people.AllerView";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
