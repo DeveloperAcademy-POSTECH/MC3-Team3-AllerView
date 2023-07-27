@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WrappingHStack
 
 struct AllergySearchView {
     @FocusState var keyboardFocused: Bool
@@ -32,23 +33,27 @@ extension AllergySearchView: View {
             
             if !keywords.isEmpty {
                 VStack(alignment: .leading) {
-                    Text("Seleted")
-                        .foregroundColor(Color(red: 0.39, green: 0.39, blue: 0.39))
-                        .padding(.top)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(keywords) { keyword in
-                                Chip(name: keyword.name ?? "Unknown", height: 35, isRemovable: true, chipColor: Color.deepOrange, fontSize: 20, fontColor: Color.white)
-                                    .onTapGesture {
-                                        keyword.delete()
-                                    }
-                            }
+                    Group{
+                        Text("Seleted")
+                            .foregroundColor(Color(red: 0.39, green: 0.39, blue: 0.39))
+                            .padding(.top)
+                        
+                        WrappingHStack(keywords, id:\.self) { keyword in
+                            Chip(name: keyword.name ?? "Unknown", height: 35, isRemovable: true, chipColor: Color.deepOrange, fontSize: 20, fontColor: Color.white)
+                                .padding(.bottom, 10)
+                                .onTapGesture {
+                                    keyword.delete()
+                                }
                         }
                     }
-                    
+                    .padding(.horizontal,26)
                 }
+                .padding(.bottom, 15)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.white)
+                .shadow(color: .black.opacity(0.1), radius: 7.5, x: 0, y: 4)
             }
+            
             
             // MARK: - reading glasses and guiding text
             
@@ -73,12 +78,13 @@ extension AllergySearchView: View {
                                 if !searchText.isEmpty {
                                     HStack {
                                         Text(searchText)
+                                            .font(.system(size: 20))
                                             .bold()
                                             .foregroundColor(Color.deepOrange)
                                         Spacer()
-                                        Image(systemName: "plus.circle.fill")
+                                        Image(systemName: "plus")
                                             .resizable()
-                                            .frame(width: 30, height: 30)
+                                            .frame(width: 17, height: 17)
                                             .font(.system(size: 20))
                                             .foregroundColor(Color.deepOrange)
                                         
@@ -102,18 +108,20 @@ extension AllergySearchView: View {
                                                 .background(Color.lightGray2)
                                             HStack {
                                                 Text(searchText)
+                                                    .font(.system(size: 20))
                                                     .bold()
                                                 +
                                                 Text(temp)
+                                                    .font(.system(size: 20))
                                                 Spacer()
-                                                Image(systemName: "plus.circle.fill")
+                                                Image(systemName: "plus")
                                                     .resizable()
-                                                    .frame(width: 30, height: 30)
+                                                    .frame(width: 17, height: 17)
                                                     .font(.system(size: 20))
                                                     .foregroundColor(Color.deepOrange)
                                             }
-                                            .padding(.bottom, 4.8)
-                                            .padding(.top, 3.5)
+                                            .padding(.bottom, 5.8)
+                                            .padding(.top, 4.5)
                                             .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
                                             .contentShape(Rectangle())
                                             .onTapGesture {
@@ -151,9 +159,9 @@ extension AllergySearchView: View {
                         .padding(.bottom, 10)
                 }
             }
-            
+            .padding(.horizontal, 26.0)
         }
-        .padding(.horizontal, 26.0)
+        
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
