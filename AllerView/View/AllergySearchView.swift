@@ -10,6 +10,7 @@ import WrappingHStack
 
 struct AllergySearchView {
     @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.dismiss) var dismiss
 
     @FocusState var keyboardFocused: Bool
     @State var searchText: String = ""
@@ -30,13 +31,12 @@ extension AllergySearchView: View {
 
             if !keywords.isEmpty {
                 VStack(alignment: .leading) {
-
-                    Group{
+                    Group {
                         Text("Seleted")
-                            .foregroundColor(Color(red: 0.39, green: 0.39, blue: 0.39))
-                            .padding(.top)
-                        
-                        WrappingHStack(keywords, id:\.self) { keyword in
+                            .font(.system(size: 17))
+                            .foregroundColor(.defaultGray)
+
+                        WrappingHStack(keywords, id: \.self) { keyword in
                             Chip(name: keyword.name ?? "Unknown", height: 35, isRemovable: true, chipColor: Color.deepOrange, fontSize: 20, fontColor: Color.white)
                                 .padding(.bottom, 10)
                                 .onTapGesture {
@@ -44,12 +44,12 @@ extension AllergySearchView: View {
                                 }
                         }
                     }
-                    .padding(.horizontal,26)
+                    .padding(.horizontal, 26)
                 }
                 .padding(.bottom, 15)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(Color.white)
-                .shadow(color: .black.opacity(0.1), radius: 7.5, x: 0, y: 4)
+                .shadow(color: .black.opacity(0.075), radius: 8, x: 0, y: 2)
             }
 
             // MARK: - reading glasses and guiding text
@@ -67,123 +67,94 @@ extension AllergySearchView: View {
                 }
 
                 // MARK: - search results Field
-                
+
                 VStack(spacing: 15) {
 //                    ZStack {
-                        ScrollView {
-                            VStack {
-                                if !searchText.isEmpty {
-                                    HStack {
-                                        Text(searchText)
-                                            .font(.system(size: 20))
-                                            .bold()
-                                            .foregroundColor(Color.deepOrange)
-                                        Spacer()
-                                        Image(systemName: "plus")
-                                            .resizable()
-                                            .frame(width: 17, height: 17)
-                                            .font(.system(size: 20))
-                                            .foregroundColor(Color.deepOrange)
-                                    }
-                                    .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
-                                    .padding(.top, -7)
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        addKeyword(keywordName: searchText)
-                                        searchText = ""
-                                    }
+                    ScrollView {
+                        VStack {
+                            if !searchText.isEmpty {
+                                HStack {
+                                    Text(searchText)
+                                        .font(.system(size: 20))
+                                        .bold()
+                                        .foregroundColor(Color.deepOrange)
+                                    Spacer()
+                                    Image(systemName: "plus")
+                                        .resizable()
+                                        .frame(width: 17, height: 17)
+                                        .font(.system(size: 20))
+                                        .foregroundColor(Color.deepOrange)
                                 }
-                                if searchText != "" {
-                                    ForEach(getFilteredData().reversed(), id: \.self) { data in
-                                        let temp = data.replacingOccurrences(of: searchText, with: "")
+                                .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
+                                .padding(.top, -7)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    addKeyword(keywordName: searchText)
+                                    searchText = ""
+                                }
+                            }
+                            if searchText != "" {
+                                ForEach(getFilteredData().reversed(), id: \.self) { data in
+                                    let temp = data.replacingOccurrences(of: searchText, with: "")
 
-                                        VStack {
-                                            Rectangle()
-                                                .foregroundColor(.clear)
-                                                .frame(width: 340, height: 1)
-                                                .background(Color.lightGray2)
-                                            HStack {
-
-                                                Text(searchText).font(.system(size: 20)).bold()
-                                                +
-                                                Text(temp).font(.system(size: 20))
-
-                                                Spacer()
-                                                Image(systemName: "plus")
-                                                    .resizable()
-                                                    .frame(width: 17, height: 17)
-                                                    .font(.system(size: 20))
-                                                    .foregroundColor(Color.deepOrange)
-                                            }
-                                            .padding(.bottom, 5.8)
-                                            .padding(.top, 4.5)
-                                            .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
-                                            .contentShape(Rectangle())
-                                            .onTapGesture {
-                                                addKeyword(keywordName: data)
-                                            }
-                                            .font(.system(size: 17))
+                                    VStack {
+                                        Rectangle()
+                                            .foregroundColor(.clear)
+                                            .frame(width: 340, height: 1)
+                                            .background(Color.lightGray2)
+                                        HStack {
+                                            (Text(searchText).bold() + Text(temp))
+                                                .font(.system(size: 20))
+                                            Spacer()
+                                            Image(systemName: "plus")
+                                                .resizable()
+                                                .frame(width: 17, height: 17)
+                                                .font(.system(size: 20))
+                                                .foregroundColor(Color.deepOrange)
                                         }
+                                        .padding(.bottom, 5.8)
+                                        .padding(.top, 4.5)
+                                        .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
+                                        .contentShape(Rectangle())
+                                        .onTapGesture {
+                                            addKeyword(keywordName: data)
+                                        }
+                                        .font(.system(size: 17))
                                     }
                                 }
                             }
-                            .padding(.top)
                         }
-                        .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
+                        .padding(.top)
+                    }
+                    .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
 
-                        // MARK: - arrow for scrolling animation
-                        
-//                        if !searchText.isEmpty && getFilteredData().count > 5 {
-//                            Image(systemName: "hand.point.up")
-//                                .resizable()
-//                                .scaledToFit()
-//                                .frame(width: 80, height: 80)
-//                                .opacity(showImage ? 0.6 : 0.0)
-//                                .animation(.easeInOut(duration: 0.3))
-//                                .offset(y: showImage ? +5 : -5)
-//                                .onAppear {
-//                                    showImage = true
-//                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                                        showImage = false
-//                                    }
-//                                }
-//                        }
-//                    }
-                    
-                    searchTextField
-                        .padding(.bottom, 10)
+                    // MARK: - arrow for scrolling animation
+
+                    SearchTextField
+                        .padding(.bottom, 14)
                 }
             }
-
-            .padding(.horizontal, 26.0)
+            .padding(.horizontal, 25)
         }
-        
-        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
-                naviagtionBarTitle
+                NaviagtionBarTitle
             }
         }
         .navigationBarItems(trailing: Button("Done") {
-            // action
+            dismiss()
         })
     }
 
     // MARK: - navigation bar custom
 
-    var naviagtionBarTitle: some View {
-        HStack {
-            Text("Choose my Allergy")
-                .font(.title2)
-                .bold()
-                .foregroundColor(.black)
-                .padding(0.0)
-                .frame(height: 22)
-        }
-        .padding(.horizontal, 7)
+    var NaviagtionBarTitle: some View {
+        Text("Choose my Allergy")
+            .font(.system(size: 25))
+            .fontWeight(.semibold)
     }
 
-    var searchTextField: some View {
+    var SearchTextField: some View {
         HStack(alignment: .center, spacing: 15) {
             TextField("Please enter your allergy", text: $searchText)
                 .autocapitalization(.none)
@@ -192,7 +163,7 @@ extension AllergySearchView: View {
             Image(systemName: "magnifyingglass")
                 .font(Font.custom("SF Pro", size: 24))
         }
-        .foregroundColor(Color(red: 0.6, green: 0.6, blue: 0.6))
+        .foregroundColor(.deepGray2)
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
         .background(.white)
@@ -228,12 +199,12 @@ extension AllergySearchView: View {
         }
     }
 }
-//struct AllergySearchView_Previews: PreviewProvider {
+
+// struct AllergySearchView_Previews: PreviewProvider {
 //    static var previews: some View {
 //
 //
 ////        AllergySearchView(user: user, keywords: keywords)
 ////            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 //    }
-//}
-
+// }

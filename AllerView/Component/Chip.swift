@@ -21,7 +21,7 @@ struct Chip: View {
                 Text(name)
                     .padding(.vertical, 8)
                     .font(.system(size: fontSize))
-                    .foregroundColor(Color.white)
+                    .foregroundColor(fontColor)
                 if isRemovable{
                     Image(systemName: "minus.circle.fill")
                         .resizable()

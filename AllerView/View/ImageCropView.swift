@@ -55,13 +55,13 @@ struct ImageCropView: View {
                         }
                     
                     // MARK: Crop Box
-                    
-                    cropBox
-                    
+
+                    CropBox
+
                     // MARK: Crop Points
-                    
-                    cropPoints
-                    
+
+                    CropPoints
+
                     VStack {
                         Spacer()
                         
@@ -127,6 +127,7 @@ struct ImageCropView: View {
                                             let scannedData = recognizedStrings.joined()
                                             print(scannedData)
                                             gptModel.setSendProperties(allergies: allergies, scannedData: scannedData)
+                                            gptModel.uiImage = image
                                             gptModel.sendMessage()
                                         }
                                         
@@ -158,7 +159,7 @@ struct ImageCropView: View {
     }
     
     @ViewBuilder
-    var cropBox: some View {
+    var CropBox: some View {
         let path = Path { path in
             path.move(to: CGPoint(
                 x: drag.width + topLeft.width,
@@ -194,7 +195,7 @@ struct ImageCropView: View {
     }
     
     @ViewBuilder
-    var cropPoints: some View {
+    var CropPoints: some View {
         Circle()
             .frame(width: 20, height: 20)
             .foregroundColor(.blue)

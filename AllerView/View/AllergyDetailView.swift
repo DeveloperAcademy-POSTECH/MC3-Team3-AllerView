@@ -12,9 +12,6 @@ import WrappingHStack
 
 struct AllergyDetailView {
     @ObservedObject var gptModel: GPTModel
-
-    let imageUrl: String
-    let gptResult: GPTResult
 }
 
 // MARK: - View
@@ -29,51 +26,19 @@ extension AllergyDetailView: View {
 
                 ScrollView {
                     VStack(spacing: 12) {
-                        AsyncImage(
-                            url: URL(string: imageUrl),
-                            content: { image in
-                                image
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: proxy.size.width)
-                            },
-                            placeholder: { ProgressView() }
-                        )
-                        .padding(.horizontal, -25)
-                        .padding(.bottom, 12)
+                        if let uiImage = gptModel.uiImage {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: proxy.size.width)
+                                .padding(.horizontal, -25)
+                                .padding(.bottom, 12)
+                        } else {
+                            ProgressView()
+                        }
 
                         DetailHeader()
-
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(.white)
-                            if let responseData = gptModel.responseData {
-                                VStack(alignment: .leading) {
-                                    Text("There is ")
-                                    WrappingHStack(responseData.avoidIngredients, id: \.self) { avoidIngredients in
-                                        Chip(name: avoidIngredients, height: 29, isRemovable: false, chipColor: .deepOrange, fontSize: 20, fontColor: .black)
-                                    }
-                                    
-                                    Text("watch out for")
-                                    WrappingHStack(responseData.warningAllergies, id: \.self) { warnAllergy in
-                                        Chip(name: warnAllergy, height: 29, isRemovable: false, chipColor: .orange, fontSize: 20, fontColor: .white)
-                                    }
-
-                                    Divider()
-
-                                    Text("More Ingredient")
-                                    WrappingHStack(responseData.allIngredients, id: \.self) { ingredient in
-                                        Text(ingredient)
-                                            .font(.customBody)
-                                            .foregroundColor(gptResult.warnIngredients.contains(where: { $0 == ingredient }) ? .deepOrange : .black)
-                                    }
-                                }
-                                .font(.customHeadline)
-                                .padding(20)
-                            } else {
-                                ProgressView()
-                            }
-                        }
+                        DetailBody()
                     }
                     .padding(.horizontal, 25)
                 }
@@ -90,6 +55,7 @@ extension AllergyDetailView {
         HStack {
             Image("AIHead")
             Text("AI Summary")
+                .foregroundColor(.defaultGray)
 
             Spacer()
 
@@ -105,6 +71,91 @@ extension AllergyDetailView {
                         Image(systemName: "arrow.clockwise")
                             .foregroundColor(.blue)
                     }
+            }
+        }
+    }
+
+    func DetailBody() -> some View {
+        ZStack {
+            ZStack(alignment: .topLeading) {
+                Rectangle()
+                    .frame(width: 50, height: 50)
+                RoundedRectangle(cornerRadius: 20)
+            }
+            .foregroundColor(.white)
+
+            if let responseData = gptModel.responseData {
+                VStack(alignment: .leading, spacing: 20) {
+                    if !responseData.warningAllergies.isEmpty {
+                        VStack(alignment: .leading, spacing: 16) {
+                            HStack(spacing: 4) {
+                                Image(systemName: "exclamationmark.bubble")
+                                Text("Attention")
+                            }
+                            .font(.system(size: 20, weight: .bold))
+
+                            Text("This ingredients")
+                                .font(.system(size: 20, weight: .medium))
+                            WrappingHStack(responseData.avoidIngredients, id: \.self) { avoidIngredients in
+                                Chip(name: avoidIngredients, height: 29, isRemovable: false, chipColor: .lightYellow, fontSize: 17, fontColor: .deepOrange)
+                                    .fontWeight(.medium)
+                                    .padding(.bottom, 4)
+                            }
+
+                            Text("matches your allergies")
+                                .font(.system(size: 20, weight: .medium))
+                            WrappingHStack(responseData.warningAllergies, id: \.self) { warnAllergy in
+                                Chip(name: warnAllergy, height: 29, isRemovable: false, chipColor: .deepOrange, fontSize: 17, fontColor: .white)
+                                    .fontWeight(.medium)
+                                    .padding(.bottom, 4)
+                            }
+                        }
+
+                        if !responseData.unidentifiableIngredients.isEmpty {
+                            Divider()
+
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("Unidentifiable Ingredients")
+                                    .font(.system(size: 17, weight: .semibold))
+                                WrappingHStack(responseData.unidentifiableIngredients, id: \.self, spacing: .constant(16)) { ingredient in
+                                    Text(ingredient)
+                                        .font(.system(size: 17))
+                                        .padding(.bottom, 2)
+                                }
+                                .foregroundColor(.defaultGray)
+                                HStack(spacing: 4) {
+                                    Image(systemName: "questionmark.square.dashed")
+                                    Text("You can refresh or retake.")
+                                }
+                                .foregroundColor(.lightGray1)
+                            }
+                        }
+                    } else {
+                        HStack(spacing: 4) {
+                            Image(systemName: "checkmark.seal.fill")
+                            Text("Free of allergies.")
+                                .font(.system(size: 17, weight: .medium))
+                        }
+                        .foregroundColor(.green)
+                    }
+
+                    Divider()
+
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("All Ingredients")
+                            .font(.system(size: 17, weight: .semibold))
+                        WrappingHStack(responseData.allIngredients, id: \.self) { ingredient in
+                            Text(ingredient)
+                                .font(responseData.avoidIngredients.contains(where: { ingredient.contains($0) }) ? .system(size: 17, weight: .semibold) : .system(size: 17))
+                                .foregroundColor(responseData.avoidIngredients.contains(where: { ingredient.contains($0) }) ? .deepOrange : .black)
+                                .padding(.bottom, 2)
+                        }
+                    }
+                }
+                .padding(20)
+            } else {
+                ProgressView()
+                    .padding(40)
             }
         }
     }

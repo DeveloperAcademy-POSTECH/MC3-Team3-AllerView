@@ -92,8 +92,8 @@ struct ScannerView: View {
                             }
                         }
 
-                        Text("Please take a photo of the section\nlabeled '원재료명(Ingredients)'")
-                            .font(Font.custom("SF Pro", size: 20).weight(.medium))
+                        Text("Please take a photo of the section\nlabeled '**원재료명**(Ingredients)'")
+                            .font(.system(size: 20))
                             .multilineTextAlignment(.center)
                             .foregroundColor(.white)
                             .frame(width: 340, alignment: .center)

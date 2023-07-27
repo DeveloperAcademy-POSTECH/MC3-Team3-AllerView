@@ -36,6 +36,11 @@ extension ContentView: View {
     var body: some View {
         ZStack {
             ScannerView(gptModel: gptModel, isSheetPresented: $isSheetPresented, keywords: keywords)
+                .sheet(isPresented: $isSheetPresented, onDismiss: {
+                    gptModel.clear()
+                }) {
+                    AllergyDetailView(gptModel: gptModel)
+                }
 
             VStack {
                 HStack {
@@ -43,6 +48,8 @@ extension ContentView: View {
 
                     NavigationLink {
                         AllergySearchView(user: users.first, keywords: keywords)
+                            .navigationBarBackButtonHidden(true)
+                            .navigationBarTitleDisplayMode(.inline)
                     } label: {
                         MyAllergyButton()
                     }
@@ -58,12 +65,6 @@ extension ContentView: View {
                 viewContext.createUser(name: "user")
             }
         }
-        .sheet(isPresented: $isSheetPresented, onDismiss: {
-            gptModel.clear()
-        }) {
-            AllergyDetailView(gptModel: gptModel, imageUrl: "https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*",
-                              gptResult: GPTResult.sampleData)
-        }
     }
 }
 
@@ -74,13 +75,14 @@ extension ContentView {
         ZStack {
             RoundedRectangle(cornerRadius: 40)
                 .foregroundColor(.black)
-            HStack {
+
+            HStack(spacing: 8) {
                 Image(systemName: "staroflife.fill")
+                    .foregroundColor(.deepOrange)
                 Text("My Allergy")
             }
             .foregroundColor(.white)
-            .font(.system(size: 17))
-            .fontWeight(.regular)
+            .font(.system(size: 17, weight: .regular))
         }
         .frame(width: 143, height: 35)
     }
