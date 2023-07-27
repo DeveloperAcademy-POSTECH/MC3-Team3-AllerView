@@ -50,7 +50,8 @@ struct ImageCropView: View {
                         )
                         .onAppear {
                             // MARK: for "원재료명" Highlight
-                            
+                            print("height: \(geometry.size.height)")
+                            print("width: \(geometry.size.width)")
                             highlightingIngredients(image: image!)
                         }
                     

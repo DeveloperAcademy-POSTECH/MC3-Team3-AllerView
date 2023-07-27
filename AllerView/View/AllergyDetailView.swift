@@ -27,7 +27,8 @@ extension AllergyDetailView: View {
                 ScrollView {
                     VStack(spacing: 12) {
                         if let uiImage = gptModel.uiImage {
-                            Image(uiImage: uiImage)
+                            let croppedImage = ImageUtility.cropImageToSquare(for: uiImage, in: proxy)
+                            Image(uiImage: croppedImage!)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: proxy.size.width)

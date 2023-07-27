@@ -91,6 +91,21 @@ class ImageUtility {
             return nil
         }
     }
+    static func cropImageToSquare(for image: UIImage, in geometry: GeometryProxy) -> UIImage?{
+        let viewSize = geometry.size
+        let imageSize = image.size
+        print("view height\(viewSize.width)")
+        let ratioY = imageSize.height / 844.0
+        let startHeight = 844 * 0.4
+        let cropSize = 390.0 * ratioY
+        let rect = CGRect(x:0, y: startHeight, width: cropSize, height: cropSize)
+        if let cgImage = image.cgImage?.cropping(to: rect) {
+            return UIImage(cgImage: cgImage)
+        } else {
+            return nil
+        }
+//        return UIImage(cgImage: image.cgImage?.cropping(to: rect))
+    }
 }
 extension CGSize {
     static func + (lhs: Self, rhs: Self) -> Self {
