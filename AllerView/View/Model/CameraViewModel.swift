@@ -89,7 +89,7 @@ extension ScannerView {
 
         func takePic() {
             print("takePic() start")
-            self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
+            output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
 //            self.session.stopRunning()
             print("takePic() end")
         }
@@ -106,21 +106,21 @@ extension ScannerView {
                 }
             }
         }
-        
-        func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+
+        func photoOutput(_: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
             print("photoOutput() delegate start")
-            
+
             if let error = error {
                 print("Error capturing photo: \(error.localizedDescription)")
                 return
             }
-            
+
             if let imageData = photo.fileDataRepresentation() {
                 picData = imageData
                 print("photoOutput() delegate end")
             }
 //            guard let imageData = photo.fileDataRepresentation() else { return }
-            
+
             // 촬영 완료 시점에 상태 업데이트
             DispatchQueue.main.async {
                 self.isCaptureComplete = true

@@ -11,6 +11,11 @@ import Vision
 
 struct ScannerView: View {
     @StateObject private var camera = CameraViewModel()
+    @ObservedObject var gptModel: GPTModel
+
+    @Binding var isSheetPresented: Bool
+
+    let keywords: FetchedResults<Keyword>
 
     var body: some View {
         ZStack {
@@ -47,15 +52,15 @@ struct ScannerView: View {
 
                     Rectangle()
                         .foregroundColor(.clear)
-                        .frame(width: 390, height: 280)
+                        .frame(height: 280)
                         .background(.black.opacity(0.7))
                         .cornerRadius(15)
 
-                    VStack(spacing: 26) {
+                    VStack(spacing: 37.5) {
                         ZStack {
-                            NavigationLink(isActive: $camera.isCaptureComplete) {
-                                ImageCropView(picData: $camera.picData)
-//                                    .navigationBarHidden(true)
+                            NavigationLink {
+                                ImageCropView(gptModel: gptModel, picData: $camera.picData, isSheetPresented: $isSheetPresented, keywords: keywords)
+                                    .navigationBarHidden(true)
                             } label: {
                                 ZStack {
                                     Circle()
@@ -85,18 +90,16 @@ struct ScannerView: View {
                                     }
                                 }
                             }
-                            .padding(.horizontal, 25)
                         }
 
                         Text("Please take a photo of the section\nlabeled '원재료명(Ingredients)'")
-                            .font(
-                                Font.custom("SF Pro", size: 20)
-                                    .weight(.medium)
-                            )
+                            .font(Font.custom("SF Pro", size: 20).weight(.medium))
                             .multilineTextAlignment(.center)
                             .foregroundColor(.white)
-                            .frame(width: 340.00012, height: 75, alignment: .center)
+                            .frame(width: 340, alignment: .center)
                     }
+                    .padding(.bottom, 37.5)
+                    .padding(.horizontal, 25)
                 }
             }
             .ignoresSafeArea()

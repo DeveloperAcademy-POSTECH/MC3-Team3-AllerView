@@ -7,6 +7,10 @@
 import SwiftUI
 
 struct ImageCropView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    @ObservedObject var gptModel: GPTModel
+
     @State private var topLeft = CGSize(width: 100, height: 100)
     @State private var topRight = CGSize(width: 300, height: 100)
     @State private var bottomLeft = CGSize(width: 100, height: 300)
@@ -23,43 +27,30 @@ struct ImageCropView: View {
 
     // 전 뷰에서 넘어온 이미지가 들어올 곳
     @Binding var picData: Data
+    @Binding var isSheetPresented: Bool
+
+    let keywords: FetchedResults<Keyword>
 
     var body: some View {
         ZStack {
-            if let image = UIImage(data: picData) {
-                GeometryReader { geometry in
-                    if let croppedImage = croppedImage {
-                        Image(uiImage: croppedImage)
-                            .resizable()
-                            .scaledToFit()
-                    } else {
-                        // MARK: Image Area
+            GeometryReader { geometry in
+                if let image = UIImage(data: picData) {
+                    // MARK: Image Area
 
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFill()
-                            .overlay(
-                                ForEach(0 ..< boundingBoxes.count, id: \.self) { index in
-                                    // draw bounding box
-                                    BoundingBoxOverlay(box: boundingBoxes[index])
-                                }
-                            )
-
+                    Image(uiImage: image)
+                        .resizable()
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        .overlay(
+                            ForEach(0 ..< boundingBoxes.count, id: \.self) { index in
+                                // draw bounding box
+                                BoundingBoxOverlay(box: boundingBoxes[index])
+                            }
+                        )
+                        .onAppear {
                             // MARK: for "원재료명" Highlight
 
-                            .onAppear {
-                                VisionUtility.recognizeText(in: image) { recognizedText, boundingBox in
-                                    for (index, element) in recognizedText.enumerated() {
-                                        if element.contains("원재료명") {
-                                            // append bounding box
-                                            boundingBoxes.append(boundingBox[index])
-                                            break
-                                        }
-                                    }
-                                    print("Init Recognized Text: \(recognizedText)")
-                                }
-                            }
-                    }
+                            highlightingIngredients(image: image)
+                        }
 
                     // MARK: Crop Box
 
@@ -75,71 +66,92 @@ struct ImageCropView: View {
                         ZStack {
                             // MARK: Bottom Rectangle Box
 
-                            Rectangle()
+                            RoundedRectangle(cornerRadius: 15)
+                                .frame(height: 240)
                                 .foregroundColor(.clear)
-                                .frame(width: 390, height: 280)
                                 .background(.black.opacity(0.7))
-                                .cornerRadius(15)
 
                             // MARK: Crop And OCR Function Call BTN
 
-                            VStack(spacing: 26) {
+                            VStack(spacing: 41) {
                                 Text("Please crop the section\nof '원재료명(Ingredients)'")
                                     .font(Font.custom("SF Pro", size: 20).weight(.medium))
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.white)
-                                    .frame(width: 340.00012, height: 75, alignment: .center)
-                                Button(action: {
-                                    let points = ImageUtility.convertToImageCoordinates(from: [
-                                        CGPoint(
-                                            x: drag.width + topLeft.width,
-                                            y: drag.height + topLeft.height
-                                        ),
-
-                                        CGPoint(
-                                            x: drag.width + topRight.width,
-                                            y: drag.height + topRight.height
-                                        ),
-                                        CGPoint(
-                                            x: drag.width + bottomRight.width,
-                                            y: drag.height + bottomRight.height
-                                        ),
-                                        CGPoint(
-                                            x: drag.width + bottomLeft.width,
-                                            y: drag.height + bottomLeft.height
-                                        ),
-                                    ], for: image, in: geometry)
-
-                                    // MARK: Crop Image
-
-                                    croppedImage = ImageUtility.cropImage(image, points: points)
-
-                                    // MARK: Vision OCR Call
-
-                                    VisionUtility.recognizeText(in: croppedImage!) { recognizedStrings in
-                                        print(recognizedStrings)
+                                    .frame(width: 340, alignment: .center)
+                                HStack(spacing: 20) {
+                                    Button {
+                                        dismiss()
+                                    } label: {
+                                        ZStack {
+                                            Circle()
+                                                .foregroundColor(.white)
+                                            Image(systemName: "arrow.clockwise")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 20)
+                                                .foregroundColor(.deepGray2)
+                                        }
                                     }
 
-                                }) {
-                                    Text("Next")
-                                        .font(Font.custom("SF Pro", size: 25).weight(.bold))
-                                        .multilineTextAlignment(.center)
-                                        .foregroundColor(Color(red: 0.99, green: 0.67, blue: 0))
+                                    Button {
+                                        let points = ImageUtility.convertToImageCoordinates(from: [
+                                            CGPoint(
+                                                x: drag.width + topLeft.width,
+                                                y: drag.height + topLeft.height
+                                            ),
+                                            CGPoint(
+                                                x: drag.width + topRight.width,
+                                                y: drag.height + topRight.height
+                                            ),
+                                            CGPoint(
+                                                x: drag.width + bottomRight.width,
+                                                y: drag.height + bottomRight.height
+                                            ),
+                                            CGPoint(
+                                                x: drag.width + bottomLeft.width,
+                                                y: drag.height + bottomLeft.height
+                                            ),
+                                        ], for: image, in: geometry)
+
+                                        // MARK: Crop Image
+
+                                        croppedImage = ImageUtility.cropImage(image, points: points)
+
+                                        // MARK: Vision OCR Call
+
+                                        VisionUtility.recognizeText(in: croppedImage!) { recognizedStrings in
+                                            let allergies = keywords.map { $0.name ?? "unknown" }.joined()
+                                            let scannedData = recognizedStrings.joined()
+                                            gptModel.setSendProperties(allergies: allergies, scannedData: scannedData)
+                                            gptModel.sendMessage()
+                                        }
+
+                                        isSheetPresented = true
+
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                            dismiss()
+                                        }
+                                    } label: {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 30)
+                                                .foregroundColor(.deepOrange)
+                                            Text("Next")
+                                                .font(Font.custom("SF Pro", size: 25).weight(.bold))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundColor(.white)
+                                        }
+                                    }
                                 }
-                                .padding(.horizontal, 143)
-                                .padding(.vertical, 25)
-                                .frame(width: 340, alignment: .center)
-                                .background(.white)
-                                .cornerRadius(15)
+                                .frame(height: 60)
                             }
+                            .padding(.horizontal, 25)
                         }
                     }
-                    .ignoresSafeArea(.all, edges: .all)
                 }
-            } else {
-                ProgressView()
             }
         }
+        .ignoresSafeArea()
     }
 
     @ViewBuilder
@@ -244,6 +256,19 @@ struct ImageCropView: View {
                         bottomRightAccumulatedOffset = bottomRightAccumulatedOffset + gesture.translation
                     }
             )
+    }
+
+    func highlightingIngredients(image: UIImage) {
+        VisionUtility.recognizeText(in: image) { recognizedText, boundingBox in
+            for (index, element) in recognizedText.enumerated() {
+                if element.contains("원재료명") {
+                    // append bounding box
+                    boundingBoxes.append(boundingBox[index])
+                    break
+                }
+            }
+            print("Init Recognized Text: \(recognizedText)")
+        }
     }
 }
 

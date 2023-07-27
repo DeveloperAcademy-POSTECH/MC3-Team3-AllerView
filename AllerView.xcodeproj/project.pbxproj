@@ -25,10 +25,8 @@
 		DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */; };
 		DB5ECDC12A5FD7780091E9E3 /* AllergyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */; };
 		DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */; };
-		DB6AA9802A72B72700E86884 /* GPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA97F2A72B72700E86884 /* GPTView.swift */; };
 		DB6AA9832A72B76100E86884 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9822A72B76100E86884 /* OpenAIService.swift */; };
-		DB6AA9852A72B78300E86884 /* GPTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9842A72B78300E86884 /* GPTModel.swift */; };
-		DB6AA9882A72B7C700E86884 /* GPTViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */; };
+		DB6AA9882A72B7C700E86884 /* GPTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9872A72B7C700E86884 /* GPTModel.swift */; };
 		DB6AA98B2A72B83300E86884 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DB6AA98A2A72B83300E86884 /* Alamofire */; };
 		DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */; };
 		DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */; };
@@ -68,10 +66,8 @@
 		DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyword+CoreData.swift"; sourceTree = "<group>"; };
 		DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyDetailView.swift; sourceTree = "<group>"; };
 		DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Custom.swift"; sourceTree = "<group>"; };
-		DB6AA97F2A72B72700E86884 /* GPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTView.swift; sourceTree = "<group>"; };
 		DB6AA9822A72B76100E86884 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
-		DB6AA9842A72B78300E86884 /* GPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTModel.swift; sourceTree = "<group>"; };
-		DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTViewModel.swift; sourceTree = "<group>"; };
+		DB6AA9872A72B7C700E86884 /* GPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GPTModel.swift; path = ../View/Model/GPTModel.swift; sourceTree = "<group>"; };
 		DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		DB7AB8872A5BE2D50074CBBF /* AllerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllerViewApp.swift; sourceTree = "<group>"; };
@@ -132,7 +128,6 @@
 				5E1421102A700262004A2AD8 /* MainView.swift */,
 				5E1421262A711CB3004A2AD8 /* ImageCropView.swift */,
 				DB818DC02A729C0B000C1579 /* ScannerView.swift */,
-				DB6AA97F2A72B72700E86884 /* GPTView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -168,7 +163,6 @@
 		DB6AA9862A72B7AE00E86884 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */,
 				DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */,
 			);
 			path = Model;
@@ -221,9 +215,9 @@
 		DB9380B52A6660A400A7C4C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DB6AA9872A72B7C700E86884 /* GPTModel.swift */,
 				DB9380B62A6660AC00A7C4C0 /* Product.swift */,
 				DB23A1E32A6E5A1A002E0A8B /* GPTResult.swift */,
-				DB6AA9842A72B78300E86884 /* GPTModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -353,14 +347,12 @@
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
 				5E1421112A700262004A2AD8 /* MainView.swift in Sources */,
 				DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */,
-				DB6AA9882A72B7C700E86884 /* GPTViewModel.swift in Sources */,
+				DB6AA9882A72B7C700E86884 /* GPTModel.swift in Sources */,
 				5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,
 				5E1421292A723A86004A2AD8 /* ImageUtility.swift in Sources */,
 				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
-				DB6AA9852A72B78300E86884 /* GPTModel.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
-				DB6AA9802A72B72700E86884 /* GPTView.swift in Sources */,
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
 				DB23A1E42A6E5A1A002E0A8B /* GPTResult.swift in Sources */,
 				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
@@ -543,7 +535,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = XKDG839GBD;
+				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
@@ -573,7 +565,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = XKDG839GBD;
+				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
