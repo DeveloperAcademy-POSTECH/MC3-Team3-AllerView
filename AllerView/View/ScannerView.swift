@@ -7,15 +7,23 @@
 
 import SwiftUI
 import AVFoundation
+import Vision
 
 struct ScannerView: View {
     @StateObject var camera = CameraModel()
-
+    
     var body: some View {
+        
         ZStack {
+            
             // MARK: Camera Previews
             CameraPreview(camera: camera)
-                .ignoresSafeArea(.all, edges: .all)
+                .ignoresSafeArea(.all)
+                .overlay(
+                    ForEach(camera.recognizedTexts) { recognizedText in
+                        BoundingBoxOverlay(box: recognizedText.boundingBox)
+                    }
+                )
             
             // MARK: My Allergy Text
             VStack {
@@ -47,50 +55,76 @@ struct ScannerView: View {
                         .cornerRadius(15)
                     
                     // MARK: Buttons and Description
-                    VStack(spacing: 26) {
-                        ZStack {
-                            Button(action: {}, label: {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.white)
-                                        .frame(width: 82, height: 82)
-                                    
-                                    Circle()
-                                        .stroke(.black, lineWidth: 3)
-                                        .frame(width: 70, height: 70)
-                                }
-                            })
+                    if camera.isTaken {
+                        
+                        VStack(spacing: 26) {
+                            
+                            Text("Please crop the section\nof ‘원재료명(Ingredients)’")
+                                .font(
+                                    Font.custom("SF Pro", size: 20)
+                                        .weight(.medium)
+                                )
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.white)
+                                .frame(width: 340.00012, height: 75, alignment: .center)
                             
                             HStack {
-                                Spacer()
+                                Button(action: camera.reTake, label: {
+                                    Text("Cancel")
+                                })
                                 
-                                if camera.isFlash {
-                                    Button(action: {
-                                        camera.isFlash.toggle()
-                                        camera.toggleTorch(on: camera.isFlash)
-                                    }, label: {
-                                        Image("icon_flash_on")
-                                    })
-                                } else {
-                                    Button(action: {
-                                        camera.isFlash.toggle()
-                                        camera.toggleTorch(on: camera.isFlash)
-                                    }, label: {
-                                        Image("icon_flash_off")
-                                    })
-                                }
+                                Button(action: {}, label: {
+                                    Text("Next")
+                                })
                             }
-                            .padding(.horizontal, 25)
                         }
+                    } else {
                         
-                        Text("Please take a photo of the section labeled '원재료명(Ingredients)'")
-                            .font(
-                                Font.custom("SF Pro", size: 20)
-                                    .weight(.medium)
-                            )
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.white)
-                            .frame(width: 340.00012, height: 75, alignment: .center)
+                        VStack(spacing: 26) {
+                            ZStack {
+                                Button(action: camera.takePic, label: {
+                                    ZStack {
+                                        Circle()
+                                            .fill(Color.white)
+                                            .frame(width: 82, height: 82)
+                                        
+                                        Circle()
+                                            .stroke(.black, lineWidth: 3)
+                                            .frame(width: 70, height: 70)
+                                    }
+                                })
+                                
+                                HStack {
+                                    Spacer()
+                                    
+                                    if camera.isFlash {
+                                        Button(action: {
+                                            camera.isFlash.toggle()
+                                            camera.toggleTorch(on: camera.isFlash)
+                                        }, label: {
+                                            Image("icon_flash_on")
+                                        })
+                                    } else {
+                                        Button(action: {
+                                            camera.isFlash.toggle()
+                                            camera.toggleTorch(on: camera.isFlash)
+                                        }, label: {
+                                            Image("icon_flash_off")
+                                        })
+                                    }
+                                }
+                                .padding(.horizontal, 25)
+                            }
+                            
+                            Text("Please take a photo of the section\nlabeled '원재료명(Ingredients)'")
+                                .font(
+                                    Font.custom("SF Pro", size: 20)
+                                        .weight(.medium)
+                                )
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.white)
+                                .frame(width: 340.00012, height: 75, alignment: .center)
+                        }
                     }
                 }
             }
@@ -102,15 +136,30 @@ struct ScannerView: View {
     }
 }
 
-struct ScannerView_Previews: PreviewProvider {
-    static var previews: some View {
-        ScannerView()
+// MARK: - Camera Model
+
+struct RecognizedText: Identifiable {
+    let id = UUID()
+    let text: String
+    let boundingBox: CGRect
+}
+
+struct BoundingBoxOverlay: View {
+    var box: CGRect
+    
+    var body: some View {
+        GeometryReader { geometry in
+            Rectangle()
+                .path(in: CGRect(x: box.origin.x * geometry.size.width,
+                                 y: (1 - box.origin.y - box.height) * geometry.size.height,
+                                 width: box.width * geometry.size.width,
+                                 height: box.height * geometry.size.height))
+                .stroke(Color.red, lineWidth: 2)
+        }
     }
 }
 
-// MARK: - Camera Model
-
-class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
+class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @Published var isTaken: Bool = false
     
@@ -119,6 +168,8 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     @Published var alert: Bool = false
     
     @Published var output = AVCapturePhotoOutput()
+    @Published var videoOutput = AVCaptureVideoDataOutput()
+    @Published var recognizedTexts: [RecognizedText] = []
     
     @Published var preview = AVCaptureVideoPreviewLayer()
     
@@ -129,8 +180,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     
     func Check() {
         
-        // first check cameras got permission
-        
+        // check camera permission
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             setUp()
@@ -156,25 +206,30 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         // setting up camera...
         
         do {
-            // setting configurations...
-            
             self.session.beginConfiguration()
             
-            let device = AVCaptureDevice.default(for: .video)
+            session.sessionPreset = .photo
             
+            let device = AVCaptureDevice.default(for: .video)
             let input = try AVCaptureDeviceInput(device: device!)
             
-            // checking and adding to session...
             if self.session.canAddInput(input) {
                 self.session.addInput(input)
             }
             
-            // same for output...
+            self.output = AVCapturePhotoOutput()
             if self.session.canAddOutput(self.output) {
                 self.session.addOutput(self.output)
             }
             
+            self.videoOutput = AVCaptureVideoDataOutput()
+            self.videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sample buffer delegate", attributes: []))
+            if self.session.canAddOutput(self.videoOutput) {
+                self.session.addOutput(self.videoOutput)
+            }
+            
             self.session.commitConfiguration()
+            
         } catch {
             print(error.localizedDescription)
         }
@@ -182,7 +237,6 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
 
     
     func takePic() {
-        
         DispatchQueue.global(qos: .background).async {
             self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
             self.session.stopRunning()
@@ -205,16 +259,45 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        
         if error != nil {
             return
         }
         
-        print("pic taken...")
-        
         guard let imageData = photo.fileDataRepresentation() else {return}
-        
         self.picData = imageData
+    }
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        // Sample buffer에서 이미지 처리 및 텍스트 인식 작업 수행
+        let requestHandler = VNImageRequestHandler(cmSampleBuffer: sampleBuffer, orientation: .down)
+        let request = VNRecognizeTextRequest(completionHandler: textDetectHandler)
+        
+        request.recognitionLanguages = ["ko"]
+        do {
+            try requestHandler.perform([request])
+        } catch {
+            print("Unable to perform the request: \(error).")
+        }
+    }
+
+    func textDetectHandler(request: VNRequest, error: Error?) {
+        // 텍스트 인식 결과 처리
+        guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
+        
+        DispatchQueue.main.async {
+            self.recognizedTexts.removeAll()
+            
+            for observation in observations {
+                guard let topCandidate = observation.topCandidates(1).first else { continue }
+                
+                if topCandidate.string.contains("원재료명") {
+                    var boundingBox = observation.boundingBox
+                    
+                    // UIKit에서 SwiftUI로 좌표계 변환
+                    self.recognizedTexts.append(RecognizedText(text: topCandidate.string, boundingBox: boundingBox))
+                }
+            }
+        }
     }
     
     func savePic() {
@@ -263,6 +346,5 @@ struct CameraPreview: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        //
     }
 }

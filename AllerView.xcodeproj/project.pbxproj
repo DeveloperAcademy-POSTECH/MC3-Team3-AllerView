@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		467EB4032A605D2B0056EC0C /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 467EB4022A605D2B0056EC0C /* CarBode */; };
-		469351BC2A6E58F40029A1F5 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469351BB2A6E58F40029A1F5 /* ScannerView.swift */; };
 		5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4007782A5FD15500CE3739 /* AllergySearchView.swift */; };
 		92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE992A5FE22900D30288 /* ContentView.swift */; };
 		92D5AE9C2A5FE26C00D30288 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE9B2A5FE26B00D30288 /* DummyData.swift */; };
@@ -26,7 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		469351BB2A6E58F40029A1F5 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		5E4007782A5FD15500CE3739 /* AllergySearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergySearchView.swift; sourceTree = "<group>"; };
 		92D5AE992A5FE22900D30288 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		92D5AE9B2A5FE26B00D30288 /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
@@ -64,7 +62,6 @@
 				FD1CE9482A67D1DB00BAD054 /* ScannerView.swift */,
 				DB5ECDC02A5FD7780091E9E3 /* ProductDetailView.swift */,
 				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
-				469351BB2A6E58F40029A1F5 /* ScannerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -213,7 +210,6 @@
 				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
 				DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */,
-				469351BC2A6E58F40029A1F5 /* ScannerView.swift in Sources */,
 				92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */,
 				DB5ECDC12A5FD7780091E9E3 /* ProductDetailView.swift in Sources */,
 				DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */,
