@@ -313,7 +313,6 @@
 				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
 				DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */,
-				469351BC2A6E58F40029A1F5 /* ScannerView.swift in Sources */,
 				92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */,
 				DB5ECDC12A5FD7780091E9E3 /* ProductDetailView.swift in Sources */,
 				DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */,
