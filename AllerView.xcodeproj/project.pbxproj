@@ -31,6 +31,12 @@
 		DB7AB8922A5BE2D60074CBBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */; };
 		DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8932A5BE2D60074CBBF /* Persistence.swift */; };
 		DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8952A5BE2D60074CBBF /* AllerView.xcdatamodeld */; };
+		FD900F4D2A6E6E1800334A4B /* GPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD900F4C2A6E6E1800334A4B /* GPTView.swift */; };
+		FD900F4F2A6E6E4300334A4B /* GPTViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD900F4E2A6E6E4300334A4B /* GPTViewModel.swift */; };
+		FD900F512A6E6F1800334A4B /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD900F502A6E6F1800334A4B /* OpenAIService.swift */; };
+		FDD997DE2A6E72DF00D1BA41 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FDD997DD2A6E72DF00D1BA41 /* Alamofire */; };
+		FDD997E02A6F489900D1BA41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD997DF2A6F489900D1BA41 /* Constants.swift */; };
+		FDFE01B42A72452700BAFF23 /* GPTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFE01B32A72452700BAFF23 /* GPTModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +74,11 @@
 		DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB7AB8932A5BE2D60074CBBF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DB7AB8962A5BE2D60074CBBF /* AllerView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AllerView.xcdatamodel; sourceTree = "<group>"; };
+		FD900F4C2A6E6E1800334A4B /* GPTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTView.swift; sourceTree = "<group>"; };
+		FD900F4E2A6E6E4300334A4B /* GPTViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTViewModel.swift; sourceTree = "<group>"; };
+		FD900F502A6E6F1800334A4B /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		FDD997DF2A6F489900D1BA41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FDFE01B32A72452700BAFF23 /* GPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTModel.swift; sourceTree = "<group>"; };
 		FD1CE9482A67D1DB00BAD054 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +96,7 @@
 			files = (
 				924874DC2A723DC90076FA41 /* WrappingHStack in Frameworks */,
 				467EB4032A605D2B0056EC0C /* CarBode in Frameworks */,
+				FDD997DE2A6E72DF00D1BA41 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				92D5AE992A5FE22900D30288 /* ContentView.swift */,
-				FD1CE9482A67D1DB00BAD054 /* ScannerView.swift */,
+				FD900F4C2A6E6E1800334A4B /* GPTView.swift */,
+				467EB3FF2A5FD64C0056EC0C /* CameraView.swift */,
 				DB5ECDC02A5FD7780091E9E3 /* ProductDetailView.swift */,
 				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
 				469351BB2A6E58F40029A1F5 /* ScannerView.swift */,
@@ -168,6 +181,10 @@
 				DB19B3BC2A6510B100933C30 /* Component */,
 				DB19B3BB2A65109F00933C30 /* View */,
 				92D5AE9B2A5FE26B00D30288 /* DummyData.swift */,
+				FD900F4E2A6E6E4300334A4B /* GPTViewModel.swift */,
+				FD900F502A6E6F1800334A4B /* OpenAIService.swift */,
+				FDFE01B52A72452E00BAFF23 /* Model */,
+				FDD997DF2A6F489900D1BA41 /* Constants.swift */,
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
 				DB7AB88E2A5BE2D60074CBBF /* Assets.xcassets */,
@@ -184,6 +201,14 @@
 				DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FDFE01B52A72452E00BAFF23 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FDFE01B32A72452700BAFF23 /* GPTModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +247,7 @@
 			name = AllerView;
 			packageProductDependencies = (
 				467EB4022A605D2B0056EC0C /* CarBode */,
+				FDD997DD2A6E72DF00D1BA41 /* Alamofire */,
 				924874DB2A723DC90076FA41 /* WrappingHStack */,
 			);
 			productName = AllerView;
@@ -258,6 +284,7 @@
 			mainGroup = DB7AB87E2A5BE2D50074CBBF;
 			packageReferences = (
 				467EB4012A605D2B0056EC0C /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */,
+				FDD997DC2A6E72DF00D1BA41 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				924874DA2A723DC90076FA41 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			productRefGroup = DB7AB8882A5BE2D50074CBBF /* Products */;
@@ -305,21 +332,26 @@
 			files = (
 				5E1421272A711CB3004A2AD8 /* ImageCropView.swift in Sources */,
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
+				FDD997E02A6F489900D1BA41 /* Constants.swift in Sources */,
 				5E1421112A700262004A2AD8 /* MainView.swift in Sources */,
 				5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,
 				5E1421292A723A86004A2AD8 /* ImageUtility.swift in Sources */,
 				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
 				924874D92A6FBB980076FA41 /* Colors.swift in Sources */,
+				FD900F4F2A6E6E4300334A4B /* GPTViewModel.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				92D5AE9C2A5FE26C00D30288 /* DummyData.swift in Sources */,
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
 				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
 				DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */,
+				FD900F512A6E6F1800334A4B /* OpenAIService.swift in Sources */,
+				FD900F4D2A6E6E1800334A4B /* GPTView.swift in Sources */,
 				92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */,
 				DB5ECDC12A5FD7780091E9E3 /* ProductDetailView.swift in Sources */,
 				DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */,
+				FDFE01B42A72452700BAFF23 /* GPTModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +623,12 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		FDD997DC2A6E72DF00D1BA41 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 		924874DA2A723DC90076FA41 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dkk/WrappingHStack.git";
@@ -607,6 +645,10 @@
 			package = 467EB4012A605D2B0056EC0C /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */;
 			productName = CarBode;
 		};
+		FDD997DD2A6E72DF00D1BA41 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FDD997DC2A6E72DF00D1BA41 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		924874DB2A723DC90076FA41 /* WrappingHStack */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 924874DA2A723DC90076FA41 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
