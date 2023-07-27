@@ -10,6 +10,11 @@
 		467EB4032A605D2B0056EC0C /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 467EB4022A605D2B0056EC0C /* CarBode */; };
 		469351BC2A6E58F40029A1F5 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469351BB2A6E58F40029A1F5 /* ScannerView.swift */; };
 		5E1421112A700262004A2AD8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421102A700262004A2AD8 /* MainView.swift */; };
+		5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421132A7104CD004A2AD8 /* VisionUtility.swift */; };
+		5E14211C2A710701004A2AD8 /* AllerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E14211B2A710701004A2AD8 /* AllerViewTests.swift */; };
+		5E1421232A710793004A2AD8 /* VisionUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */; };
+		5E1421272A711CB3004A2AD8 /* ImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421262A711CB3004A2AD8 /* ImageCropView.swift */; };
+		5E1421292A723A86004A2AD8 /* ImageUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421282A723A86004A2AD8 /* ImageUtility.swift */; };
 		5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4007782A5FD15500CE3739 /* AllergySearchView.swift */; };
 		924874D92A6FBB980076FA41 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924874D82A6FBB980076FA41 /* Colors.swift */; };
 		92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE992A5FE22900D30288 /* ContentView.swift */; };
@@ -27,9 +32,25 @@
 		DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8952A5BE2D60074CBBF /* AllerView.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5E14211D2A710701004A2AD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB7AB87F2A5BE2D50074CBBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB7AB8862A5BE2D50074CBBF;
+			remoteInfo = AllerView;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		469351BB2A6E58F40029A1F5 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		5E1421102A700262004A2AD8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5E1421132A7104CD004A2AD8 /* VisionUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtility.swift; sourceTree = "<group>"; };
+		5E1421192A710701004A2AD8 /* AllerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E14211B2A710701004A2AD8 /* AllerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllerViewTests.swift; sourceTree = "<group>"; };
+		5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtilityTests.swift; sourceTree = "<group>"; };
+		5E1421262A711CB3004A2AD8 /* ImageCropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropView.swift; sourceTree = "<group>"; };
+		5E1421282A723A86004A2AD8 /* ImageUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtility.swift; sourceTree = "<group>"; };
 		5E4007782A5FD15500CE3739 /* AllergySearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergySearchView.swift; sourceTree = "<group>"; };
 		924874D82A6FBB980076FA41 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		92D5AE992A5FE22900D30288 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,6 +71,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5E1421162A710701004A2AD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB7AB8842A5BE2D50074CBBF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,6 +89,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E1421122A710499004A2AD8 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				5E1421132A7104CD004A2AD8 /* VisionUtility.swift */,
+				5E1421282A723A86004A2AD8 /* ImageUtility.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		5E14211A2A710701004A2AD8 /* AllerViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				5E14211B2A710701004A2AD8 /* AllerViewTests.swift */,
+				5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */,
+			);
+			path = AllerViewTests;
+			sourceTree = "<group>";
+		};
 		DB19B3BB2A65109F00933C30 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +116,7 @@
 				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
 				469351BB2A6E58F40029A1F5 /* ScannerView.swift */,
 				5E1421102A700262004A2AD8 /* MainView.swift */,
+				5E1421262A711CB3004A2AD8 /* ImageCropView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -98,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				DB7AB8892A5BE2D50074CBBF /* AllerView */,
+				5E14211A2A710701004A2AD8 /* AllerViewTests */,
 				DB7AB8882A5BE2D50074CBBF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				DB7AB8872A5BE2D50074CBBF /* AllerView.app */,
+				5E1421192A710701004A2AD8 /* AllerViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +162,7 @@
 		DB7AB8892A5BE2D50074CBBF /* AllerView */ = {
 			isa = PBXGroup;
 			children = (
+				5E1421122A710499004A2AD8 /* Utility */,
 				DB19B3BC2A6510B100933C30 /* Component */,
 				DB19B3BB2A65109F00933C30 /* View */,
 				92D5AE9B2A5FE26B00D30288 /* DummyData.swift */,
@@ -137,6 +187,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5E1421182A710701004A2AD8 /* AllerViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E14211F2A710701004A2AD8 /* Build configuration list for PBXNativeTarget "AllerViewTests" */;
+			buildPhases = (
+				5E1421152A710701004A2AD8 /* Sources */,
+				5E1421162A710701004A2AD8 /* Frameworks */,
+				5E1421172A710701004A2AD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E14211E2A710701004A2AD8 /* PBXTargetDependency */,
+			);
+			name = AllerViewTests;
+			productName = AllerViewTests;
+			productReference = 5E1421192A710701004A2AD8 /* AllerViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DB7AB8862A5BE2D50074CBBF /* AllerView */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB7AB89A2A5BE2D60074CBBF /* Build configuration list for PBXNativeTarget "AllerView" */;
@@ -167,6 +235,10 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					5E1421182A710701004A2AD8 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = DB7AB8862A5BE2D50074CBBF;
+					};
 					DB7AB8862A5BE2D50074CBBF = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -189,11 +261,19 @@
 			projectRoot = "";
 			targets = (
 				DB7AB8862A5BE2D50074CBBF /* AllerView */,
+				5E1421182A710701004A2AD8 /* AllerViewTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5E1421172A710701004A2AD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB7AB8852A5BE2D50074CBBF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,13 +286,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5E1421152A710701004A2AD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E1421232A710793004A2AD8 /* VisionUtilityTests.swift in Sources */,
+				5E14211C2A710701004A2AD8 /* AllerViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB7AB8832A5BE2D50074CBBF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E1421272A711CB3004A2AD8 /* ImageCropView.swift in Sources */,
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
 				5E1421112A700262004A2AD8 /* MainView.swift in Sources */,
+				5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,
+				5E1421292A723A86004A2AD8 /* ImageUtility.swift in Sources */,
 				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
 				924874D92A6FBB980076FA41 /* Colors.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
@@ -230,7 +322,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5E14211E2A710701004A2AD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB7AB8862A5BE2D50074CBBF /* AllerView */;
+			targetProxy = 5E14211D2A710701004A2AD8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5E1421202A710701004A2AD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.migusdn.AllerViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AllerView.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AllerView";
+			};
+			name = Debug;
+		};
+		5E1421212A710701004A2AD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.migusdn.AllerViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AllerView.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AllerView";
+			};
+			name = Release;
+		};
 		DB7AB8982A5BE2D60074CBBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -414,6 +550,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5E14211F2A710701004A2AD8 /* Build configuration list for PBXNativeTarget "AllerViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E1421202A710701004A2AD8 /* Debug */,
+				5E1421212A710701004A2AD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DB7AB8822A5BE2D50074CBBF /* Build configuration list for PBXProject "AllerView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
