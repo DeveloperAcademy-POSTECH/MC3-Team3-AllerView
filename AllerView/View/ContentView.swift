@@ -49,7 +49,7 @@ struct ContentView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(keywords) { keyword in
-                            Chip(name: keyword.name ?? "None", height: 38, isRemovable: false, color: .orange, fontSize: 20)
+                            Chip(name: keyword.name ?? "None", height: 38, isRemovable: false, chipColor: .orange, fontSize: 20, fontColor: .white)
                         }
                         Spacer()
                     }
@@ -117,7 +117,7 @@ extension ContentView {
                             }
                             .opacity(0)
 
-                            RecentFoodView(item: items[index])
+//                            RecentFoodView(item: items[index])
                         }
                         .listRowSeparator(.hidden)
                     }
@@ -127,54 +127,54 @@ extension ContentView {
         .listStyle(.inset)
     }
 
-    func RecentFoodView(item: RecentData) -> some View {
-        HStack {
-            AsyncImage(
-                url: URL(string: item.imageUrl),
-                content: { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80, height: 80)
-                        .clipShape(Circle())
-                        .overlay {
-                            Circle()
-                                .stroke(.blue, lineWidth: 1)
-                        }
-                },
-                placeholder: { ProgressView() }
-            )
-            .padding(.horizontal, 10)
-            .padding(.vertical, 8)
-
-            VStack(alignment: .leading) {
-                Text(item.name)
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(item.allergen + item.ingredients, id: \.self) { allergy in
-                            if keywords.contains(where: { $0.name!.lowercased() == allergy.lowercased() }) {
-                                Chip(name: allergy.lowercased(), height: 25, isRemovable: false, color: Color.orange, fontSize: 13)
-                            }
-                        }
-
-                        ForEach(item.allergen + item.ingredients, id: \.self) { allergy in
-                            if !(keywords.contains(where: { $0.name!.lowercased() == allergy.lowercased() })) {
-                                Chip(name: allergy.lowercased(), height: 25, isRemovable: false, color: Color.blue, fontSize: 13)
-                                    .foregroundColor(.white)
-                            }
-                        }
-
-                        if item.ingredients.isEmpty {
-                            Chip(name: "none", height: 25, isRemovable: false, color: Color.gray, fontSize: 13)
-                        }
-                    }
-                }
-            }
-            .padding(.vertical)
-        }
-        .background(Rectangle().fill(Color.white))
-        .cornerRadius(10)
-        .shadow(color: .gray, radius: 3, x: 2, y: 2)
-        .listRowSeparator(.hidden)
-    }
+//    func RecentFoodView(item: RecentData) -> some View {
+//        HStack {
+//            AsyncImage(
+//                url: URL(string: item.imageUrl),
+//                content: { image in
+//                    image
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fit)
+//                        .frame(width: 80, height: 80)
+//                        .clipShape(Circle())
+//                        .overlay {
+//                            Circle()
+//                                .stroke(.blue, lineWidth: 1)
+//                        }
+//                },
+//                placeholder: { ProgressView() }
+//            )
+//            .padding(.horizontal, 10)
+//            .padding(.vertical, 8)
+//
+//            VStack(alignment: .leading) {
+//                Text(item.name)
+//                ScrollView(.horizontal, showsIndicators: false) {
+//                    HStack {
+//                        ForEach(item.allergen + item.ingredients, id: \.self) { allergy in
+//                            if keywords.contains(where: { $0.name!.lowercased() == allergy.lowercased() }) {
+//                                Chip(name: allergy.lowercased(), height: 25, isRemovable: false, color: Color.orange, fontSize: 13)
+//                            }
+//                        }
+//
+//                        ForEach(item.allergen + item.ingredients, id: \.self) { allergy in
+//                            if !(keywords.contains(where: { $0.name!.lowercased() == allergy.lowercased() })) {
+//                                Chip(name: allergy.lowercased(), height: 25, isRemovable: false, color: Color.blue, fontSize: 13)
+//                                    .foregroundColor(.white)
+//                            }
+//                        }
+//
+//                        if item.ingredients.isEmpty {
+//                            Chip(name: "none", height: 25, isRemovable: false, color: Color.gray, fontSize: 13)
+//                        }
+//                    }
+//                }
+//            }
+//            .padding(.vertical)
+//        }
+//        .background(Rectangle().fill(Color.white))
+//        .cornerRadius(10)
+//        .shadow(color: .gray, radius: 3, x: 2, y: 2)
+//        .listRowSeparator(.hidden)
+//    }
 }

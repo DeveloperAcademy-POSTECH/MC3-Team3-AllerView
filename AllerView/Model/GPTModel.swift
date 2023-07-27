@@ -39,12 +39,12 @@ struct Message: Decodable {
 }
 
 struct GPTResponse: Codable {
-    let avoidIngredients, unidentifiableIngredients, otherIngredients, warningAllergies: [String]
+    let avoidIngredients, unidentifiableIngredients, allIngredients, warningAllergies: [String]
 
     enum CodingKeys: String, CodingKey {
         case avoidIngredients = "avoid_ingredients"
         case unidentifiableIngredients = "unidentifiable_ingredients"
-        case otherIngredients = "other_ingredients"
+        case allIngredients = "all_ingredients"
         case warningAllergies = "warning_allergies"
     }
 }
