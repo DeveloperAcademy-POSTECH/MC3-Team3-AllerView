@@ -37,6 +37,7 @@
 		DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8952A5BE2D60074CBBF /* AllerView.xcdatamodeld */; };
 		DB818DC12A729C0B000C1579 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB818DC02A729C0B000C1579 /* ScannerView.swift */; };
 		DB9380B72A6660AC00A7C4C0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9380B62A6660AC00A7C4C0 /* Product.swift */; };
+		FD2F3DBE2A72C27100F45879 /* SecretKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD2F3DBD2A72C27100F45879 /* SecretKey.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		DB7AB8962A5BE2D60074CBBF /* AllerView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AllerView.xcdatamodel; sourceTree = "<group>"; };
 		DB818DC02A729C0B000C1579 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		DB9380B62A6660AC00A7C4C0 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		FD2F3DBD2A72C27100F45879 /* SecretKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SecretKey.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				DB6AA9822A72B76100E86884 /* OpenAIService.swift */,
+				FD2F3DBD2A72C27100F45879 /* SecretKey.plist */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7AB8922A5BE2D60074CBBF /* Preview Assets.xcassets in Resources */,
+				FD2F3DBE2A72C27100F45879 /* SecretKey.plist in Resources */,
 				DB7AB88F2A5BE2D60074CBBF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

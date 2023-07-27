@@ -9,15 +9,15 @@ import SwiftUI
 
 struct GPTView: View {
     
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject var gptViewModel = GPTViewModel()
     
     var body: some View {
         VStack {
             ScrollView {
-                if viewModel.isLoading {
+                if gptViewModel.isLoading {
                     ProgressView()
                 } else {
-                    if let result = viewModel.messages.last {
+                    if let result = gptViewModel.messages.last {
                         Text(result.content)
                     }
                 }
@@ -31,7 +31,7 @@ struct GPTView: View {
                 //                }
             }
             Button {
-                viewModel.sendMessage()
+                gptViewModel.sendMessage()
             } label: {
                 Text("Send")
                     .foregroundColor(.white)
