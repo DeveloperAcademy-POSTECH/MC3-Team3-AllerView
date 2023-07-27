@@ -29,6 +29,7 @@
 		FD900F512A6E6F1800334A4B /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD900F502A6E6F1800334A4B /* OpenAIService.swift */; };
 		FDD997DE2A6E72DF00D1BA41 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FDD997DD2A6E72DF00D1BA41 /* Alamofire */; };
 		FDD997E02A6F489900D1BA41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD997DF2A6F489900D1BA41 /* Constants.swift */; };
+		FDFE01B42A72452700BAFF23 /* GPTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFE01B32A72452700BAFF23 /* GPTModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		FD900F4E2A6E6E4300334A4B /* GPTViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTViewModel.swift; sourceTree = "<group>"; };
 		FD900F502A6E6F1800334A4B /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		FDD997DF2A6F489900D1BA41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FDFE01B32A72452700BAFF23 /* GPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				92D5AE9B2A5FE26B00D30288 /* DummyData.swift */,
 				FD900F4E2A6E6E4300334A4B /* GPTViewModel.swift */,
 				FD900F502A6E6F1800334A4B /* OpenAIService.swift */,
+				FDFE01B52A72452E00BAFF23 /* Model */,
 				FDD997DF2A6F489900D1BA41 /* Constants.swift */,
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
@@ -141,6 +144,14 @@
 				DB7AB8912A5BE2D60074CBBF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FDFE01B52A72452E00BAFF23 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FDFE01B32A72452700BAFF23 /* GPTModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +250,7 @@
 				92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */,
 				DB5ECDC12A5FD7780091E9E3 /* ProductDetailView.swift in Sources */,
 				DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */,
+				FDFE01B42A72452700BAFF23 /* GPTModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,23 +14,31 @@ struct GPTView: View {
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(viewModel.messages.filter({$0.role != .system}), id: \.id) { message in
-                    HStack {
-                        if message.role == .user { Spacer() }
-                        Text(message.content)
-                        if message.role == .assistant { Spacer() }
+                if viewModel.isLoading {
+                    ProgressView()
+                } else {
+                    if let result = viewModel.messages.last {
+                        Text(result.content)
                     }
-                    .padding(.vertical)
                 }
+                //                ForEach(viewModel.messages.filter({$0.role != .system}), id: \.id) { message in
+                //                    HStack {
+                //                        if message.role == .user { Spacer() }
+                //                        Text(message.content)
+                //                        if message.role == .assistant { Spacer() }
+                //                    }
+                //                    .padding(.vertical)
+                //                }
             }
-            HStack {
-                TextField("enter a messages...", text: $viewModel.currentInput)
-                Button {
-                    viewModel.sendMessage()
-                } label: {
-                    Text("Send")
-                }
-
+            Button {
+                viewModel.sendMessage()
+            } label: {
+                Text("Send")
+                    .foregroundColor(.white)
+                    .frame(height: 56)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(12)
             }
         }
         .padding()
