@@ -11,6 +11,7 @@
 		467EB4032A605D2B0056EC0C /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 467EB4022A605D2B0056EC0C /* CarBode */; };
 		5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4007782A5FD15500CE3739 /* AllergySearchView.swift */; };
 		924874D92A6FBB980076FA41 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924874D82A6FBB980076FA41 /* Colors.swift */; };
+		924874DC2A723DC90076FA41 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 924874DB2A723DC90076FA41 /* WrappingHStack */; };
 		92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE992A5FE22900D30288 /* ContentView.swift */; };
 		92D5AE9C2A5FE26C00D30288 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE9B2A5FE26B00D30288 /* DummyData.swift */; };
 		92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE9D2A64265E00D30288 /* Chip.swift */; };
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				924874DC2A723DC90076FA41 /* WrappingHStack in Frameworks */,
 				467EB4032A605D2B0056EC0C /* CarBode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +149,7 @@
 			name = AllerView;
 			packageProductDependencies = (
 				467EB4022A605D2B0056EC0C /* CarBode */,
+				924874DB2A723DC90076FA41 /* WrappingHStack */,
 			);
 			productName = AllerView;
 			productReference = DB7AB8872A5BE2D50074CBBF /* AllerView.app */;
@@ -178,6 +181,7 @@
 			mainGroup = DB7AB87E2A5BE2D50074CBBF;
 			packageReferences = (
 				467EB4012A605D2B0056EC0C /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */,
+				924874DA2A723DC90076FA41 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			productRefGroup = DB7AB8882A5BE2D50074CBBF /* Products */;
 			projectDirPath = "";
@@ -431,6 +435,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		924874DA2A723DC90076FA41 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -438,6 +450,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 467EB4012A605D2B0056EC0C /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */;
 			productName = CarBode;
+		};
+		924874DB2A723DC90076FA41 /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 924874DA2A723DC90076FA41 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
 		};
 /* End XCSwiftPackageProductDependency section */
 
