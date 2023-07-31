@@ -19,7 +19,9 @@ class Network: ObservableObject {
     
     func getData() {
         
-        guard let url = URL(string: "https://apis.data.go.kr/B553748/CertImgListService/getCertImgListService?serviceKey=OkdpfYdcxbH8%2FGq93l86K5GdE1mJWHRWAXFHzqcZXNlaSAEnRVkuuGdHwdJWma%2FmhorLI4GSBrAjY%2BOYdYfLMA%3D%3D&prdlstReportNo=201704760012&returnType=json") else { return }
+        let urlStr = "https://apis.data.go.kr/B553748/CertImgListService/getCertImgListService?serviceKey=OkdpfYdcxbH8%2FGq93l86K5GdE1mJWHRWAXFHzqcZXNlaSAEnRVkuuGdHwdJWma%2FmhorLI4GSBrAjY%2BOYdYfLMA%3D%3D&prdlstNm=자가비 짭짤한 맛&returnType=json"
+        let encodedStr = urlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        guard let url = URL(string: encodedStr) else { return }
         
         URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .background))

@@ -10,6 +10,8 @@ import CoreData
 
 struct ContentView: View {
     
+    let network = Network()
+    
     var body: some View {
         Text("Hello World")
     }
