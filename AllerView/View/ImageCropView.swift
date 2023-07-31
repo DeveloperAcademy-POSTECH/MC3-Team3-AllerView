@@ -56,13 +56,13 @@ struct ImageCropView: View {
                         }
                     
                     // MARK: Crop Box
-
+                    
                     CropBox
-
+                    
                     // MARK: Crop Points
-
+                    
                     CropPoints
-
+                    
                     VStack {
                         Spacer()
                         
@@ -200,10 +200,19 @@ struct ImageCropView: View {
         Circle()
             .frame(width: 20, height: 20)
             .foregroundColor(.blue)
+        //            .padding(20)
             .offset(
-                x: drag.width + topLeft.width - 10,
-                y: drag.height + topLeft.height - 10
+                x: drag.width + topLeft.width-10,
+                y: drag.height + topLeft.height-10
             )
+            .overlay{
+                Circle()
+                    .frame(width: 80,height: 80)
+                    .foregroundColor(Color.red)
+                    .opacity(0.0000000000001)
+                    .offset(x: drag.width + topLeft.width,
+                            y: drag.height + topLeft.height)
+            }
             .gesture(
                 DragGesture()
                     .onChanged { gesture in
@@ -222,6 +231,14 @@ struct ImageCropView: View {
                 x: drag.width + topRight.width - 10,
                 y: drag.height + topRight.height - 10
             )
+            .overlay{
+                Circle()
+                    .frame(width: 80,height: 80)
+                    .foregroundColor(Color.red)
+                    .opacity(0.0000000000001)
+                    .offset(x: drag.width + topRight.width - 10,
+                            y: drag.height + topRight.height - 10)
+            }
             .gesture(
                 DragGesture()
                     .onChanged { gesture in
@@ -239,6 +256,14 @@ struct ImageCropView: View {
                 x: drag.width + bottomLeft.width - 10,
                 y: drag.height + bottomLeft.height - 10
             )
+            .overlay{
+                Circle()
+                    .frame(width: 80,height: 80)
+                    .foregroundColor(Color.red)
+                    .opacity(0.0000000000001)
+                    .offset( x: drag.width + bottomLeft.width - 10,
+                             y: drag.height + bottomLeft.height - 10)
+            }
             .gesture(
                 DragGesture()
                     .onChanged { gesture in
@@ -255,6 +280,14 @@ struct ImageCropView: View {
                 x: drag.width + bottomRight.width - 10,
                 y: drag.height + bottomRight.height - 10
             )
+            .overlay{
+                Circle()
+                    .frame(width: 80,height: 80)
+                    .foregroundColor(Color.red)
+                    .opacity(0.0000000000001)
+                    .offset(x: drag.width + bottomRight.width - 10,
+                            y: drag.height + bottomRight.height - 10)
+            }
             .gesture(
                 DragGesture()
                     .onChanged { gesture in
