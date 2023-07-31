@@ -539,7 +539,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
@@ -569,7 +569,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";

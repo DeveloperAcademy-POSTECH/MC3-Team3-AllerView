@@ -8,14 +8,14 @@ import SwiftUI
 
 struct ImageCropView: View {
     @Environment(\.dismiss) private var dismiss
-    
+
     @ObservedObject var gptModel: GPTModel
-    
+
     @State private var topLeft = CGSize(width: 100, height: 100)
     @State private var topRight = CGSize(width: 300, height: 100)
     @State private var bottomLeft = CGSize(width: 100, height: 300)
     @State private var bottomRight = CGSize(width: 300, height: 300)
-    
+
     @State private var topLeftAccumulatedOffset = CGSize(width: 100, height: 100)
     @State private var topRightAccumulatedOffset = CGSize(width: 300, height: 100)
     @State private var bottomLeftAccumulatedOffset = CGSize(width: 100, height: 300)
@@ -24,21 +24,21 @@ struct ImageCropView: View {
     @State private var dragAccumulatedOffset = CGSize.zero
     @State private var croppedImage: UIImage? = nil
     @State private var boundingBoxes: [CGRect] = []
-    
+
     // 전 뷰에서 넘어온 이미지가 들어올 곳
     @Binding var picData: Data
     @Binding var isSheetPresented: Bool
-    
+
     let keywords: FetchedResults<Keyword>
-    
+
     var body: some View {
         ZStack {
             GeometryReader { geometry in
-                if let originalImage = UIImage(data: picData){
+                if let originalImage = UIImage(data: picData) {
                     let image = ImageUtility.cropImageByViewRatio(for: originalImage, in: geometry)
-                    
+
                     // MARK: Image Area
-                    
+
                     Image(uiImage: image!)
                         .resizable()
                         .scaledToFill()
@@ -50,11 +50,12 @@ struct ImageCropView: View {
                         )
                         .onAppear {
                             // MARK: for "원재료명" Highlight
+
                             print("height: \(geometry.size.height)")
                             print("width: \(geometry.size.width)")
                             highlightingIngredients(image: image!)
                         }
-                    
+
                     // MARK: Crop Box
                     
                     CropBox
@@ -65,17 +66,17 @@ struct ImageCropView: View {
                     
                     VStack {
                         Spacer()
-                        
+
                         ZStack {
                             // MARK: Bottom Rectangle Box
-                            
+
                             RoundedRectangle(cornerRadius: 15)
                                 .frame(height: 240)
                                 .foregroundColor(.clear)
                                 .background(.black.opacity(0.7))
-                            
+
                             // MARK: Crop And OCR Function Call BTN
-                            
+
                             VStack(spacing: 41) {
                                 Text("Please crop the section\nof '원재료명(Ingredients)'")
                                     .font(Font.custom("SF Pro", size: 20).weight(.medium))
@@ -96,7 +97,7 @@ struct ImageCropView: View {
                                                 .foregroundColor(.deepGray2)
                                         }
                                     }
-                                    
+
                                     Button {
                                         let points = ImageUtility.convertToImageCoordinates(from: [
                                             CGPoint(
@@ -116,24 +117,24 @@ struct ImageCropView: View {
                                                 y: drag.height + bottomLeft.height
                                             ),
                                         ], for: image!, in: geometry)
-                                        
+
                                         // MARK: Crop Image
-                                        
+
                                         croppedImage = ImageUtility.cropImage(image!, points: points)
-                                        
+
                                         // MARK: Vision OCR Call
-                                        
+
                                         VisionUtility.recognizeText(in: croppedImage!) { recognizedStrings in
-                                            let allergies = keywords.map { $0.name ?? "unknown" }.joined()
-                                            let scannedData = recognizedStrings.joined()
+                                            let allergies = keywords.map { $0.name ?? "unknown" }.joined(separator: ", ")
+                                            let scannedData = recognizedStrings.joined(separator: ", ")
                                             print(scannedData)
                                             gptModel.setSendProperties(allergies: allergies, scannedData: scannedData)
                                             gptModel.uiImage = image
                                             gptModel.sendMessage()
                                         }
-                                        
+
                                         isSheetPresented = true
-                                        
+
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                             dismiss()
                                         }
@@ -158,7 +159,7 @@ struct ImageCropView: View {
         }
         .ignoresSafeArea()
     }
-    
+
     @ViewBuilder
     var CropBox: some View {
         let path = Path { path in
@@ -194,7 +195,7 @@ struct ImageCropView: View {
                     }
             )
     }
-    
+
     @ViewBuilder
     var CropPoints: some View {
         Circle()
@@ -223,9 +224,9 @@ struct ImageCropView: View {
                     }
             )
         Circle()
-        
+
             .frame(width: 20, height: 20)
-        
+
             .foregroundColor(.blue)
             .offset(
                 x: drag.width + topRight.width - 10,
@@ -248,7 +249,7 @@ struct ImageCropView: View {
                         topRightAccumulatedOffset = topRightAccumulatedOffset + gesture.translation
                     }
             )
-        
+
         Circle()
             .frame(width: 20, height: 20)
             .foregroundColor(.blue)
@@ -298,7 +299,7 @@ struct ImageCropView: View {
                     }
             )
     }
-    
+
     func highlightingIngredients(image: UIImage) {
         VisionUtility.recognizeText(in: image) { recognizedText, boundingBox in
             for (index, element) in recognizedText.enumerated() {
@@ -315,7 +316,7 @@ struct ImageCropView: View {
 
 struct BoundingBoxOverlay: View {
     var box: CGRect
-    
+
     var body: some View {
         GeometryReader { geometry in
             Rectangle()
