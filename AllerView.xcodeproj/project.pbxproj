@@ -96,6 +96,7 @@
 				DB6AA98B2A72B83300E86884 /* Alamofire in Frameworks */,
 				924874DC2A723DC90076FA41 /* WrappingHStack in Frameworks */,
 				467EB4032A605D2B0056EC0C /* CarBode in Frameworks */,
+				FDD997DE2A6E72DF00D1BA41 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +262,7 @@
 			name = AllerView;
 			packageProductDependencies = (
 				467EB4022A605D2B0056EC0C /* CarBode */,
+				FDD997DD2A6E72DF00D1BA41 /* Alamofire */,
 				924874DB2A723DC90076FA41 /* WrappingHStack */,
 				DB6AA98A2A72B83300E86884 /* Alamofire */,
 			);
@@ -298,6 +300,7 @@
 			mainGroup = DB7AB87E2A5BE2D50074CBBF;
 			packageReferences = (
 				467EB4012A605D2B0056EC0C /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */,
+				FDD997DC2A6E72DF00D1BA41 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				924874DA2A723DC90076FA41 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 				DB6AA9892A72B83300E86884 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
@@ -349,6 +352,7 @@
 				DB818DC12A729C0B000C1579 /* ScannerView.swift in Sources */,
 				DB23A1E62A6E5DB0002E0A8B /* Color+Custom.swift in Sources */,
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
+				FDD997E02A6F489900D1BA41 /* Constants.swift in Sources */,
 				5E1421112A700262004A2AD8 /* MainView.swift in Sources */,
 				DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */,
 				DB6AA9882A72B7C700E86884 /* GPTModel.swift in Sources */,
@@ -363,6 +367,8 @@
 				DB6AA9832A72B76100E86884 /* OpenAIService.swift in Sources */,
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
 				DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */,
+				FD900F512A6E6F1800334A4B /* OpenAIService.swift in Sources */,
+				FD900F4D2A6E6E1800334A4B /* GPTView.swift in Sources */,
 				92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */,
 				DB5ECDC12A5FD7780091E9E3 /* AllergyDetailView.swift in Sources */,
 				DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */,
@@ -632,6 +638,12 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		FDD997DC2A6E72DF00D1BA41 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 		924874DA2A723DC90076FA41 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dkk/WrappingHStack.git";
@@ -656,6 +668,10 @@
 			package = 467EB4012A605D2B0056EC0C /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */;
 			productName = CarBode;
 		};
+		FDD997DD2A6E72DF00D1BA41 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FDD997DC2A6E72DF00D1BA41 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		924874DB2A723DC90076FA41 /* WrappingHStack */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 924874DA2A723DC90076FA41 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
