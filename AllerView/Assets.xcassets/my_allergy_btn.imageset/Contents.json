@@ -5,11 +5,11 @@
       "scale" : "1x"
     },
     {
+      "filename" : "my_allergy_btn.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icon_falsh_off.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

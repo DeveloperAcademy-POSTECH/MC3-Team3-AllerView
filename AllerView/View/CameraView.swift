@@ -16,12 +16,6 @@ struct CameraView: View {
     @State private var isSheet = false
     @State private var searchedBarcode = ""
 
-    // MARK: - DummyCheckArray For UserTest
-
-    @Binding var check: [Bool]
-    private let barcodes = ["8801062870509", "4001686375754", "8801043035989"]
-    let keywords: FetchedResults<Keyword>
-
     var body: some View {
         ZStack {
             // MARK: - Barcode Scanner
@@ -30,16 +24,12 @@ struct CameraView: View {
                 supportBarcode: .constant([.codabar, .code39, .code39Mod43, .code93, .code128, .ean8, .ean13, .gs1DataBar, .gs1DataBarLimited, .gs1DataBarExpanded, .interleaved2of5, .itf14, .upce]),
                 torchLightIsOn: $isFlashOn,
                 scanInterval: .constant(5)
-            ) { barcode in
+            ) { _ in
                 if isSheet == true {
                     return
                 }
-                
-                if let barcodeIndex = barcodes.firstIndex(of: barcode.value) {
-                    check[barcodeIndex] = true
-                    searchedBarcode = barcode.value
-                    isSheet.toggle()
-                }
+
+                isSheet.toggle()
             } onDraw: { barcodeView in
                 // line width
                 let lineWidth: CGFloat = 2
@@ -79,9 +69,7 @@ struct CameraView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .sheet(isPresented: $isSheet) {
-            if let recentData = RecentData.recentsDummyData().first(where: { $0.barcode == searchedBarcode }) {
-                ProductDetailView(recentData: recentData, keywords: keywords)
-            }
+            Text("aaaa")
         }
     }
 }
