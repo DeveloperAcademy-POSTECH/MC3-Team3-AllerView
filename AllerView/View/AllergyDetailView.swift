@@ -34,8 +34,6 @@ extension AllergyDetailView: View {
                                 .frame(width: proxy.size.width)
                                 .padding(.horizontal, -25)
                                 .padding(.bottom, 12)
-                        } else {
-                            ProgressView()
                         }
 
                         DetailHeader()
@@ -155,8 +153,8 @@ extension AllergyDetailView {
                 }
                 .padding(20)
             } else {
-                ProgressView()
-                    .padding(40)
+                LoadingView()
+                    .padding(20)
             }
         }
     }
