@@ -32,11 +32,12 @@ class GPTModel: ObservableObject {
                 return
             }
             let receivedMessage = Message(id: UUID(), role: receivedOpenAIMessage.role, content: receivedOpenAIMessage.content, createAt: Date())
-            print(receivedMessage.content + "=======")
+            print("==================== GPT Response ====================")
+            print(receivedMessage.content)
+            print("======================================================")
             await MainActor.run {
                 do {
                     self.responseData = try JSONDecoder().decode(GPTResponse.self, from: receivedMessage.content.data(using: .utf8)!)
-                    print(responseData.debugDescription)
                 } catch {
                     print(error.localizedDescription)
                     isFailed = true
