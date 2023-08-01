@@ -13,9 +13,10 @@ class GPTModel: ObservableObject {
     
     @Published var uiImage: UIImage? = nil
     @Published var responseData: GPTResponse?
+    @Published var isFailed: Bool = false
 
     func makeRequestScript() -> String {
-        return "I have a string of food ingredient names, '\(scannedData)', obtained through image recognition scanning. Please translate all items to englsih. However, the data is somewhat inaccurate due to image distortion. I need you to infer and correct it within possible limits. Any ingredients that cannot be identified or are determined not to be food ingredients should be placed in the 'unidentifiable_ingredients' group. The data recognized as food ingredients should be placed in the 'all_ingredients' group. I have a set of allergies '\(allergies)'. From the 'all_ingredients' group, I need you to put the food ingredients that could trigger my allergies into the 'avoid_ingredients' group. Place the dangerous types of allergies I have into the 'warning_allergies' group. I intend to use all the results in the form of a Swift dictionary, so please output in the following format: {\"avoid_ingredients\": [], \"unidentifiable_ingredients\": [], \"all_ingredients\": [], \"warning_allergies\": []}. Since I am going to use the output data directly in the code, please only output the JSON result without any other remarks. Please translate all items to englsih."
+        return "Here are the ingredient names I have: [\(scannedData)]. Could you please translate them into enlish and check if any of these ingredients might trigger the following allergies: [\(allergies)]? And for an output in English with only JSON format, it might be: {\"all_ingredients\": [\"ingredient1\", \"ingredient2\", \"...\"], \"unidentifiable_ingredients\": [\"unidentifiable ingredient\", \"unidentifiable ingredient\", \"...\"], \"allergenic_ingredients\": [\"triggers allergy1\", \"triggers allergy2\", \"...\"]}. Because I'll use the result in my code directrly, you must print only JSON code in english without any mentions."
     }
 
     private let openAIService = OpenAIService()
@@ -27,16 +28,19 @@ class GPTModel: ObservableObject {
             let response = await openAIService.sendMessage(message: message)
             guard let receivedOpenAIMessage = response?.choices.first?.message else {
                 print("Had no received message")
+                isFailed = true
                 return
             }
             let receivedMessage = Message(id: UUID(), role: receivedOpenAIMessage.role, content: receivedOpenAIMessage.content, createAt: Date())
-            print(receivedMessage.content + "=======")
+            print("==================== GPT Response ====================")
+            print(receivedMessage.content)
+            print("======================================================")
             await MainActor.run {
                 do {
                     self.responseData = try JSONDecoder().decode(GPTResponse.self, from: receivedMessage.content.data(using: .utf8)!)
-                    print(responseData.debugDescription)
                 } catch {
                     print(error.localizedDescription)
+                    isFailed = true
                 }
             }
         }
@@ -56,13 +60,12 @@ class GPTModel: ObservableObject {
 }
 
 struct GPTResponse: Codable {
-    let avoidIngredients, unidentifiableIngredients, allIngredients, warningAllergies: [String]
+    let warningAllergies, unidentifiableIngredients, allIngredients: [String]
 
     enum CodingKeys: String, CodingKey {
-        case avoidIngredients = "avoid_ingredients"
+        case warningAllergies = "allergenic_ingredients"
         case unidentifiableIngredients = "unidentifiable_ingredients"
         case allIngredients = "all_ingredients"
-        case warningAllergies = "warning_allergies"
     }
 }
 

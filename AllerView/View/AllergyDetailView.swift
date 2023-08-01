@@ -36,14 +36,17 @@ extension AllergyDetailView: View {
 
                         ZStack {
                             SummaryBox()
-                            
+
                             if let responseData = gptModel.responseData {
                                 DetailBodyView(responseData)
+                            } else if gptModel.isFailed {
+                                FailView()
                             } else {
                                 LoadingView()
                                     .padding(20)
                             }
                         }
+                        .padding(.bottom, 80)
                     }
                     .padding(.horizontal, 25)
                 }
@@ -78,6 +81,17 @@ extension AllergyDetailView: View {
 
             Divider()
             AllIngredients(responseData)
+        }
+        .padding(20)
+    }
+
+    private func FailView() -> some View {
+        HStack(alignment: .top) {
+            Text("Fail to recognition\nPlease retake")
+                .foregroundColor(.deepOrange)
+                .font(.system(size: 25, weight: .semibold))
+            Spacer()
+            RefreshButton()
         }
         .padding(20)
     }
@@ -120,6 +134,7 @@ private extension AllergyDetailView {
     private func RefreshButton() -> some View {
         Button {
             gptModel.responseData = nil
+            gptModel.isFailed = false
             gptModel.sendMessage()
         } label: {
             Circle()
@@ -132,6 +147,7 @@ private extension AllergyDetailView {
                 }
         }
         .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+        .font(.system(size: 20, weight: .regular))
     }
 
     @ViewBuilder
@@ -148,8 +164,8 @@ private extension AllergyDetailView {
                 .font(.system(size: 17, weight: .semibold))
             WrappingHStack(responseData.allIngredients, id: \.self) { ingredient in
                 Text(ingredient)
-                    .font(responseData.avoidIngredients.contains(where: { ingredient.contains($0) }) ? .system(size: 17, weight: .semibold) : .system(size: 17))
-                    .foregroundColor(responseData.avoidIngredients.contains(where: { ingredient.contains($0) }) ? .deepOrange : .black)
+                    .font(.system(size: 17))
+                    .foregroundColor(.black)
                     .padding(.bottom, 2)
             }
         }

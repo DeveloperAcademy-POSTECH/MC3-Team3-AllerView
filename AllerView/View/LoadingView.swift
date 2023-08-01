@@ -16,7 +16,14 @@ struct LoadingView {}
 
 extension LoadingView: View {
     var body: some View {
-        LottieView(loopMode: .loop)
+        VStack(spacing: -48) {
+            LottieView(loopMode: .loop)
+            Text("Please wait 5-10 seconds for loading, depending on your internet connection.")
+                .font(.system(size: 15, weight: .regular))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.defaultGray)
+        }
+        .padding(.bottom, 20)
     }
 }
 
