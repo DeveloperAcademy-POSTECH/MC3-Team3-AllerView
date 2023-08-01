@@ -72,8 +72,7 @@ struct ImageCropView: View {
 
                             RoundedRectangle(cornerRadius: 15)
                                 .frame(height: 240)
-                                .foregroundColor(.clear)
-                                .background(.black.opacity(0.7))
+                                .foregroundColor(.black)
 
                             // MARK: Crop And OCR Function Call BTN
 
@@ -161,144 +160,129 @@ struct ImageCropView: View {
     }
 
     @ViewBuilder
-    var CropBox: some View {
-        let path = Path { path in
-            path.move(to: CGPoint(
-                x: drag.width + topLeft.width,
-                y: drag.height + topLeft.height
-            ))
-            path.addLine(to: CGPoint(
-                x: drag.width + topRight.width,
-                y: drag.height + topRight.height
-            ))
-            path.addLine(to: CGPoint(
-                x: drag.width + bottomRight.width,
-                y: drag.height + bottomRight.height
-            ))
-            path.addLine(to: CGPoint(
-                x: drag.width + bottomLeft.width,
-                y: drag.height + bottomLeft.height
-            ))
-            path.closeSubpath()
+        var CropBox: some View {
+            Rectangle()
+                .fill(Color.blue.opacity(0.3))
+                .overlay(Rectangle().stroke(Color.blue, lineWidth: 2))
+                .frame(width: topRight.width - topLeft.width, height: bottomLeft.height - topLeft.height)
+                .offset(x: drag.width + topLeft.width, y: drag.height + topLeft.height)
+                .gesture(
+                    DragGesture()
+                        .onChanged { gesture in
+                            self.drag = dragAccumulatedOffset + gesture.translation
+                        }
+                        .onEnded { gesture in
+                            dragAccumulatedOffset = dragAccumulatedOffset + gesture.translation
+                        }
+                )
         }
-        path
-            .fill(Color.blue)
-            .opacity(0.3)
-            .overlay(path.stroke(Color.blue, lineWidth: 2))
-            .gesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        self.drag = dragAccumulatedOffset + gesture.translation
-                    }
-                    .onEnded { gesture in
-                        dragAccumulatedOffset = dragAccumulatedOffset + gesture.translation
-                    }
-            )
-    }
 
     @ViewBuilder
-    var CropPoints: some View {
-        Circle()
-            .frame(width: 20, height: 20)
-            .foregroundColor(.blue)
-        //            .padding(20)
-            .offset(
-                x: drag.width + topLeft.width-10,
-                y: drag.height + topLeft.height-10
-            )
-            .overlay{
-                Circle()
-                    .frame(width: 80,height: 80)
-                    .foregroundColor(Color.red)
-                    .opacity(0.0000000000001)
-                    .offset(x: drag.width + topLeft.width,
-                            y: drag.height + topLeft.height)
-            }
-            .gesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        self.topLeft = topLeftAccumulatedOffset + gesture.translation
-                    }
-                    .onEnded { gesture in
-                        topLeftAccumulatedOffset = topLeftAccumulatedOffset + gesture.translation
-                    }
-            )
-        Circle()
+        var CropPoints: some View {
+            // Top left corner
+            Circle()
+                .frame(width: 20, height: 20)
+                .foregroundColor(.blue)
+                .offset(
+                    x: drag.width + topLeft.width-10,
+                    y: drag.height + topLeft.height-10
+                )
+                .gesture(
+                    DragGesture()
+                        .onChanged { gesture in
+                            let newTopLeft = topLeftAccumulatedOffset + gesture.translation
+                            if newTopLeft.width >= 0 && newTopLeft.height >= 0 &&
+                               newTopLeft.width <= topRight.width && newTopLeft.height <= bottomLeft.height {
+                                self.topLeft = newTopLeft
+                                self.bottomLeft.width = newTopLeft.width
+                                self.topRight.height = newTopLeft.height
+                            }
+                        }
+                        .onEnded { gesture in
+                            topLeftAccumulatedOffset = topLeft
+                            bottomLeftAccumulatedOffset.width = topLeft.width
+                            topRightAccumulatedOffset.height = topLeft.height
+                        }
+                )
 
-            .frame(width: 20, height: 20)
+            // Top right corner
+            Circle()
+                .frame(width: 20, height: 20)
+                .foregroundColor(.blue)
+                .offset(
+                    x: drag.width + topRight.width - 10,
+                    y: drag.height + topRight.height - 10
+                )
+                .gesture(
+                    DragGesture()
+                        .onChanged { gesture in
+                            let newTopRight = topRightAccumulatedOffset + gesture.translation
+                            if newTopRight.width >= topLeft.width && newTopRight.height >= 0 &&
+                               newTopRight.width <= UIScreen.main.bounds.width && newTopRight.height <= bottomRight.height {
+                                self.topRight = newTopRight
+                                self.bottomRight.width = newTopRight.width
+                                self.topLeft.height = newTopRight.height
+                            }
+                        }
+                        .onEnded { gesture in
+                            topRightAccumulatedOffset = topRight
+                            bottomRightAccumulatedOffset.width = topRight.width
+                            topLeftAccumulatedOffset.height = topRight.height
+                        }
+                )
 
-            .foregroundColor(.blue)
-            .offset(
-                x: drag.width + topRight.width - 10,
-                y: drag.height + topRight.height - 10
-            )
-            .overlay{
-                Circle()
-                    .frame(width: 80,height: 80)
-                    .foregroundColor(Color.red)
-                    .opacity(0.0000000000001)
-                    .offset(x: drag.width + topRight.width - 10,
-                            y: drag.height + topRight.height - 10)
-            }
-            .gesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        self.topRight = topRightAccumulatedOffset + gesture.translation
-                    }
-                    .onEnded { gesture in
-                        topRightAccumulatedOffset = topRightAccumulatedOffset + gesture.translation
-                    }
-            )
+            // Bottom left corner
+            Circle()
+                .frame(width: 20, height: 20)
+                .foregroundColor(.blue)
+                .offset(
+                    x: drag.width + bottomLeft.width - 10,
+                    y: drag.height + bottomLeft.height - 10
+                )
+                .gesture(
+                    DragGesture()
+                        .onChanged { gesture in
+                            let newBottomLeft = bottomLeftAccumulatedOffset + gesture.translation
+                            if newBottomLeft.width >= 0 && newBottomLeft.height >= topLeft.height &&
+                               newBottomLeft.width <= bottomRight.width && newBottomLeft.height <= UIScreen.main.bounds.height {
+                                self.bottomLeft = newBottomLeft
+                                self.topLeft.width = newBottomLeft.width
+                                self.bottomRight.height = newBottomLeft.height
+                            }
+                        }
+                        .onEnded { gesture in
+                            bottomLeftAccumulatedOffset = bottomLeft
+                            topLeftAccumulatedOffset.width = bottomLeft.width
+                            bottomRightAccumulatedOffset.height = bottomLeft.height
+                        }
+                )
 
-        Circle()
-            .frame(width: 20, height: 20)
-            .foregroundColor(.blue)
-            .offset(
-                x: drag.width + bottomLeft.width - 10,
-                y: drag.height + bottomLeft.height - 10
-            )
-            .overlay{
-                Circle()
-                    .frame(width: 80,height: 80)
-                    .foregroundColor(Color.red)
-                    .opacity(0.0000000000001)
-                    .offset( x: drag.width + bottomLeft.width - 10,
-                             y: drag.height + bottomLeft.height - 10)
-            }
-            .gesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        self.bottomLeft = bottomLeftAccumulatedOffset + gesture.translation
-                    }
-                    .onEnded { gesture in
-                        bottomLeftAccumulatedOffset = bottomLeftAccumulatedOffset + gesture.translation
-                    }
-            )
-        Circle()
-            .frame(width: 20, height: 20)
-            .foregroundColor(.blue)
-            .offset(
-                x: drag.width + bottomRight.width - 10,
-                y: drag.height + bottomRight.height - 10
-            )
-            .overlay{
-                Circle()
-                    .frame(width: 80,height: 80)
-                    .foregroundColor(Color.red)
-                    .opacity(0.0000000000001)
-                    .offset(x: drag.width + bottomRight.width - 10,
-                            y: drag.height + bottomRight.height - 10)
-            }
-            .gesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        self.bottomRight = bottomRightAccumulatedOffset + gesture.translation
-                    }
-                    .onEnded { gesture in
-                        bottomRightAccumulatedOffset = bottomRightAccumulatedOffset + gesture.translation
-                    }
-            )
-    }
+            // Bottom right corner
+            Circle()
+                .frame(width: 20, height: 20)
+                .foregroundColor(.blue)
+                .offset(
+                    x: drag.width + bottomRight.width - 10,
+                    y: drag.height + bottomRight.height - 10
+                )
+                .gesture(
+                    DragGesture()
+                        .onChanged { gesture in
+                            let newBottomRight = bottomRightAccumulatedOffset + gesture.translation
+                            if newBottomRight.width >= bottomLeft.width && newBottomRight.height >= topRight.height &&
+                               newBottomRight.width <= UIScreen.main.bounds.width && newBottomRight.height <= UIScreen.main.bounds.height {
+                                self.bottomRight = newBottomRight
+                                self.topRight.width = newBottomRight.width
+                                self.bottomLeft.height = newBottomRight.height
+                            }
+                        }
+                        .onEnded { gesture in
+                            bottomRightAccumulatedOffset = bottomRight
+                            topRightAccumulatedOffset.width = bottomRight.width
+                            bottomLeftAccumulatedOffset.height = bottomRight.height
+                        }
+                )
+        }
 
     func highlightingIngredients(image: UIImage) {
         VisionUtility.recognizeText(in: image) { recognizedText, boundingBox in
