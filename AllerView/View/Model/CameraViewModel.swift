@@ -67,15 +67,17 @@ extension ScannerView {
                         session.addInput(input)
                     }
 
-                    output = AVCapturePhotoOutput()
-                    if session.canAddOutput(output) {
-                        session.addOutput(output)
-                    }
+                    DispatchQueue.main.async { [self] in
+                        output = AVCapturePhotoOutput()
+                        if session.canAddOutput(output) {
+                            session.addOutput(output)
+                        }
 
-                    videoOutput = AVCaptureVideoDataOutput()
-                    videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sample buffer delegate", attributes: []))
-                    if session.canAddOutput(videoOutput) {
-                        session.addOutput(videoOutput)
+                        videoOutput = AVCaptureVideoDataOutput()
+                        videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sample buffer delegate", attributes: []))
+                        if session.canAddOutput(videoOutput) {
+                            session.addOutput(videoOutput)
+                        }
                     }
 
                     session.commitConfiguration()

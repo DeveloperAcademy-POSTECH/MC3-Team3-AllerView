@@ -37,6 +37,7 @@ extension NSManagedObjectContext {
         keyword.id = UUID()
         keyword.name = name
         keyword.user = user
+        keyword.createdAt = Date()
         self.saveChanges()
     }
 }

@@ -10,8 +10,8 @@ import SwiftUI
 class GPTModel: ObservableObject {
     var allergies: String = ""
     var scannedData: String = ""
-    var uiImage: UIImage? = nil
-
+    
+    @Published var uiImage: UIImage? = nil
     @Published var responseData: GPTResponse?
 
     func makeRequestScript() -> String {
@@ -55,16 +55,14 @@ class GPTModel: ObservableObject {
     }
 }
 
-extension GPTModel {
-    struct GPTResponse: Codable {
-        let avoidIngredients, unidentifiableIngredients, allIngredients, warningAllergies: [String]
+struct GPTResponse: Codable {
+    let avoidIngredients, unidentifiableIngredients, allIngredients, warningAllergies: [String]
 
-        enum CodingKeys: String, CodingKey {
-            case avoidIngredients = "avoid_ingredients"
-            case unidentifiableIngredients = "unidentifiable_ingredients"
-            case allIngredients = "all_ingredients"
-            case warningAllergies = "warning_allergies"
-        }
+    enum CodingKeys: String, CodingKey {
+        case avoidIngredients = "avoid_ingredients"
+        case unidentifiableIngredients = "unidentifiable_ingredients"
+        case allIngredients = "all_ingredients"
+        case warningAllergies = "warning_allergies"
     }
 }
 
