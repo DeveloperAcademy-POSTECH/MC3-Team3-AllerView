@@ -559,7 +559,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = XKDG839GBD;
+				DEVELOPMENT_TEAM = Q535Z3S7Z3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
