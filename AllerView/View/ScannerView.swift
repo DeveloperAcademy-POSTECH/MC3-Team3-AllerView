@@ -19,13 +19,11 @@ struct ScannerView: View {
 
     var body: some View {
         ZStack {
-            
-            VStack(spacing: -15) {
-                
-                // MARK: Camera Previews
-                
-                CameraPreview(camera: camera)
-                    .ignoresSafeArea()
+            // MARK: Camera Previews
+            CameraPreview(camera: camera)
+                .ignoresSafeArea()
+            VStack {
+                Spacer()
                 
                 // MARK: Control Area
                 

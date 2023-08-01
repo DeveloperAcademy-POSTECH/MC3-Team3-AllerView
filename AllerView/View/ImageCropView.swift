@@ -8,14 +8,14 @@ import SwiftUI
 
 struct ImageCropView: View {
     @Environment(\.dismiss) private var dismiss
-
+    
     @ObservedObject var gptModel: GPTModel
-
+    
     @State private var topLeft = CGSize(width: 100, height: 100)
     @State private var topRight = CGSize(width: 300, height: 100)
     @State private var bottomLeft = CGSize(width: 100, height: 300)
     @State private var bottomRight = CGSize(width: 300, height: 300)
-
+    
     @State private var topLeftAccumulatedOffset = CGSize(width: 100, height: 100)
     @State private var topRightAccumulatedOffset = CGSize(width: 300, height: 100)
     @State private var bottomLeftAccumulatedOffset = CGSize(width: 100, height: 300)
@@ -24,21 +24,21 @@ struct ImageCropView: View {
     @State private var dragAccumulatedOffset = CGSize.zero
     @State private var croppedImage: UIImage? = nil
     @State private var boundingBoxes: [CGRect] = []
-
+    
     // 전 뷰에서 넘어온 이미지가 들어올 곳
     @Binding var picData: Data
     @Binding var isSheetPresented: Bool
-
+    
     let keywords: FetchedResults<Keyword>
-
+    
     var body: some View {
         ZStack {
             GeometryReader { geometry in
                 if let originalImage = UIImage(data: picData) {
                     let image = ImageUtility.cropImageByViewRatio(for: originalImage, in: geometry)
-
+                    
                     // MARK: Image Area
-
+                    
                     Image(uiImage: image!)
                         .resizable()
                         .scaledToFill()
@@ -50,12 +50,12 @@ struct ImageCropView: View {
                         )
                         .onAppear {
                             // MARK: for "원재료명" Highlight
-
+                            
                             print("height: \(geometry.size.height)")
                             print("width: \(geometry.size.width)")
                             highlightingIngredients(image: image!)
                         }
-
+                    
                     // MARK: Crop Box
                     
                     CropBox
@@ -66,16 +66,16 @@ struct ImageCropView: View {
                     
                     VStack {
                         Spacer()
-
+                        
                         ZStack {
                             // MARK: Bottom Rectangle Box
-
+                            
                             RoundedRectangle(cornerRadius: 15)
                                 .frame(height: 240)
                                 .foregroundColor(.black)
-
+                            
                             // MARK: Crop And OCR Function Call BTN
-
+                            
                             VStack(spacing: 41) {
                                 Text("Please crop the section\nof '원재료명(Ingredients)'")
                                     .font(Font.custom("SF Pro", size: 20).weight(.medium))
@@ -96,7 +96,7 @@ struct ImageCropView: View {
                                                 .foregroundColor(.deepGray2)
                                         }
                                     }
-
+                                    
                                     Button {
                                         let points = ImageUtility.convertToImageCoordinates(from: [
                                             CGPoint(
@@ -116,13 +116,13 @@ struct ImageCropView: View {
                                                 y: drag.height + bottomLeft.height
                                             ),
                                         ], for: image!, in: geometry)
-
+                                        
                                         // MARK: Crop Image
-
+                                        
                                         croppedImage = ImageUtility.cropImage(image!, points: points)
-
+                                        
                                         // MARK: Vision OCR Call
-
+                                        
                                         VisionUtility.recognizeText(in: croppedImage!) { recognizedStrings in
                                             let allergies = keywords.map { $0.name ?? "unknown" }.joined(separator: " ")
                                             let scannedData = recognizedStrings.joined(separator: " ")
@@ -131,9 +131,9 @@ struct ImageCropView: View {
                                             gptModel.uiImage = image
                                             gptModel.sendMessage()
                                         }
-
+                                        
                                         isSheetPresented = true
-
+                                        
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                             dismiss()
                                         }
@@ -158,132 +158,166 @@ struct ImageCropView: View {
         }
         .ignoresSafeArea()
     }
-
+    
     @ViewBuilder
-        var CropBox: some View {
-            Rectangle()
-                .fill(Color.blue.opacity(0.3))
-                .overlay(Rectangle().stroke(Color.blue, lineWidth: 2))
-                .frame(width: topRight.width - topLeft.width, height: bottomLeft.height - topLeft.height)
-                .offset(x: drag.width + topLeft.width, y: drag.height + topLeft.height)
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            self.drag = dragAccumulatedOffset + gesture.translation
-                        }
-                        .onEnded { gesture in
-                            dragAccumulatedOffset = dragAccumulatedOffset + gesture.translation
-                        }
-                )
-        }
-
+    var CropBox: some View {
+        Rectangle()
+            .fill(Color.blue.opacity(0.3))
+            .overlay(Rectangle().stroke(Color.blue, lineWidth: 2))
+            .frame(width: topRight.width - topLeft.width, height: bottomLeft.height - topLeft.height)
+            .offset(x: drag.width + topLeft.width, y: drag.height + topLeft.height)
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        self.drag = dragAccumulatedOffset + gesture.translation
+                    }
+                    .onEnded { gesture in
+                        dragAccumulatedOffset = dragAccumulatedOffset + gesture.translation
+                    }
+            )
+    }
+    
     @ViewBuilder
-        var CropPoints: some View {
-            // Top left corner
-            Circle()
-                .frame(width: 20, height: 20)
-                .foregroundColor(.blue)
-                .offset(
-                    x: drag.width + topLeft.width-10,
-                    y: drag.height + topLeft.height-10
-                )
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            let newTopLeft = topLeftAccumulatedOffset + gesture.translation
-                            if newTopLeft.width >= 0 && newTopLeft.height >= 0 &&
-                               newTopLeft.width <= topRight.width && newTopLeft.height <= bottomLeft.height {
-                                self.topLeft = newTopLeft
-                                self.bottomLeft.width = newTopLeft.width
-                                self.topRight.height = newTopLeft.height
-                            }
-                        }
-                        .onEnded { gesture in
-                            topLeftAccumulatedOffset = topLeft
-                            bottomLeftAccumulatedOffset.width = topLeft.width
-                            topRightAccumulatedOffset.height = topLeft.height
-                        }
-                )
-
-            // Top right corner
-            Circle()
-                .frame(width: 20, height: 20)
-                .foregroundColor(.blue)
-                .offset(
-                    x: drag.width + topRight.width - 10,
-                    y: drag.height + topRight.height - 10
-                )
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            let newTopRight = topRightAccumulatedOffset + gesture.translation
-                            if newTopRight.width >= topLeft.width && newTopRight.height >= 0 &&
-                               newTopRight.width <= UIScreen.main.bounds.width && newTopRight.height <= bottomRight.height {
-                                self.topRight = newTopRight
-                                self.bottomRight.width = newTopRight.width
-                                self.topLeft.height = newTopRight.height
-                            }
-                        }
-                        .onEnded { gesture in
-                            topRightAccumulatedOffset = topRight
-                            bottomRightAccumulatedOffset.width = topRight.width
-                            topLeftAccumulatedOffset.height = topRight.height
-                        }
-                )
-
-            // Bottom left corner
-            Circle()
-                .frame(width: 20, height: 20)
-                .foregroundColor(.blue)
-                .offset(
-                    x: drag.width + bottomLeft.width - 10,
-                    y: drag.height + bottomLeft.height - 10
-                )
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            let newBottomLeft = bottomLeftAccumulatedOffset + gesture.translation
-                            if newBottomLeft.width >= 0 && newBottomLeft.height >= topLeft.height &&
-                               newBottomLeft.width <= bottomRight.width && newBottomLeft.height <= UIScreen.main.bounds.height {
-                                self.bottomLeft = newBottomLeft
-                                self.topLeft.width = newBottomLeft.width
-                                self.bottomRight.height = newBottomLeft.height
-                            }
-                        }
-                        .onEnded { gesture in
-                            bottomLeftAccumulatedOffset = bottomLeft
-                            topLeftAccumulatedOffset.width = bottomLeft.width
-                            bottomRightAccumulatedOffset.height = bottomLeft.height
-                        }
-                )
-
-            // Bottom right corner
-            Circle()
-                .frame(width: 20, height: 20)
-                .foregroundColor(.blue)
-                .offset(
-                    x: drag.width + bottomRight.width - 10,
-                    y: drag.height + bottomRight.height - 10
-                )
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            let newBottomRight = bottomRightAccumulatedOffset + gesture.translation
-                            if newBottomRight.width >= bottomLeft.width && newBottomRight.height >= topRight.height &&
-                               newBottomRight.width <= UIScreen.main.bounds.width && newBottomRight.height <= UIScreen.main.bounds.height {
-                                self.bottomRight = newBottomRight
-                                self.topRight.width = newBottomRight.width
-                                self.bottomLeft.height = newBottomRight.height
-                            }
-                        }
-                        .onEnded { gesture in
-                            bottomRightAccumulatedOffset = bottomRight
-                            topRightAccumulatedOffset.width = bottomRight.width
-                            bottomLeftAccumulatedOffset.height = bottomRight.height
-                        }
-                )
-        }
-
+    var CropPoints: some View {
+        // Top left corner
+        Circle()
+            .frame(width: 20, height: 20)
+            .foregroundColor(.blue)
+            .offset(
+                x: drag.width + topLeft.width-10,
+                y: drag.height + topLeft.height-10
+            )
+//            .overlay{
+//                Circle()
+//                    .frame(width: 60, height: 60)
+//                    .offset(
+//                        x: drag.width + topLeft.width-10,
+//                        y: drag.height + topLeft.height-10
+//                    )
+//                    .foregroundColor(Color.black.opacity(0.000001))
+//            }
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        let newTopLeft = topLeftAccumulatedOffset + gesture.translation
+                        
+                        self.topLeft = newTopLeft
+                        self.bottomLeft.width = newTopLeft.width
+                        self.topRight.height = newTopLeft.height
+                        
+                    }
+                    .onEnded { gesture in
+                        topLeftAccumulatedOffset = topLeft
+                        bottomLeftAccumulatedOffset.width = topLeft.width
+                        topRightAccumulatedOffset.height = topLeft.height
+                    }
+            )
+        
+        // Top right corner
+        Circle()
+            .frame(width: 20, height: 20)
+            .foregroundColor(.blue)
+            .offset(
+                x: drag.width + topRight.width - 10,
+                y: drag.height + topRight.height - 10
+            )
+//            .overlay{
+//                Circle()
+//                    .frame(width: 60, height: 60)
+//                    .offset(
+//                        x: drag.width + topRight.width - 10,
+//                        y: drag.height + topRight.height - 10
+//                    )
+//                    .foregroundColor(Color.black.opacity(0.000001))
+//            }
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        let newTopRight = topRightAccumulatedOffset + gesture.translation
+                        
+                        self.topRight = newTopRight
+                        self.bottomRight.width = newTopRight.width
+                        self.topLeft.height = newTopRight.height
+                        
+                    }
+                    .onEnded { gesture in
+                        topRightAccumulatedOffset = topRight
+                        bottomRightAccumulatedOffset.width = topRight.width
+                        topLeftAccumulatedOffset.height = topRight.height
+                    }
+            )
+        
+        // Bottom left corner
+        Circle()
+            .frame(width: 20, height: 20)
+            .foregroundColor(.blue)
+            .offset(
+                x: drag.width + bottomLeft.width - 10,
+                y: drag.height + bottomLeft.height - 10
+            )
+//            .overlay{
+//                Circle()
+//                    .frame(width: 60, height: 60)
+//                    .offset(
+//                        x: drag.width + bottomLeft.width - 10,
+//                        y: drag.height + bottomLeft.height - 10
+//                    )
+//                    .foregroundColor(Color.black.opacity(0.000001))
+//            }
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        let newBottomLeft = bottomLeftAccumulatedOffset + gesture.translation
+                        
+                        self.bottomLeft = newBottomLeft
+                        self.topLeft.width = newBottomLeft.width
+                        self.bottomRight.height = newBottomLeft.height
+                        
+                    }
+                    .onEnded { gesture in
+                        bottomLeftAccumulatedOffset = bottomLeft
+                        topLeftAccumulatedOffset.width = bottomLeft.width
+                        bottomRightAccumulatedOffset.height = bottomLeft.height
+                    }
+            )
+        
+        // Bottom right corner
+        
+        Circle()
+            .frame(width: 20, height: 20)
+            .foregroundColor(.blue)
+            .offset(
+                x: drag.width + bottomRight.width - 10,
+                y: drag.height + bottomRight.height - 10
+            )
+        
+//            .overlay{
+//                Circle()
+//                    .frame(width: 60, height: 60)
+//                    .offset(
+//                        x: drag.width + bottomRight.width - 10,
+//                        y: drag.height + bottomRight.height - 10
+//                    )
+//                    .foregroundColor(Color.black.opacity(0.000001))
+//            }
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        let newBottomRight = bottomRightAccumulatedOffset + gesture.translation
+                        
+                        self.bottomRight = newBottomRight
+                        self.topRight.width = newBottomRight.width
+                        self.bottomLeft.height = newBottomRight.height
+                        
+                    }
+                    .onEnded { gesture in
+                        bottomRightAccumulatedOffset = bottomRight
+                        topRightAccumulatedOffset.width = bottomRight.width
+                        bottomLeftAccumulatedOffset.height = bottomRight.height
+                    }
+            )
+    }
+    
     func highlightingIngredients(image: UIImage) {
         VisionUtility.recognizeText(in: image) { recognizedText, boundingBox in
             for (index, element) in recognizedText.enumerated() {
@@ -300,7 +334,7 @@ struct ImageCropView: View {
 
 struct BoundingBoxOverlay: View {
     var box: CGRect
-
+    
     var body: some View {
         GeometryReader { geometry in
             Rectangle()
@@ -308,12 +342,12 @@ struct BoundingBoxOverlay: View {
                                  y: (1 - box.origin.y - box.height) * geometry.size.height,
                                  width: box.width * geometry.size.width,
                                  height: box.height * geometry.size.height))
-                .stroke(Color.red, lineWidth: 2)
+                .stroke(Color.deepOrange, lineWidth: 2)
         }
     }
 }
 
-//
+//원재료명
 // struct ImageCropView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ImageCropView()
