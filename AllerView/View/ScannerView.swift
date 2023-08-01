@@ -19,51 +19,35 @@ struct ScannerView: View {
 
     var body: some View {
         ZStack {
-            // MARK: Camera Previews
-
-            CameraPreview(camera: camera)
-                .ignoresSafeArea()
-
-            // MARK: My Allergy Text
-
-            VStack {
-                HStack {
-                    Spacer()
-
-                    Button {
-                        //
-                    } label: {
-                        Image("my_allergy_btn")
-                    }
-                }
-                .padding(.horizontal, 25)
-
-                Spacer()
-            }
-            .padding(.vertical, 16)
-
-            // MARK: Control Area
-
-            VStack {
-                Spacer()
-
+            
+            VStack(spacing: -15) {
+                
+                // MARK: Camera Previews
+                
+                CameraPreview(camera: camera)
+                    .ignoresSafeArea()
+                
+                // MARK: Control Area
+                
                 ZStack {
+                    
                     // MARK: Bottom Rentangle Box
-
+                    
                     Rectangle()
-                        .foregroundColor(.clear)
                         .frame(height: 280)
-                        .background(.black.opacity(0.7))
+                        .background(Color.black)
                         .cornerRadius(15)
-
+                    
                     VStack(spacing: 30) {
+                        
                         Text("Please take a photo of the section\nlabeled '**원재료명**(Ingredients)'")
                             .font(.system(size: 20))
                             .multilineTextAlignment(.center)
                             .foregroundColor(.white)
                             .frame(width: 340, alignment: .center)
-
+                        
                         ZStack {
+                            
                             NavigationLink {
                                 ImageCropView(gptModel: gptModel, picData: $camera.picData, isSheetPresented: $isSheetPresented, keywords: keywords)
                                     .navigationBarHidden(true)
@@ -72,7 +56,7 @@ struct ScannerView: View {
                                     Circle()
                                         .fill(Color.white)
                                         .frame(width: 82, height: 82)
-
+                                    
                                     Circle()
                                         .stroke(.black, lineWidth: 3)
                                         .frame(width: 70, height: 70)
@@ -81,10 +65,11 @@ struct ScannerView: View {
                             .simultaneousGesture(TapGesture().onEnded {
                                 camera.takePic()
                             })
-
+                            
                             HStack {
+                                
                                 Spacer()
-
+                                
                                 Button {
                                     camera.isFlash.toggle()
                                     camera.toggleTorch(on: camera.isFlash)
@@ -98,7 +83,7 @@ struct ScannerView: View {
                             }
                         }
                     }
-                    .padding(.bottom, 22)
+                    .frame(height: 280)
                     .padding(.horizontal, 25)
                 }
             }
