@@ -56,7 +56,13 @@ struct ScannerView: View {
                         .background(.black.opacity(0.7))
                         .cornerRadius(15)
 
-                    VStack(spacing: 37.5) {
+                    VStack(spacing: 30) {
+                        Text("Please take a photo of the section\nlabeled '**원재료명**(Ingredients)'")
+                            .font(.system(size: 20))
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.white)
+                            .frame(width: 340, alignment: .center)
+
                         ZStack {
                             NavigationLink {
                                 ImageCropView(gptModel: gptModel, picData: $camera.picData, isSheetPresented: $isSheetPresented, keywords: keywords)
@@ -91,14 +97,8 @@ struct ScannerView: View {
                                 }
                             }
                         }
-
-                        Text("Please take a photo of the section\nlabeled '**원재료명**(Ingredients)'")
-                            .font(.system(size: 20))
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.white)
-                            .frame(width: 340, alignment: .center)
                     }
-                    .padding(.bottom, 37.5)
+                    .padding(.bottom, 22)
                     .padding(.horizontal, 25)
                 }
             }

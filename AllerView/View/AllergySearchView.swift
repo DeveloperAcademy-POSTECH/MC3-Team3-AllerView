@@ -12,9 +12,12 @@ struct AllergySearchView {
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.dismiss) var dismiss
 
-    @FocusState var keyboardFocused: Bool
-    @State var searchText: String = ""
+    @AppStorage("isFirst") var isFirst: Bool = true
+
+    @FocusState private var keyboardFocused: Bool
+    @State private var searchText: String = ""
     @State private var showImage = false
+    @State private var isUnfold = false
 
     let user: User?
     let keywords: FetchedResults<Keyword>
@@ -32,20 +35,49 @@ extension AllergySearchView: View {
             if !keywords.isEmpty {
                 VStack(alignment: .leading) {
                     Group {
-                        Text("Seleted")
-                            .font(.system(size: 17))
-                            .foregroundColor(.defaultGray)
+                        HStack {
+                            Text("Seleted")
+                                .font(.system(size: 17))
+                                .foregroundColor(.defaultGray)
+                            Spacer()
+                            if keywords.count >= 3 {
+                                Image(systemName: isUnfold ? "chevron.up" : "chevron.down")
+                                    .foregroundColor(.lightGray1)
+                                    .font(.system(size: 24, weight: .regular))
+                                    .onTapGesture {
+                                        if keyboardFocused {
+                                            keyboardFocused = false
+                                        }
+                                        isUnfold.toggle()
+                                    }
+                            }
+                        }
 
-                        WrappingHStack(keywords, id: \.self) { keyword in
-                            Chip(name: keyword.name ?? "Unknown", height: 35, isRemovable: true, chipColor: Color.deepOrange, fontSize: 20, fontColor: Color.white)
-                                .padding(.bottom, 10)
-                                .onTapGesture {
-                                    keyword.delete()
+                        if keyboardFocused || !isUnfold {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 8) {
+                                    ForEach(keywords, id: \.self) { keyword in
+                                        Chip(name: keyword.name ?? "Unknown", height: 35, isRemovable: true, chipColor: Color.deepOrange, fontSize: 20, fontColor: Color.white)
+                                            .padding(.bottom, 10)
+                                            .onTapGesture {
+                                                keyword.delete()
+                                            }
+                                    }
                                 }
+                            }
+                        } else {
+                            WrappingHStack(keywords, id: \.self) { keyword in
+                                Chip(name: keyword.name ?? "Unknown", height: 35, isRemovable: true, chipColor: Color.deepOrange, fontSize: 20, fontColor: Color.white)
+                                    .padding(.bottom, 10)
+                                    .onTapGesture {
+                                        keyword.delete()
+                                    }
+                            }
                         }
                     }
                     .padding(.horizontal, 26)
                 }
+                .padding(.top, 23)
                 .padding(.bottom, 15)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(Color.white)
@@ -56,14 +88,20 @@ extension AllergySearchView: View {
 
             ZStack {
                 if searchText.isEmpty {
-                    VStack {
-                        Image(systemName: "plus.magnifyingglass")
-                            .resizable()
-                            .frame(width: 52, height: 52)
-                        Text("Add your allergy to expeience!")
-                            .font(.system(size: 20))
+                    ZStack {
+                        EmptyView()
+                        VStack {
+                            Image(systemName: "plus.magnifyingglass")
+                                .resizable()
+                                .frame(width: 52, height: 52)
+                            Text("Add your allergy to expeience!")
+                                .font(.system(size: 20))
+                        }
+                        .foregroundColor(Color.lightGray1)
                     }
-                    .foregroundColor(Color.deepOrange)
+                    .onTapGesture {
+                        keyboardFocused = false
+                    }
                 }
 
                 // MARK: - search results Field
@@ -92,8 +130,7 @@ extension AllergySearchView: View {
                                     addKeyword(keywordName: searchText)
                                     searchText = ""
                                 }
-                            }
-                            if searchText != "" {
+
                                 ForEach(getFilteredData().reversed(), id: \.self) { data in
                                     let temp = data.replacingOccurrences(of: searchText, with: "")
 
@@ -128,10 +165,10 @@ extension AllergySearchView: View {
                     }
                     .rotationEffect(Angle(degrees: 180)).scaleEffect(x: -1.0, y: 1.0, anchor: .center)
 
-                    // MARK: - arrow for scrolling animation
+                    Spacer()
 
-                    SearchTextField
-                        .padding(.bottom, 14)
+                    SearchTextField()
+                        .padding(.bottom, 15)
                 }
             }
             .padding(.horizontal, 25)
@@ -141,9 +178,13 @@ extension AllergySearchView: View {
                 NaviagtionBarTitle
             }
         }
-        .navigationBarItems(trailing: Button("Done") {
-            dismiss()
-        })
+        .navigationBarItems(
+            trailing: Button("Done") {
+                dismiss()
+                isFirst = false
+            }
+            .disabled(keywords.isEmpty)
+        )
     }
 
     // MARK: - navigation bar custom
@@ -154,21 +195,29 @@ extension AllergySearchView: View {
             .fontWeight(.semibold)
     }
 
-    var SearchTextField: some View {
-        HStack(alignment: .center, spacing: 15) {
-            TextField("Please enter your allergy", text: $searchText)
-                .autocapitalization(.none)
-                .padding(.vertical, 3)
-            Spacer()
-            Image(systemName: "magnifyingglass")
-                .font(Font.custom("SF Pro", size: 24))
+    func SearchTextField() -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 15)
+                .foregroundColor(.blueGray)
+
+            HStack(spacing: 15) {
+                TextField("Please enter your allergy", text: $searchText)
+                    .autocapitalization(.none)
+                    .focused($keyboardFocused)
+                    .font(.system(size: 17, weight: .regular))
+                    .onAppear {
+                        keyboardFocused = true
+                    }
+                Image(systemName: "magnifyingglass")
+                    .font(.system(size: 24, weight: .regular))
+            }
+            .foregroundColor(.defaultGray)
+            .padding(.horizontal, 15)
+            .onTapGesture {
+                isUnfold = false
+            }
         }
-        .foregroundColor(.deepGray2)
-        .padding(.horizontal, 15)
-        .padding(.vertical, 10)
-        .background(.white)
-        .cornerRadius(15)
-        .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)
+        .frame(height: 49)
     }
 
     // MARK: - keyword add function

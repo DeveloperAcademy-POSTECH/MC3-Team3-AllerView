@@ -11,8 +11,10 @@ import SwiftUI
 
 struct ContentView {
     @Environment(\.managedObjectContext) var viewContext
-    @StateObject private var gptModel = GPTModel()
+    @Environment(\.dismiss) var dismiss
+    @AppStorage("isFirst") var isFirst = true
 
+    @StateObject private var gptModel = GPTModel()
     @State private var isSheetPresented: Bool = false
 
     // MARK: - Fetch CoreData
@@ -25,7 +27,7 @@ struct ContentView {
 
     @FetchRequest(
         entity: Keyword.entity(),
-        sortDescriptors: []
+        sortDescriptors: [NSSortDescriptor(keyPath: \Keyword.createdAt, ascending: false)]
     )
     var keywords: FetchedResults<Keyword>
 }
@@ -35,30 +37,34 @@ struct ContentView {
 extension ContentView: View {
     var body: some View {
         ZStack {
-            ScannerView(gptModel: gptModel, isSheetPresented: $isSheetPresented, keywords: keywords)
-                .sheet(isPresented: $isSheetPresented, onDismiss: {
-                    gptModel.clear()
-                }) {
-                    AllergyDetailView(gptModel: gptModel)
-                }
-
-            VStack {
-                HStack {
-                    Spacer()
-
-                    NavigationLink {
-                        AllergySearchView(user: users.first, keywords: keywords)
-                            .navigationBarBackButtonHidden(true)
-                            .navigationBarTitleDisplayMode(.inline)
-                    } label: {
-                        MyAllergyButton()
+            if isFirst {
+                AllergySearchView(user: users.first, keywords: keywords)
+            } else {
+                ScannerView(gptModel: gptModel, isSheetPresented: $isSheetPresented, keywords: keywords)
+                    .sheet(isPresented: $isSheetPresented, onDismiss: {
+                        gptModel.clear()
+                    }) {
+                        AllergyDetailView(gptModel: gptModel)
                     }
-                }
 
-                Spacer()
+                VStack {
+                    HStack {
+                        Spacer()
+
+                        NavigationLink {
+                            AllergySearchView(user: users.first, keywords: keywords)
+                                .navigationBarBackButtonHidden(true)
+                                .navigationBarTitleDisplayMode(.inline)
+                        } label: {
+                            MyAllergyButton()
+                        }
+                    }
+
+                    Spacer()
+                }
+                .padding(.top, 16)
+                .padding(.horizontal, 25)
             }
-            .padding(.top, 16)
-            .padding(.horizontal, 25)
         }
         .onAppear {
             if users.isEmpty {
