@@ -46,6 +46,7 @@ extension AllergyDetailView: View {
                                     .padding(20)
                             }
                         }
+                        .padding(.bottom, 80)
                     }
                     .padding(.horizontal, 25)
                 }
