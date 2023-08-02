@@ -37,7 +37,7 @@ extension AllergyDetailView: View {
                         ZStack {
                             SummaryBox()
 
-                            if let responseData = gptModel.responseData {
+                            if let responseData = gptModel.gptResponse {
                                 DetailBodyView(responseData)
                             } else if gptModel.isFailed {
                                 FailView()
@@ -64,7 +64,7 @@ extension AllergyDetailView: View {
         }
     }
 
-    private func DetailBodyView(_ responseData: GPTResponse) -> some View {
+    private func DetailBodyView(_ responseData: OpenAIChat.Content) -> some View {
         VStack(alignment: .leading, spacing: 20) {
             if !responseData.warningAllergies.isEmpty {
                 AttentionTo(responseData)
@@ -112,7 +112,7 @@ private extension AllergyDetailView {
     }
 
     @ViewBuilder
-    private func AttentionTo(_ responseData: GPTResponse) -> some View {
+    private func AttentionTo(_ responseData: OpenAIChat.Content) -> some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack(spacing: 4) {
                 Image(systemName: "exclamationmark.bubble")
@@ -133,7 +133,7 @@ private extension AllergyDetailView {
     @ViewBuilder
     private func RefreshButton() -> some View {
         Button {
-            gptModel.responseData = nil
+            gptModel.gptResponse = nil
             gptModel.isFailed = false
             gptModel.sendMessage()
         } label: {
@@ -158,7 +158,7 @@ private extension AllergyDetailView {
     }
 
     @ViewBuilder
-    private func AllIngredients(_ responseData: GPTResponse) -> some View {
+    private func AllIngredients(_ responseData: OpenAIChat.Content) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("All Ingredients")
                 .font(.system(size: 17, weight: .semibold))
@@ -184,7 +184,7 @@ private extension AllergyDetailView {
     }
 
     @ViewBuilder
-    private func UnidentifiableIngredients(_ responseData: GPTResponse) -> some View {
+    private func UnidentifiableIngredients(_ responseData: OpenAIChat.Content) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Unidentifiable Ingredients")
                 .font(.system(size: 17, weight: .semibold))

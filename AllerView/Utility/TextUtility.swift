@@ -7,19 +7,23 @@
 
 import Foundation
 
-class TextUtility {
-    static func getJson(originalResponse: String) -> String {
-        guard let startIdx = originalResponse.firstIndex(of: "{") else {
-            fatalError()
-        }
-        guard let endIdx = originalResponse.lastIndex(of: "}") else {
-            fatalError()
-        }
-        return originalResponse.substring(from: startIdx, to: originalResponse.index(endIdx, offsetBy: 1))
-    }
-}
+class TextUtility {}
 
 extension String {
+    func getJson() -> String {
+        guard let startIdx = firstIndex(of: "{") else {
+            print("도움!!!! ===")
+            print(self)
+            return self
+        }
+        guard let endIdx = lastIndex(of: "}") else {
+            print("도움!!!! ===")
+            print(self)
+            return self
+        }
+        return substring(from: startIdx, to: index(endIdx, offsetBy: 1))
+    }
+
     func substring(from startIndex: Index, to endIndex: Index) -> String {
         guard startIndex >= self.startIndex, endIndex <= self.endIndex, startIndex < endIndex else {
             fatalError("Invalid indices for substring.")

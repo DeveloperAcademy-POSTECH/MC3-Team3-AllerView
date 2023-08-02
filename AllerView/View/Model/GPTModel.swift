@@ -10,34 +10,59 @@ import SwiftUI
 class GPTModel: ObservableObject {
     var allergies: String = ""
     var scannedData: String = ""
-    
+
     @Published var uiImage: UIImage? = nil
-    @Published var responseData: GPTResponse?
+    @Published var gptResponse: OpenAIChat.Content?
     @Published var isFailed: Bool = false
 
-    func makeRequestScript() -> String {
-        return "Here are the ingredient names I have: [\(scannedData)]. Could you please translate them into enlish and check if any of these ingredients might trigger the following allergies: [\(allergies)]? And for an output in English with only JSON format, it might be: {\"all_ingredients\": [\"ingredient1\", \"ingredient2\", \"...\"], \"unidentifiable_ingredients\": [\"unidentifiable ingredient\", \"unidentifiable ingredient\", \"...\"], \"allergenic_ingredients\": [\"triggers allergy1\", \"triggers allergy2\", \"...\"]}. Because I'll use the result in my code directrly, you must print only JSON code in english without any mentions."
+    private var allergyScript: String {
+        """
+        <ingredients>\(scannedData)<ingredients>
+
+        <allergies>\(allergies)<allergies>
+
+        1. Act like an allergist.
+        2. json을 만들어줘.
+        키는 allergenic_ingredients", "all_ingredients", "unrecognized_ingredients"가 있어.
+        "allergenic_ingredients"에는 <allergies>를 유발하는 <ingredients>를 넣어.
+        "all_ingredients"에는 <ingredients>를 넣어.
+        "unrecognized_ingredients"에는 원재료가 아닌 것을 넣어.
+        """
+    }
+
+    private var translateScript: String {
+        "영어로 번역해줘."
     }
 
     private let openAIService = OpenAIService()
 
     func sendMessage() {
-        let message = Message(id: UUID(), role: .user, content: makeRequestScript(), createAt: Date())
+        let allergyMessage = OpenAIChat.Message(role: .user, content: allergyScript)
+        let translateMessage = OpenAIChat.Message(role: .user, content: translateScript)
 
         Task {
-            let response = await openAIService.sendMessage(message: message)
-            guard let receivedOpenAIMessage = response?.choices.first?.message else {
-                print("Had no received message")
-                isFailed = true
+            let tempResponse = await openAIService.sendMessage(messages: [allergyMessage])
+            guard let tempMessage = tempResponse?.choices.first?.message else {
+                DispatchQueue.main.async {
+                    self.isFailed = true
+                }
                 return
             }
-            let receivedMessage = Message(id: UUID(), role: receivedOpenAIMessage.role, content: receivedOpenAIMessage.content, createAt: Date())
-            print("==================== GPT Response ====================")
-            print(receivedMessage.content)
-            print("======================================================")
+
+            let response = await openAIService.sendMessage(messages: [allergyMessage, tempMessage, translateMessage])
+            guard let result = response?.choices.first?.message.content.getJson().data(using: .utf8) else {
+                DispatchQueue.main.async {
+                    self.isFailed = true
+                }
+                return
+            }
+            
+            print("=== temp ===")
+            print(tempMessage.content)
+
             await MainActor.run {
                 do {
-                    self.responseData = try JSONDecoder().decode(GPTResponse.self, from: receivedMessage.content.data(using: .utf8)!)
+                    self.gptResponse = try JSONDecoder().decode(OpenAIChat.Content.self, from: result)
                 } catch {
                     print(error.localizedDescription)
                     isFailed = true
@@ -53,31 +78,9 @@ class GPTModel: ObservableObject {
 
     func clear() {
         uiImage = nil
-        responseData = nil
+        gptResponse = nil
         allergies = ""
         scannedData = ""
+        isFailed = false
     }
-}
-
-struct GPTResponse: Codable {
-    let warningAllergies, unidentifiableIngredients, allIngredients: [String]
-
-    enum CodingKeys: String, CodingKey {
-        case warningAllergies = "allergenic_ingredients"
-        case unidentifiableIngredients = "unidentifiable_ingredients"
-        case allIngredients = "all_ingredients"
-    }
-}
-
-enum SenderRole: String, Codable {
-    case system
-    case user
-    case assistant
-}
-
-struct Message: Decodable {
-    let id: UUID
-    let role: SenderRole
-    let content: String
-    let createAt: Date
 }

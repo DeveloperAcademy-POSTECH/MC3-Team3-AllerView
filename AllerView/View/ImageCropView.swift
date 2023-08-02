@@ -124,9 +124,15 @@ struct ImageCropView: View {
                                         // MARK: Vision OCR Call
                                         
                                         VisionUtility.recognizeText(in: croppedImage!) { recognizedStrings in
-                                            let allergies = keywords.map { $0.name ?? "unknown" }.joined(separator: " ")
-                                            let scannedData = recognizedStrings.joined(separator: " ")
+                                            let allergies = keywords.map { $0.name ?? "unknown" }.joined(separator: ", ")
+                                            let scannedData = recognizedStrings.joined()
+                                            
+                                            print("=== scanned data ===")
                                             print(scannedData)
+                                            
+                                            print("=== allergies ===")
+                                            print(allergies)
+                                            
                                             gptModel.setSendProperties(allergies: allergies, scannedData: scannedData)
                                             gptModel.uiImage = image
                                             gptModel.sendMessage()

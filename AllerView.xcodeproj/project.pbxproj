@@ -38,6 +38,8 @@
 		DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8952A5BE2D60074CBBF /* AllerView.xcdatamodeld */; };
 		DB818DC12A729C0B000C1579 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB818DC02A729C0B000C1579 /* ScannerView.swift */; };
 		DB9380B72A6660AC00A7C4C0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9380B62A6660AC00A7C4C0 /* Product.swift */; };
+		DBA6CDF72A7AEDB3001888DF /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6CDF62A7AEDB3001888DF /* Bundle+Ext.swift */; };
+		DBA6CDF92A7AF256001888DF /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6CDF82A7AF256001888DF /* Chat.swift */; };
 		DBAB22B52A77A15D009FB939 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = DBAB22B42A77A15D009FB939 /* Lottie */; };
 		DBAB22BA2A77A1A1009FB939 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB22B92A77A1A1009FB939 /* LoadingView.swift */; };
 		DBAB22BC2A77A661009FB939 /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = DBAB22BB2A77A661009FB939 /* Loading.json */; };
@@ -85,6 +87,8 @@
 		DB7AB8962A5BE2D60074CBBF /* AllerView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AllerView.xcdatamodel; sourceTree = "<group>"; };
 		DB818DC02A729C0B000C1579 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		DB9380B62A6660AC00A7C4C0 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		DBA6CDF62A7AEDB3001888DF /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
+		DBA6CDF82A7AF256001888DF /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		DBAB22B92A77A1A1009FB939 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DBAB22BB2A77A661009FB939 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +164,7 @@
 				DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */,
 				DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */,
 				DB23A1E52A6E5DB0002E0A8B /* Color+Custom.swift */,
+				DBA6CDF62A7AEDB3001888DF /* Bundle+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 		DB7AB8892A5BE2D50074CBBF /* AllerView */ = {
 			isa = PBXGroup;
 			children = (
+				DBA6CDF02A7AEB18001888DF /* Network */,
 				DBAB22B62A77A164009FB939 /* Resource */,
 				DB6AA9812A72B75800E86884 /* Service */,
 				5E1421122A710499004A2AD8 /* Utility */,
@@ -234,6 +240,22 @@
 				DB23A1E32A6E5A1A002E0A8B /* GPTResult.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DBA6CDF02A7AEB18001888DF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DBA6CDF12A7AEB22001888DF /* OpenAI */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DBA6CDF12A7AEB22001888DF /* OpenAI */ = {
+			isa = PBXGroup;
+			children = (
+				DBA6CDF82A7AF256001888DF /* Chat.swift */,
+			);
+			path = OpenAI;
 			sourceTree = "<group>";
 		};
 		DBAB22B62A77A164009FB939 /* Resource */ = {
@@ -386,8 +408,10 @@
 				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
 				DB6AA9832A72B76100E86884 /* OpenAIService.swift in Sources */,
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
+				DBA6CDF72A7AEDB3001888DF /* Bundle+Ext.swift in Sources */,
 				DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */,
 				92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */,
+				DBA6CDF92A7AF256001888DF /* Chat.swift in Sources */,
 				DB5ECDC12A5FD7780091E9E3 /* AllergyDetailView.swift in Sources */,
 				DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */,
 				DB9380B72A6660AC00A7C4C0 /* Product.swift in Sources */,
@@ -566,6 +590,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
 				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
@@ -598,6 +623,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
 				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
+				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
