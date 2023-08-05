@@ -26,7 +26,7 @@ struct ScannerViewController: UIViewControllerRepresentable {
         isHighFrameRateTrackingEnabled: true,
         isPinchToZoomEnabled: true,
         isGuidanceEnabled: false,
-        isHighlightingEnabled: true
+        isHighlightingEnabled: false
     )
     
     var scannerAvailable: Bool {
@@ -108,7 +108,7 @@ struct ScannerViewController: UIViewControllerRepresentable {
         
         func addRoundBoxToItem(frame: CGRect, text: String, item: RecognizedItem) {
             let roundedRectView = RoundedRectLabel(frame: frame)
-            roundedRectView.setText(text: "원재료명 부분")
+            roundedRectView.setText(text: "원재료명(Ingredients)")
             parent.scannerViewController.overlayContainerView.addSubview(roundedRectView)
             roundBoxMappings[item.id] = roundedRectView
         }

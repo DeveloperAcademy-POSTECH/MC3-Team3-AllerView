@@ -1,8 +1,8 @@
 //
 //  RoundedRectLabel.swift
-//  SimpleScanner
+//  AllerView
 //
-//  Created by ASAHI-GH22011 on 2023/05/05.
+//  Created by Eojin Choi on 2023/08/05.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ class RoundedRectLabel: UIView {
         
         // Configure the label
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textAlignment = .left
         label.numberOfLines = 0
         label.text = text
@@ -36,9 +36,9 @@ class RoundedRectLabel: UIView {
         ])
         
         // Configure the background
-        backgroundColor = .magenta
+        backgroundColor = .orange
         layer.cornerRadius = cornerRadius
-        layer.opacity = 0.75
+        layer.opacity = 0.6
     }
     
     func setText(text: String) {

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		46ADDE702A7D6E9800D4F8C1 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */; };
 		46ADDE712A7D6E9800D4F8C1 /* RoundedRectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */; };
-		46ADDE722A7D6E9800D4F8C1 /* RoundedRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE6F2A7D6E9800D4F8C1 /* RoundedRectView.swift */; };
 		5E1421112A700262004A2AD8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421102A700262004A2AD8 /* MainView.swift */; };
 		5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421132A7104CD004A2AD8 /* VisionUtility.swift */; };
 		5E1421232A710793004A2AD8 /* VisionUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */; };
@@ -61,7 +60,6 @@
 /* Begin PBXFileReference section */
 		46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectLabel.swift; sourceTree = "<group>"; };
-		46ADDE6F2A7D6E9800D4F8C1 /* RoundedRectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectView.swift; sourceTree = "<group>"; };
 		5E1421102A700262004A2AD8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5E1421132A7104CD004A2AD8 /* VisionUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtility.swift; sourceTree = "<group>"; };
 		5E1421192A710701004A2AD8 /* AllerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,7 +187,6 @@
 			children = (
 				46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */,
 				46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */,
-				46ADDE6F2A7D6E9800D4F8C1 /* RoundedRectView.swift */,
 				DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */,
 			);
 			path = Model;
@@ -424,7 +421,6 @@
 				92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */,
 				DBA6CDF92A7AF256001888DF /* Chat.swift in Sources */,
 				DB5ECDC12A5FD7780091E9E3 /* AllergyDetailView.swift in Sources */,
-				46ADDE722A7D6E9800D4F8C1 /* RoundedRectView.swift in Sources */,
 				DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */,
 				DB9380B72A6660AC00A7C4C0 /* Product.swift in Sources */,
 				DBAB22BA2A77A1A1009FB939 /* LoadingView.swift in Sources */,
