@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E1421112A700262004A2AD8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421102A700262004A2AD8 /* MainView.swift */; };
 		5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421132A7104CD004A2AD8 /* VisionUtility.swift */; };
 		5E1421232A710793004A2AD8 /* VisionUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */; };
 		5E1421272A711CB3004A2AD8 /* ImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421262A711CB3004A2AD8 /* ImageCropView.swift */; };
@@ -53,7 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5E1421102A700262004A2AD8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5E1421132A7104CD004A2AD8 /* VisionUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtility.swift; sourceTree = "<group>"; };
 		5E1421192A710701004A2AD8 /* AllerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtilityTests.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				92D5AE992A5FE22900D30288 /* ContentView.swift */,
 				DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */,
 				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
-				5E1421102A700262004A2AD8 /* MainView.swift */,
 				5E1421262A711CB3004A2AD8 /* ImageCropView.swift */,
 				DB818DC02A729C0B000C1579 /* ScannerView.swift */,
 				DBAB22B92A77A1A1009FB939 /* LoadingView.swift */,
@@ -370,7 +367,6 @@
 				DB818DC12A729C0B000C1579 /* ScannerView.swift in Sources */,
 				DB23A1E62A6E5DB0002E0A8B /* Color+Custom.swift in Sources */,
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
-				5E1421112A700262004A2AD8 /* MainView.swift in Sources */,
 				5EA8D2382A7AD86500DB8E2D /* TextUtility.swift in Sources */,
 				DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */,
 				DB6AA9882A72B7C700E86884 /* GPTViewModel.swift in Sources */,
