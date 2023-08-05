@@ -11,7 +11,7 @@ import Vision
 
 struct ScannerView: View {
     @StateObject private var camera = CameraViewModel()
-    @ObservedObject var gptModel: GPTModel
+    @ObservedObject var gptModel: GPTViewModel
 
     @Binding var isSheetPresented: Bool
 

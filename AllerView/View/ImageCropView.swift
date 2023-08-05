@@ -9,7 +9,7 @@ import SwiftUI
 struct ImageCropView: View {
     @Environment(\.dismiss) private var dismiss
     
-    @ObservedObject var gptModel: GPTModel
+    @ObservedObject var gptModel: GPTViewModel
     
     @State private var topLeft = CGSize(width: 100, height: 100)
     @State private var topRight = CGSize(width: 300, height: 100)

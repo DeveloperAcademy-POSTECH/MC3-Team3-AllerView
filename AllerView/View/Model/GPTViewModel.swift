@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class GPTModel: ObservableObject {
+class GPTViewModel: ObservableObject {
     var allergies: String = ""
     var scannedData: String = ""
 

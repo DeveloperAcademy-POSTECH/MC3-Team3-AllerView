@@ -28,7 +28,7 @@
 		DB5ECDC12A5FD7780091E9E3 /* AllergyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */; };
 		DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */; };
 		DB6AA9832A72B76100E86884 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9822A72B76100E86884 /* Service.swift */; };
-		DB6AA9882A72B7C700E86884 /* GPTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9872A72B7C700E86884 /* GPTModel.swift */; };
+		DB6AA9882A72B7C700E86884 /* GPTViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */; };
 		DB6AA98B2A72B83300E86884 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DB6AA98A2A72B83300E86884 /* Alamofire */; };
 		DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */; };
 		DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */; };
@@ -77,7 +77,7 @@
 		DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyDetailView.swift; sourceTree = "<group>"; };
 		DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Custom.swift"; sourceTree = "<group>"; };
 		DB6AA9822A72B76100E86884 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		DB6AA9872A72B7C700E86884 /* GPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTModel.swift; sourceTree = "<group>"; };
+		DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTViewModel.swift; sourceTree = "<group>"; };
 		DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		DB7AB8872A5BE2D50074CBBF /* AllerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllerViewApp.swift; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		DB6AA9862A72B7AE00E86884 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DB6AA9872A72B7C700E86884 /* GPTModel.swift */,
+				DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */,
 				DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */,
 			);
 			path = Model;
@@ -397,7 +397,7 @@
 				5E1421112A700262004A2AD8 /* MainView.swift in Sources */,
 				5EA8D2382A7AD86500DB8E2D /* TextUtility.swift in Sources */,
 				DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */,
-				DB6AA9882A72B7C700E86884 /* GPTModel.swift in Sources */,
+				DB6AA9882A72B7C700E86884 /* GPTViewModel.swift in Sources */,
 				5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,
 				5E1421292A723A86004A2AD8 /* ImageUtility.swift in Sources */,
