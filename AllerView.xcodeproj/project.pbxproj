@@ -27,7 +27,7 @@
 		DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */; };
 		DB5ECDC12A5FD7780091E9E3 /* AllergyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */; };
 		DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */; };
-		DB6AA9832A72B76100E86884 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9822A72B76100E86884 /* OpenAIService.swift */; };
+		DB6AA9832A72B76100E86884 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9822A72B76100E86884 /* Service.swift */; };
 		DB6AA9882A72B7C700E86884 /* GPTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9872A72B7C700E86884 /* GPTModel.swift */; };
 		DB6AA98B2A72B83300E86884 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DB6AA98A2A72B83300E86884 /* Alamofire */; };
 		DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */; };
@@ -76,8 +76,8 @@
 		DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyword+CoreData.swift"; sourceTree = "<group>"; };
 		DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyDetailView.swift; sourceTree = "<group>"; };
 		DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Custom.swift"; sourceTree = "<group>"; };
-		DB6AA9822A72B76100E86884 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
-		DB6AA9872A72B7C700E86884 /* GPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GPTModel.swift; path = ../View/Model/GPTModel.swift; sourceTree = "<group>"; };
+		DB6AA9822A72B76100E86884 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		DB6AA9872A72B7C700E86884 /* GPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTModel.swift; sourceTree = "<group>"; };
 		DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		DB7AB8872A5BE2D50074CBBF /* AllerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllerViewApp.swift; sourceTree = "<group>"; };
@@ -172,7 +172,6 @@
 		DB6AA9812A72B75800E86884 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				DB6AA9822A72B76100E86884 /* OpenAIService.swift */,
 				DB58C5BF2A7305EE00B903DF /* SecretKey.plist */,
 			);
 			path = Service;
@@ -181,6 +180,7 @@
 		DB6AA9862A72B7AE00E86884 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DB6AA9872A72B7C700E86884 /* GPTModel.swift */,
 				DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */,
 			);
 			path = Model;
@@ -235,7 +235,6 @@
 		DB9380B52A6660A400A7C4C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DB6AA9872A72B7C700E86884 /* GPTModel.swift */,
 				DB9380B62A6660AC00A7C4C0 /* Product.swift */,
 				DB23A1E32A6E5A1A002E0A8B /* GPTResult.swift */,
 			);
@@ -253,6 +252,7 @@
 		DBA6CDF12A7AEB22001888DF /* OpenAI */ = {
 			isa = PBXGroup;
 			children = (
+				DB6AA9822A72B76100E86884 /* Service.swift */,
 				DBA6CDF82A7AF256001888DF /* Chat.swift */,
 			);
 			path = OpenAI;
@@ -406,7 +406,7 @@
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
 				DB23A1E42A6E5A1A002E0A8B /* GPTResult.swift in Sources */,
 				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
-				DB6AA9832A72B76100E86884 /* OpenAIService.swift in Sources */,
+				DB6AA9832A72B76100E86884 /* Service.swift in Sources */,
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
 				DBA6CDF72A7AEDB3001888DF /* Bundle+Ext.swift in Sources */,
 				DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */,
@@ -589,7 +589,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
 				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -622,7 +621,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = 2ZA4H6HG9F;
 				DEVELOPMENT_TEAM = YZCVM66B66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
