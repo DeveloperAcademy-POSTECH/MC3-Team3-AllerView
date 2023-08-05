@@ -84,7 +84,7 @@ struct ScannerView: View {
                                 
                                 Button {
                                     isFlash.toggle()
-//                                    toggleTorch(on: isFlash)
+                                    scannerViewController.toggleTorch(on: isFlash)
                                 } label: {
                                     if isFlash {
                                         Image("icon_flash_on")

@@ -5,6 +5,7 @@
 //  Created by Eojin Choi on 2023/08/05.
 //
 
+import AVFoundation
 import SwiftUI
 import Vision
 import VisionKit
@@ -31,6 +32,28 @@ struct ScannerViewController: UIViewControllerRepresentable {
     var scannerAvailable: Bool {
         DataScannerViewController.isSupported &&
         DataScannerViewController.isAvailable
+    }
+    
+    func toggleTorch(on: Bool) {
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInTripleCamera, .builtInDualWideCamera, .builtInUltraWideCamera, .builtInWideAngleCamera, .builtInTrueDepthCamera], mediaType: AVMediaType.video, position: .back)
+        
+        guard let device = deviceDiscoverySession.devices.first else { return }
+        
+        if device.hasTorch && device.isTorchAvailable {
+            do {
+                try device.lockForConfiguration()
+                if on {
+                    try device.setTorchModeOn(level: 1.0) // adjust torch intensity here
+                } else {
+                    device.torchMode = .off
+                }
+                device.unlockForConfiguration()
+            } catch {
+                print("Torch could not be used")
+            }
+        } else {
+            print("Torch is not available")
+        }
     }
     
     func makeUIViewController(context: Context) -> DataScannerViewController {
