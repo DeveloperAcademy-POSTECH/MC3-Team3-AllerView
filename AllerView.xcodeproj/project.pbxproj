@@ -21,7 +21,6 @@
 		92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE9D2A64265E00D30288 /* Chip.swift */; };
 		DB23A1E42A6E5A1A002E0A8B /* GPTResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB23A1E32A6E5A1A002E0A8B /* GPTResult.swift */; };
 		DB23A1E62A6E5DB0002E0A8B /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB23A1E52A6E5DB0002E0A8B /* Color+Custom.swift */; };
-		DB58C5C02A7305EE00B903DF /* SecretKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB58C5BF2A7305EE00B903DF /* SecretKey.plist */; };
 		DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */; };
 		DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */; };
 		DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */; };
@@ -70,7 +69,6 @@
 		92D5AE9D2A64265E00D30288 /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		DB23A1E32A6E5A1A002E0A8B /* GPTResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTResult.swift; sourceTree = "<group>"; };
 		DB23A1E52A6E5DB0002E0A8B /* Color+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Custom.swift"; sourceTree = "<group>"; };
-		DB58C5BF2A7305EE00B903DF /* SecretKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SecretKey.plist; path = ../../../../Downloads/SecretKey.plist; sourceTree = "<group>"; };
 		DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewContext+Entity.swift"; sourceTree = "<group>"; };
 		DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyword+CoreData.swift"; sourceTree = "<group>"; };
@@ -91,6 +89,7 @@
 		DBA6CDF82A7AF256001888DF /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		DBAB22B92A77A1A1009FB939 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DBAB22BB2A77A661009FB939 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
+		FDBD5FD02A7E0CC5009B2581 /* SecretKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SecretKey.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +135,7 @@
 		DB19B3BB2A65109F00933C30 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DB19B3BC2A6510B100933C30 /* Component */,
 				DB6AA9862A72B7AE00E86884 /* Model */,
 				92D5AE992A5FE22900D30288 /* ContentView.swift */,
 				DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */,
@@ -167,14 +167,6 @@
 				DBA6CDF62A7AEDB3001888DF /* Bundle+Ext.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		DB6AA9812A72B75800E86884 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				DB58C5BF2A7305EE00B903DF /* SecretKey.plist */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		DB6AA9862A72B7AE00E86884 /* Model */ = {
@@ -209,10 +201,8 @@
 			children = (
 				DBA6CDF02A7AEB18001888DF /* Network */,
 				DBAB22B62A77A164009FB939 /* Resource */,
-				DB6AA9812A72B75800E86884 /* Service */,
 				5E1421122A710499004A2AD8 /* Utility */,
 				DB9380B52A6660A400A7C4C0 /* Model */,
-				DB19B3BC2A6510B100933C30 /* Component */,
 				DB19B3BB2A65109F00933C30 /* View */,
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
@@ -253,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				DB6AA9822A72B76100E86884 /* Service.swift */,
+				FDBD5FD02A7E0CC5009B2581 /* SecretKey.plist */,
 				DBA6CDF82A7AF256001888DF /* Chat.swift */,
 			);
 			path = OpenAI;
@@ -366,7 +357,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB58C5C02A7305EE00B903DF /* SecretKey.plist in Resources */,
 				DB7AB8922A5BE2D60074CBBF /* Preview Assets.xcassets in Resources */,
 				DB7AB88F2A5BE2D60074CBBF /* Assets.xcassets in Resources */,
 				5EA809B82A7AB44600666CDA /* Launch Screen.storyboard in Resources */,
