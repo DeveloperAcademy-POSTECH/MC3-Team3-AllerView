@@ -11,7 +11,7 @@ import WrappingHStack
 // MARK: - Property
 
 struct AllergyDetailView {
-    @ObservedObject var gptModel: GPTModel
+    @ObservedObject var gptModel: GPTViewModel
 }
 
 // MARK: - Views

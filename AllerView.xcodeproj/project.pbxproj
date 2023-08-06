@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		46ADDE702A7D6E9800D4F8C1 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */; };
 		46ADDE712A7D6E9800D4F8C1 /* RoundedRectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */; };
-		5E1421112A700262004A2AD8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421102A700262004A2AD8 /* MainView.swift */; };
 		5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421132A7104CD004A2AD8 /* VisionUtility.swift */; };
 		5E1421232A710793004A2AD8 /* VisionUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */; };
 		5E1421272A711CB3004A2AD8 /* ImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421262A711CB3004A2AD8 /* ImageCropView.swift */; };
@@ -21,16 +20,14 @@
 		924874DC2A723DC90076FA41 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 924874DB2A723DC90076FA41 /* WrappingHStack */; };
 		92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE992A5FE22900D30288 /* ContentView.swift */; };
 		92D5AE9E2A64265E00D30288 /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D5AE9D2A64265E00D30288 /* Chip.swift */; };
-		DB23A1E42A6E5A1A002E0A8B /* GPTResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB23A1E32A6E5A1A002E0A8B /* GPTResult.swift */; };
 		DB23A1E62A6E5DB0002E0A8B /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB23A1E52A6E5DB0002E0A8B /* Color+Custom.swift */; };
-		DB58C5C02A7305EE00B903DF /* SecretKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB58C5BF2A7305EE00B903DF /* SecretKey.plist */; };
 		DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */; };
 		DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */; };
 		DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */; };
 		DB5ECDC12A5FD7780091E9E3 /* AllergyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */; };
 		DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */; };
-		DB6AA9832A72B76100E86884 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9822A72B76100E86884 /* OpenAIService.swift */; };
-		DB6AA9882A72B7C700E86884 /* GPTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9872A72B7C700E86884 /* GPTModel.swift */; };
+		DB6AA9832A72B76100E86884 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9822A72B76100E86884 /* Service.swift */; };
+		DB6AA9882A72B7C700E86884 /* GPTViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */; };
 		DB6AA98B2A72B83300E86884 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DB6AA98A2A72B83300E86884 /* Alamofire */; };
 		DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */; };
 		DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */; };
@@ -39,7 +36,6 @@
 		DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8932A5BE2D60074CBBF /* Persistence.swift */; };
 		DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB8952A5BE2D60074CBBF /* AllerView.xcdatamodeld */; };
 		DB818DC12A729C0B000C1579 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB818DC02A729C0B000C1579 /* ScannerView.swift */; };
-		DB9380B72A6660AC00A7C4C0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9380B62A6660AC00A7C4C0 /* Product.swift */; };
 		DBA6CDF72A7AEDB3001888DF /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6CDF62A7AEDB3001888DF /* Bundle+Ext.swift */; };
 		DBA6CDF92A7AF256001888DF /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6CDF82A7AF256001888DF /* Chat.swift */; };
 		DBAB22B52A77A15D009FB939 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = DBAB22B42A77A15D009FB939 /* Lottie */; };
@@ -60,7 +56,6 @@
 /* Begin PBXFileReference section */
 		46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectLabel.swift; sourceTree = "<group>"; };
-		5E1421102A700262004A2AD8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5E1421132A7104CD004A2AD8 /* VisionUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtility.swift; sourceTree = "<group>"; };
 		5E1421192A710701004A2AD8 /* AllerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtilityTests.swift; sourceTree = "<group>"; };
@@ -72,16 +67,14 @@
 		5EA8D2392A7AD9A400DB8E2D /* TextUtilityTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtilityTest.swift; sourceTree = "<group>"; };
 		92D5AE992A5FE22900D30288 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		92D5AE9D2A64265E00D30288 /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
-		DB23A1E32A6E5A1A002E0A8B /* GPTResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTResult.swift; sourceTree = "<group>"; };
 		DB23A1E52A6E5DB0002E0A8B /* Color+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Custom.swift"; sourceTree = "<group>"; };
-		DB58C5BF2A7305EE00B903DF /* SecretKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SecretKey.plist; path = ../../../../Downloads/SecretKey.plist; sourceTree = "<group>"; };
 		DB5ECDB72A5E86670091E9E3 /* User+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		DB5ECDB92A5E8A370091E9E3 /* ViewContext+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewContext+Entity.swift"; sourceTree = "<group>"; };
 		DB5ECDBD2A5ED5A90091E9E3 /* Keyword+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keyword+CoreData.swift"; sourceTree = "<group>"; };
 		DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyDetailView.swift; sourceTree = "<group>"; };
 		DB5ECDC22A5FDCD60091E9E3 /* Font+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Custom.swift"; sourceTree = "<group>"; };
-		DB6AA9822A72B76100E86884 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
-		DB6AA9872A72B7C700E86884 /* GPTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GPTModel.swift; path = ../View/Model/GPTModel.swift; sourceTree = "<group>"; };
+		DB6AA9822A72B76100E86884 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTViewModel.swift; sourceTree = "<group>"; };
 		DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		DB7AB8872A5BE2D50074CBBF /* AllerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllerViewApp.swift; sourceTree = "<group>"; };
@@ -90,11 +83,11 @@
 		DB7AB8932A5BE2D60074CBBF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DB7AB8962A5BE2D60074CBBF /* AllerView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AllerView.xcdatamodel; sourceTree = "<group>"; };
 		DB818DC02A729C0B000C1579 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
-		DB9380B62A6660AC00A7C4C0 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		DBA6CDF62A7AEDB3001888DF /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
 		DBA6CDF82A7AF256001888DF /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		DBAB22B92A77A1A1009FB939 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DBAB22BB2A77A661009FB939 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
+		FDBD5FD02A7E0CC5009B2581 /* SecretKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SecretKey.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,11 +133,11 @@
 		DB19B3BB2A65109F00933C30 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DB19B3BC2A6510B100933C30 /* Component */,
 				DB6AA9862A72B7AE00E86884 /* Model */,
 				92D5AE992A5FE22900D30288 /* ContentView.swift */,
 				DB5ECDC02A5FD7780091E9E3 /* AllergyDetailView.swift */,
 				5E4007782A5FD15500CE3739 /* AllergySearchView.swift */,
-				5E1421102A700262004A2AD8 /* MainView.swift */,
 				5E1421262A711CB3004A2AD8 /* ImageCropView.swift */,
 				DB818DC02A729C0B000C1579 /* ScannerView.swift */,
 				DBAB22B92A77A1A1009FB939 /* LoadingView.swift */,
@@ -173,20 +166,12 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		DB6AA9812A72B75800E86884 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				DB6AA9822A72B76100E86884 /* OpenAIService.swift */,
-				DB58C5BF2A7305EE00B903DF /* SecretKey.plist */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		DB6AA9862A72B7AE00E86884 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */,
 				46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */,
+				DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */,
 				DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */,
 			);
 			path = Model;
@@ -215,10 +200,7 @@
 			children = (
 				DBA6CDF02A7AEB18001888DF /* Network */,
 				DBAB22B62A77A164009FB939 /* Resource */,
-				DB6AA9812A72B75800E86884 /* Service */,
 				5E1421122A710499004A2AD8 /* Utility */,
-				DB9380B52A6660A400A7C4C0 /* Model */,
-				DB19B3BC2A6510B100933C30 /* Component */,
 				DB19B3BB2A65109F00933C30 /* View */,
 				DB5ECDB62A5E86470091E9E3 /* Extension */,
 				DB7AB88A2A5BE2D50074CBBF /* AllerViewApp.swift */,
@@ -238,16 +220,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		DB9380B52A6660A400A7C4C0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				DB6AA9872A72B7C700E86884 /* GPTModel.swift */,
-				DB9380B62A6660AC00A7C4C0 /* Product.swift */,
-				DB23A1E32A6E5A1A002E0A8B /* GPTResult.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		DBA6CDF02A7AEB18001888DF /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +231,8 @@
 		DBA6CDF12A7AEB22001888DF /* OpenAI */ = {
 			isa = PBXGroup;
 			children = (
+				DB6AA9822A72B76100E86884 /* Service.swift */,
+				FDBD5FD02A7E0CC5009B2581 /* SecretKey.plist */,
 				DBA6CDF82A7AF256001888DF /* Chat.swift */,
 			);
 			path = OpenAI;
@@ -372,7 +346,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB58C5C02A7305EE00B903DF /* SecretKey.plist in Resources */,
 				DB7AB8922A5BE2D60074CBBF /* Preview Assets.xcassets in Resources */,
 				DB7AB88F2A5BE2D60074CBBF /* Assets.xcassets in Resources */,
 				5EA809B82A7AB44600666CDA /* Launch Screen.storyboard in Resources */,
@@ -401,10 +374,9 @@
 				DB818DC12A729C0B000C1579 /* ScannerView.swift in Sources */,
 				DB23A1E62A6E5DB0002E0A8B /* Color+Custom.swift in Sources */,
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
-				5E1421112A700262004A2AD8 /* MainView.swift in Sources */,
 				5EA8D2382A7AD86500DB8E2D /* TextUtility.swift in Sources */,
 				DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */,
-				DB6AA9882A72B7C700E86884 /* GPTModel.swift in Sources */,
+				DB6AA9882A72B7C700E86884 /* GPTViewModel.swift in Sources */,
 				5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,
 				5E1421292A723A86004A2AD8 /* ImageUtility.swift in Sources */,
@@ -412,9 +384,8 @@
 				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
-				DB23A1E42A6E5A1A002E0A8B /* GPTResult.swift in Sources */,
 				DB5ECDBE2A5ED5A90091E9E3 /* Keyword+CoreData.swift in Sources */,
-				DB6AA9832A72B76100E86884 /* OpenAIService.swift in Sources */,
+				DB6AA9832A72B76100E86884 /* Service.swift in Sources */,
 				DB5ECDBA2A5E8A370091E9E3 /* ViewContext+Entity.swift in Sources */,
 				DBA6CDF72A7AEDB3001888DF /* Bundle+Ext.swift in Sources */,
 				DB5ECDB82A5E86670091E9E3 /* User+CoreData.swift in Sources */,
@@ -422,7 +393,6 @@
 				DBA6CDF92A7AF256001888DF /* Chat.swift in Sources */,
 				DB5ECDC12A5FD7780091E9E3 /* AllergyDetailView.swift in Sources */,
 				DB5ECDC32A5FDCD60091E9E3 /* Font+Custom.swift in Sources */,
-				DB9380B72A6660AC00A7C4C0 /* Product.swift in Sources */,
 				DBAB22BA2A77A1A1009FB939 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

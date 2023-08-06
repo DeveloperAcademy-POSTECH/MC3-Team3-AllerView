@@ -10,7 +10,7 @@ import SwiftUI
 import Vision
 
 struct ScannerView: View {
-    @ObservedObject var gptModel: GPTModel
+    @ObservedObject var gptModel: GPTViewModel
 
     @Binding var isSheetPresented: Bool
 
