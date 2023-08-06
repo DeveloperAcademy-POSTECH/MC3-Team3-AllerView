@@ -14,7 +14,7 @@ struct ContentView {
     @Environment(\.dismiss) var dismiss
     @AppStorage("isFirst") var isFirst = true
 
-    @StateObject private var gptModel = GPTModel()
+    @StateObject private var gptModel = GPTViewModel()
     @State private var isSheetPresented: Bool = false
 
     // MARK: - Fetch CoreData
