@@ -41,6 +41,7 @@
 		DBAB22B52A77A15D009FB939 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = DBAB22B42A77A15D009FB939 /* Lottie */; };
 		DBAB22BA2A77A1A1009FB939 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB22B92A77A1A1009FB939 /* LoadingView.swift */; };
 		DBAB22BC2A77A661009FB939 /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = DBAB22BB2A77A661009FB939 /* Loading.json */; };
+		FD0CC0EC2A86C7A3006C702B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0CC0EB2A86C7A3006C702B /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		DBA6CDF82A7AF256001888DF /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		DBAB22B92A77A1A1009FB939 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DBAB22BB2A77A661009FB939 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
+		FD0CC0EB2A86C7A3006C702B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FDBD5FD02A7E0CC5009B2581 /* SecretKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SecretKey.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 				5E1421262A711CB3004A2AD8 /* ImageCropView.swift */,
 				DB818DC02A729C0B000C1579 /* ScannerView.swift */,
 				DBAB22B92A77A1A1009FB939 /* LoadingView.swift */,
+				FD0CC0EB2A86C7A3006C702B /* OnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,
 				5E1421292A723A86004A2AD8 /* ImageUtility.swift in Sources */,
+				FD0CC0EC2A86C7A3006C702B /* OnboardingView.swift in Sources */,
 				46ADDE702A7D6E9800D4F8C1 /* ScannerViewController.swift in Sources */,
 				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
