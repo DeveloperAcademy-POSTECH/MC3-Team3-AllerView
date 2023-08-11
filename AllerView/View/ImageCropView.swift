@@ -26,7 +26,7 @@ struct ImageCropView: View {
     @State private var boundingBoxes: [CGRect] = []
     
     // 전 뷰에서 넘어온 이미지가 들어올 곳
-    @Binding var picData: Data
+    @Binding var picData: UIImage?
     @Binding var isSheetPresented: Bool
     
     let keywords: FetchedResults<Keyword>
@@ -34,7 +34,7 @@ struct ImageCropView: View {
     var body: some View {
         ZStack {
             GeometryReader { geometry in
-                if let originalImage = UIImage(data: picData) {
+                if let originalImage = picData {
                     let image = ImageUtility.cropImageByViewRatio(for: originalImage, in: geometry)
                     
                     // MARK: Image Area

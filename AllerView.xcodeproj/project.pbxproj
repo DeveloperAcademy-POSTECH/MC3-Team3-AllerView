@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46ADDE702A7D6E9800D4F8C1 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */; };
+		46ADDE712A7D6E9800D4F8C1 /* RoundedRectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */; };
 		5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421132A7104CD004A2AD8 /* VisionUtility.swift */; };
 		5E1421232A710793004A2AD8 /* VisionUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */; };
 		5E1421272A711CB3004A2AD8 /* ImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421262A711CB3004A2AD8 /* ImageCropView.swift */; };
@@ -52,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectLabel.swift; sourceTree = "<group>"; };
 		5E1421132A7104CD004A2AD8 /* VisionUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtility.swift; sourceTree = "<group>"; };
 		5E1421192A710701004A2AD8 /* AllerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtilityTests.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 		DB6AA9862A72B7AE00E86884 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */,
+				46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */,
 				DB6AA9872A72B7C700E86884 /* GPTViewModel.swift */,
 				DB6AA98C2A72BA8100E86884 /* CameraViewModel.swift */,
 			);
@@ -363,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46ADDE712A7D6E9800D4F8C1 /* RoundedRectLabel.swift in Sources */,
 				5E1421272A711CB3004A2AD8 /* ImageCropView.swift in Sources */,
 				DB818DC12A729C0B000C1579 /* ScannerView.swift in Sources */,
 				DB23A1E62A6E5DB0002E0A8B /* Color+Custom.swift in Sources */,
@@ -373,6 +380,7 @@
 				5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */,
 				92D5AE9A2A5FE22900D30288 /* ContentView.swift in Sources */,
 				5E1421292A723A86004A2AD8 /* ImageUtility.swift in Sources */,
+				46ADDE702A7D6E9800D4F8C1 /* ScannerViewController.swift in Sources */,
 				5E40077A2A5FD15500CE3739 /* AllergySearchView.swift in Sources */,
 				DB7AB8972A5BE2D60074CBBF /* AllerView.xcdatamodeld in Sources */,
 				DB7AB88B2A5BE2D50074CBBF /* AllerViewApp.swift in Sources */,
@@ -559,7 +567,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = YZCVM66B66;
+				DEVELOPMENT_TEAM = XKDG839GBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
@@ -591,7 +599,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = YZCVM66B66;
+				DEVELOPMENT_TEAM = XKDG839GBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";

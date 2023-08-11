@@ -10,18 +10,23 @@ import SwiftUI
 import Vision
 
 struct ScannerView: View {
-    @StateObject private var camera = CameraViewModel()
     @ObservedObject var gptModel: GPTViewModel
 
     @Binding var isSheetPresented: Bool
 
     let keywords: FetchedResults<Keyword>
+    
+    @State private var picData: UIImage?
+    @State var isFlash: Bool = false
+    
+    var scannerViewController = ScannerViewController()
 
     var body: some View {
         ZStack {
             // MARK: Camera Previews
-            CameraPreview(camera: camera)
+            scannerViewController
                 .ignoresSafeArea()
+
             VStack {
                 Spacer()
                 
@@ -47,7 +52,7 @@ struct ScannerView: View {
                         ZStack {
                             
                             NavigationLink {
-                                ImageCropView(gptModel: gptModel, picData: $camera.picData, isSheetPresented: $isSheetPresented, keywords: keywords)
+                                ImageCropView(gptModel: gptModel, picData: $picData, isSheetPresented: $isSheetPresented, keywords: keywords)
                                     .navigationBarHidden(true)
                             } label: {
                                 ZStack {
@@ -61,7 +66,16 @@ struct ScannerView: View {
                                 }
                             }
                             .simultaneousGesture(TapGesture().onEnded {
-                                camera.takePic()
+//                                camera.takePic()
+                                Task {
+                                    do {
+                                        picData = try await scannerViewController.scannerViewController.capturePhoto()
+                                    } catch {
+                                        // Handle the error if needed
+                                        print("Error capturing photo: \(error)")
+                                    }
+                                    scannerViewController.scannerViewController.stopScanning()
+                                }
                             })
                             
                             HStack {
@@ -69,10 +83,10 @@ struct ScannerView: View {
                                 Spacer()
                                 
                                 Button {
-                                    camera.isFlash.toggle()
-                                    camera.toggleTorch(on: camera.isFlash)
+                                    isFlash.toggle()
+                                    scannerViewController.toggleTorch(on: isFlash)
                                 } label: {
-                                    if camera.isFlash {
+                                    if isFlash {
                                         Image("icon_flash_on")
                                     } else {
                                         Image("icon_flash_off")
@@ -88,33 +102,7 @@ struct ScannerView: View {
             .ignoresSafeArea()
         }
         .onAppear {
-            camera.check()
-            camera.reTake()
+            try? scannerViewController.scannerViewController.startScanning()
         }
-    }
-}
-
-extension ScannerView {
-    struct CameraPreview: UIViewRepresentable {
-        @ObservedObject var camera: CameraViewModel
-
-        func makeUIView(context _: Context) -> some UIView {
-            let view = UIView(frame: UIScreen.main.bounds)
-
-            DispatchQueue.main.async {
-                camera.preview = AVCaptureVideoPreviewLayer(session: camera.session)
-                camera.preview.frame = view.frame
-
-                camera.preview.videoGravity = .resizeAspectFill
-                view.layer.addSublayer(camera.preview)
-            }
-            Task.detached(priority: .background) {
-                await camera.session.startRunning()
-            }
-
-            return view
-        }
-
-        func updateUIView(_: UIViewType, context _: Context) {}
     }
 }
