@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		46ADDE702A7D6E9800D4F8C1 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */; };
 		46ADDE712A7D6E9800D4F8C1 /* RoundedRectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */; };
+		46ADDE7A2A8C397900D4F8C1 /* SecretKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46ADDE792A8C397900D4F8C1 /* SecretKey.plist */; };
+		46ADDE7C2A8C39FF00D4F8C1 /* HapticUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE7B2A8C39FF00D4F8C1 /* HapticUtility.swift */; };
 		5E1421142A7104CD004A2AD8 /* VisionUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421132A7104CD004A2AD8 /* VisionUtility.swift */; };
 		5E1421232A710793004A2AD8 /* VisionUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */; };
 		5E1421272A711CB3004A2AD8 /* ImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1421262A711CB3004A2AD8 /* ImageCropView.swift */; };
@@ -56,6 +58,8 @@
 /* Begin PBXFileReference section */
 		46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectLabel.swift; sourceTree = "<group>"; };
+		46ADDE792A8C397900D4F8C1 /* SecretKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SecretKey.plist; path = ../../../../../Downloads/SecretKey.plist; sourceTree = "<group>"; };
+		46ADDE7B2A8C39FF00D4F8C1 /* HapticUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticUtility.swift; sourceTree = "<group>"; };
 		5E1421132A7104CD004A2AD8 /* VisionUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtility.swift; sourceTree = "<group>"; };
 		5E1421192A710701004A2AD8 /* AllerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E1421222A710793004A2AD8 /* VisionUtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionUtilityTests.swift; sourceTree = "<group>"; };
@@ -87,7 +91,6 @@
 		DBA6CDF82A7AF256001888DF /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		DBAB22B92A77A1A1009FB939 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DBAB22BB2A77A661009FB939 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
-		FDBD5FD02A7E0CC5009B2581 /* SecretKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SecretKey.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,7 @@
 				5E1421132A7104CD004A2AD8 /* VisionUtility.swift */,
 				5E1421282A723A86004A2AD8 /* ImageUtility.swift */,
 				5EA8D2372A7AD86500DB8E2D /* TextUtility.swift */,
+				46ADDE7B2A8C39FF00D4F8C1 /* HapticUtility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -231,8 +235,8 @@
 		DBA6CDF12A7AEB22001888DF /* OpenAI */ = {
 			isa = PBXGroup;
 			children = (
+				46ADDE792A8C397900D4F8C1 /* SecretKey.plist */,
 				DB6AA9822A72B76100E86884 /* Service.swift */,
-				FDBD5FD02A7E0CC5009B2581 /* SecretKey.plist */,
 				DBA6CDF82A7AF256001888DF /* Chat.swift */,
 			);
 			path = OpenAI;
@@ -347,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7AB8922A5BE2D60074CBBF /* Preview Assets.xcassets in Resources */,
+				46ADDE7A2A8C397900D4F8C1 /* SecretKey.plist in Resources */,
 				DB7AB88F2A5BE2D60074CBBF /* Assets.xcassets in Resources */,
 				5EA809B82A7AB44600666CDA /* Launch Screen.storyboard in Resources */,
 				DBAB22BC2A77A661009FB939 /* Loading.json in Resources */,
@@ -374,6 +379,7 @@
 				DB818DC12A729C0B000C1579 /* ScannerView.swift in Sources */,
 				DB23A1E62A6E5DB0002E0A8B /* Color+Custom.swift in Sources */,
 				DB7AB8942A5BE2D60074CBBF /* Persistence.swift in Sources */,
+				46ADDE7C2A8C39FF00D4F8C1 /* HapticUtility.swift in Sources */,
 				5EA8D2382A7AD86500DB8E2D /* TextUtility.swift in Sources */,
 				DB6AA98D2A72BA8100E86884 /* CameraViewModel.swift in Sources */,
 				DB6AA9882A72B7C700E86884 /* GPTViewModel.swift in Sources */,
