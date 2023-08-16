@@ -20,6 +20,8 @@ struct ScannerView: View {
     @State var isFlash: Bool = false
     
     var scannerViewController = ScannerViewController()
+    
+    let hapticManager = HapticUtility.instance
 
     var body: some View {
         ZStack {
@@ -66,6 +68,8 @@ struct ScannerView: View {
                                 }
                             }
                             .simultaneousGesture(TapGesture().onEnded {
+                                hapticManager.impact(style: .light)
+                                
 //                                camera.takePic()
                                 Task {
                                     do {
@@ -85,6 +89,7 @@ struct ScannerView: View {
                                 Button {
                                     isFlash.toggle()
                                     scannerViewController.toggleTorch(on: isFlash)
+                                    hapticManager.impact(style: .light)
                                 } label: {
                                     if isFlash {
                                         Image("icon_flash_on")
