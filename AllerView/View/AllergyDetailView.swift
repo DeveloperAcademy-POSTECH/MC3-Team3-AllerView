@@ -12,6 +12,8 @@ import WrappingHStack
 
 struct AllergyDetailView {
     @ObservedObject var gptModel: GPTViewModel
+    
+    let hapticManager = HapticUtility.instance
 }
 
 // MARK: - Views
@@ -39,8 +41,14 @@ extension AllergyDetailView: View {
 
                             if let responseData = gptModel.gptResponse {
                                 DetailBodyView(responseData)
+                                    .onAppear {
+                                        hapticManager.notification(type: .success)
+                                    }
                             } else if gptModel.isFailed {
                                 FailView()
+                                    .onAppear {
+                                        hapticManager.notification(type: .error)
+                                    }
                             } else {
                                 LoadingView()
                                     .padding(20)
