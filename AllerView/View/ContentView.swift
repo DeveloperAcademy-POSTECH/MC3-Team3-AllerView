@@ -5,6 +5,7 @@
 //  Created by Hyemi on 2023/07/10.
 //
 
+import AVFoundation
 import SwiftUI
 
 // MARK: - Properties
@@ -16,6 +17,7 @@ struct ContentView {
 
     @StateObject private var gptModel = GPTViewModel()
     @State private var isSheetPresented: Bool = false
+    @State private var cameraPermissionGranted: Bool = false
 
     // MARK: - Fetch CoreData
 
@@ -30,6 +32,10 @@ struct ContentView {
         sortDescriptors: [NSSortDescriptor(keyPath: \Keyword.createdAt, ascending: false)]
     )
     var keywords: FetchedResults<Keyword>
+    
+    var cameraAuthorizationStatus: AVAuthorizationStatus {
+        return AVCaptureDevice.authorizationStatus(for: .video)
+    }
 }
 
 // MARK: - Views
@@ -37,7 +43,10 @@ struct ContentView {
 extension ContentView: View {
     var body: some View {
         ZStack {
-            if isFirst {
+            // notdetermined 처리!!!!!!
+            if !cameraPermissionGranted || cameraAuthorizationStatus == .denied || cameraAuthorizationStatus == .restricted {
+                OnboardingView()
+            } else if isFirst {
                 AllergySearchView(user: users.first, keywords: keywords)
             } else {
                 ScannerView(gptModel: gptModel, isSheetPresented: $isSheetPresented, keywords: keywords)
@@ -69,6 +78,16 @@ extension ContentView: View {
         .onAppear {
             if users.isEmpty {
                 viewContext.createUser(name: "user")
+            }
+            
+            if cameraAuthorizationStatus == .notDetermined {
+                AVCaptureDevice.requestAccess(for: .video) { granted in
+                    DispatchQueue.main.async {
+                        cameraPermissionGranted = granted
+                    }
+                }
+            } else if cameraAuthorizationStatus == .authorized {
+                cameraPermissionGranted = true
             }
         }
     }
