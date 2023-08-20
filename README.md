@@ -25,8 +25,8 @@
 <br />
 
 <div align="center">
-    <img height="20" src="https://img.shields.io/badge/IOS-15%2B-orange" />
-    <img height="20" src="https://img.shields.io/badge/Xcode-15.3-blue" />
+    <img height="20" src="https://img.shields.io/badge/IOS-16.1%2B-orange" />
+    <img height="20" src="https://img.shields.io/badge/Xcode-14.3-blue" />
     <img height="20" src="https://img.shields.io/badge/Platform-IOS-silver" />
 </div>
 
@@ -34,9 +34,15 @@
 
 ![main image](https://github.com/DeveloperAcademy-POSTECH/MC3-Team3-AllerView/assets/6462456/7fcdfaa9-a4db-4250-99f3-fd5b54b2b958)
 
+<br />
+
 ## Features
 
-...
+![feature #1](https://github.com/DeveloperAcademy-POSTECH/MC3-Team3-AllerView/assets/6462456/a1aee7a9-403f-417f-b77a-941e298a87d6)
+![feature #2](https://github.com/DeveloperAcademy-POSTECH/MC3-Team3-AllerView/assets/6462456/e955e6c0-706f-402f-bd83-1e3084279bdc)
+![feature #3](https://github.com/DeveloperAcademy-POSTECH/MC3-Team3-AllerView/assets/6462456/78b9fa23-2cb5-4f9d-b97b-472a3d800406)
+
+<br />
 
 ## Tech Stacks
 
@@ -47,6 +53,8 @@
 - AVFoundation
 - CoreData
 - OpenAI API _(ChatGPT)_
+
+<br />
 
 ## Convention
 
@@ -87,10 +95,57 @@ ex) feat/#37  refactor/#40  docs/#91
 **test**: Adding missing tests or correcting existing tests
 ```
 
+<br />
+
 ## Team
 
-
-| Huckleberry | Jerry | Miro | Poodle | Snack | Woody |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| <img src="https://github.com/DeveloperAcademy-POSTECH/MC2-Team5-Snooze/assets/81157265/f1b312ed-f76c-4ea4-85d0-57d2ab435a3c" /> | <img src="https://github.com/DeveloperAcademy-POSTECH/MC2-Team5-Snooze/assets/81157265/f1b312ed-f76c-4ea4-85d0-57d2ab435a3c" /> | <img src="https://github.com/DeveloperAcademy-POSTECH/MC2-Team5-Snooze/assets/81157265/f1b312ed-f76c-4ea4-85d0-57d2ab435a3c" /> | <img src="https://github.com/DeveloperAcademy-POSTECH/MC2-Team5-Snooze/assets/81157265/f1b312ed-f76c-4ea4-85d0-57d2ab435a3c" /> | <img src="https://github.com/DeveloperAcademy-POSTECH/MC2-Team5-Snooze/assets/81157265/f1b312ed-f76c-4ea4-85d0-57d2ab435a3c" /> | <img src="https://github.com/DeveloperAcademy-POSTECH/MC2-Team5-Snooze/assets/81157265/f1b312ed-f76c-4ea4-85d0-57d2ab435a3c" /> |
-| Tech | Design | PM | Tech | Tech | Tech |                             
+<table>
+    <tr align="center">
+        <td><strong>Huckleberry</strong></td>
+        <td><strong>Jerry</strong></td>
+        <td><strong>Miro</strong></td>
+        <td><strong>Poodle</strong></td>
+        <td><strong>Snack</strong></td>
+        <td><strong>Woody</strong></td>
+    </tr>
+    <tr align="center">
+        <td>iOS</td>
+        <td>Design</td>
+        <td>PM</td>
+        <td>iOS</td>
+        <td>iOS</td>
+        <td>iOS</td>
+    </tr>
+    <tr align="center">
+        <td>
+            <img src="https://github.com/DeveloperAcademy-POSTECH/MC2-Team5-Snooze/assets/81157265/f1b312ed-f76c-4ea4-85d0-57d2ab435a3c" width="100">
+            <br>
+            <a href="https://github.com/ckyeon"><I>ckyeon</I></a>
+        </td>
+        <td>
+            <img src="https://github.com/DeveloperAcademy-POSTECH/MC2-Team5-Snooze/assets/81157265/f1b312ed-f76c-4ea4-85d0-57d2ab435a3c" width="100">
+            <br>
+            <a href="https://github.com/kmmiji"><I>kmmiji</I></a>
+        </td>
+        <td>
+            <img src="https://github.com/DeveloperAcademy-POSTECH/MC2-Team5-Snooze/assets/81157265/f1b312ed-f76c-4ea4-85d0-57d2ab435a3c" width="100">
+            <br>
+            <a href="https://github.com/Miiirona"><I>Miiirona</I></a>
+        </td>
+        <td>
+            <img src="https://user-images.githubusercontent.com/6462456/155731672-55c01143-0a73-4b2e-a1f1-d900f45dfe0e.gif" width="100">
+            <br>
+            <a href="https://github.com/poodlepoodle"><I>poodlepoodle</I></a>
+        </td>
+        <td>
+            <img src="https://github.com/DeveloperAcademy-POSTECH/MC2-Team5-Snooze/assets/81157265/f1b312ed-f76c-4ea4-85d0-57d2ab435a3c" width="100">
+            <br>
+            <a href="https://github.com/snacknam"><I>snacknam</I></a>
+        </td>
+        <td>
+            <img src="https://github.com/DeveloperAcademy-POSTECH/MC2-Team5-Snooze/assets/81157265/f1b312ed-f76c-4ea4-85d0-57d2ab435a3c" width="100">
+            <br>
+            <a href="https://github.com/migusdn"><I>migusdn</I></a>
+        </td>
+    </tr>
+</table>
