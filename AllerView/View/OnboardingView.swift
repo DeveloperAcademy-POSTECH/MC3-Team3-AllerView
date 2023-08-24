@@ -16,13 +16,13 @@ struct OnboardingView: View {
     }
 
     var body: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: 30) {
             Spacer()
             Image("OnboardingIllust")
             VStack(spacing: 16) {
                 Text("Access Your Camera")
                     .font(.system(size: 25, weight: .semibold))
-                Text("Permission is required to access the camera to scan the product image.")
+                Text("Permission is required to access\nthe camera to scan the product image.")
                     .font(.system(size: 17))
                     .foregroundColor(.defaultGray)
                     .multilineTextAlignment(.center)
@@ -64,6 +64,6 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        OnboardingView(cameraPermissionGranted: .constant(false))
     }
 }
