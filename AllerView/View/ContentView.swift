@@ -45,7 +45,7 @@ extension ContentView: View {
         ZStack {
             // notdetermined 처리!!!!!!
             if !cameraPermissionGranted || cameraAuthorizationStatus == .denied || cameraAuthorizationStatus == .restricted {
-                OnboardingView()
+                OnboardingView(cameraPermissionGranted: $cameraPermissionGranted)
             } else if isFirst {
                 AllergySearchView(user: users.first, keywords: keywords)
             } else {
@@ -80,13 +80,7 @@ extension ContentView: View {
                 viewContext.createUser(name: "user")
             }
             
-            if cameraAuthorizationStatus == .notDetermined {
-                AVCaptureDevice.requestAccess(for: .video) { granted in
-                    DispatchQueue.main.async {
-                        cameraPermissionGranted = granted
-                    }
-                }
-            } else if cameraAuthorizationStatus == .authorized {
+            if cameraAuthorizationStatus == .authorized {
                 cameraPermissionGranted = true
             }
         }
