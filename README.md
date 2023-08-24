@@ -1,25 +1,25 @@
 <div align="center">
-    <img width="100" alt="allerview logo" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team3-AllerView/assets/6462456/af218f1c-04d0-4f9c-966f-3210b174e180" style="border-radius: 16px;" />
+    <img width="72" alt="allerview logo" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team3-AllerView/assets/6462456/af218f1c-04d0-4f9c-966f-3210b174e180" style="border-radius: 16px;" />
 </div>
 
 <br />
 
 <div align="center">
-    <span style="font-size: 24px; font-weight: 700;">AllerView</span>
-    <br />
+    <h1>AllerView</h1>
     <span>한국을 방문한 외국인 여행객이 식품 알러지 정보를 쉽게 스캔할 수 있는 서비스</span>
-    <br />
-    <br />
 </div>
 
-<div align="center" style="width: 100%; display: flex; justify-content: center; gap: 8px;">
-<a href="https://youtu.be/Rlmmj5YHYSQ?t=0s" target="_blank">
-    발표 영상
-</a>
-
-<a href="https://youtu.be/yVxedxoR7Vw?t=0s" target="_blank">
-    시연 영상
-</a>
+<div align="center">
+<table>
+    <tr align="center">
+        <td><a href="https://youtu.be/Rlmmj5YHYSQ?t=0s" target="_blank">
+            발표 영상
+        </a></td>
+        <td><a href="https://youtu.be/yVxedxoR7Vw?t=0s" target="_blank">
+            시연 영상
+        </a></td>
+    </tr>
+</table>
 </div>
 
 <br />
@@ -39,7 +39,7 @@
 ## Features
 
 ![feature #1](https://github.com/DeveloperAcademy-POSTECH/MC3-Team3-AllerView/assets/6462456/a1aee7a9-403f-417f-b77a-941e298a87d6)
-![feature #2](https://github.com/DeveloperAcademy-POSTECH/MC3-Team3-AllerView/assets/6462456/e955e6c0-706f-402f-bd83-1e3084279bdc)
+![feature #2](https://github.com/DeveloperAcademy-POSTECH/MC3-Team3-AllerView/assets/6462456/c887b9c3-1d50-4ce1-bb85-cb6c16da49e3)
 ![feature #3](https://github.com/DeveloperAcademy-POSTECH/MC3-Team3-AllerView/assets/6462456/78b9fa23-2cb5-4f9d-b97b-472a3d800406)
 
 <br />
@@ -56,48 +56,7 @@
 
 <br />
 
-## Convention
-
-### Branch
-
-```
-<type>/<issue number>
-
-ex) feat/#37  refactor/#40  docs/#91
-```
-
-### Commit
-
-[with Angular Commit Convention](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit)
-
-```
-<type>(<scope>): <short summary>
-  │       │             │
-  │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
-  │       │
-  │       └─⫸ Commit Scope: file-name|domain-name
-  │                          
-  │                          
-  │                          
-  │                          
-  │
-  └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
-```
-
-```
-**build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
-**ci**: Changes to our CI configuration files and scripts (examples: CircleCi, SauceLabs)
-**docs**: Documentation only changes
-**feat**: A new feature
-**fix**: A bug fix
-**perf**: A code change that improves performance
-**refactor**: A code change that neither fixes a bug nor adds a feature
-**test**: Adding missing tests or correcting existing tests
-```
-
-<br />
-
-## Team
+## Members
 
 <table>
     <tr align="center">

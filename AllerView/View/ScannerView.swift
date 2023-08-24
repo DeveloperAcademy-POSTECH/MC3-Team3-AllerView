@@ -67,10 +67,10 @@ struct ScannerView: View {
                                         .frame(width: 70, height: 70)
                                 }
                             }
+//                            .disabled(!scannerViewController.scannerViewController.isScanning)
                             .simultaneousGesture(TapGesture().onEnded {
                                 hapticManager.impact(style: .light)
                                 
-//                                camera.takePic()
                                 Task {
                                     do {
                                         picData = try await scannerViewController.scannerViewController.capturePhoto()
