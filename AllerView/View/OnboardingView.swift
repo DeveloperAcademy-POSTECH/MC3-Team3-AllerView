@@ -9,18 +9,20 @@ import AVFoundation
 import SwiftUI
 
 struct OnboardingView: View {
+    @Binding var cameraPermissionGranted: Bool
+    
     var cameraAuthorizationStatus: AVAuthorizationStatus {
         return AVCaptureDevice.authorizationStatus(for: .video)
     }
 
     var body: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: 30) {
             Spacer()
             Image("OnboardingIllust")
             VStack(spacing: 16) {
                 Text("Access Your Camera")
                     .font(.system(size: 25, weight: .semibold))
-                Text("Permission is required to access the camera to scan the product image.")
+                Text("Permission is required to access\nthe camera to scan the product image.")
                     .font(.system(size: 17))
                     .foregroundColor(.defaultGray)
                     .multilineTextAlignment(.center)
@@ -28,7 +30,13 @@ struct OnboardingView: View {
             }
             Spacer()
             Button {
-                if cameraAuthorizationStatus == .denied || cameraAuthorizationStatus == .restricted {
+                if cameraAuthorizationStatus == .notDetermined {
+                    AVCaptureDevice.requestAccess(for: .video) { granted in
+                        DispatchQueue.main.async {
+                            cameraPermissionGranted = granted
+                        }
+                    }
+                } else if cameraAuthorizationStatus == .denied || cameraAuthorizationStatus == .restricted {
                     if let url = URL(string: UIApplication.openSettingsURLString) {
                         UIApplication.shared.open(url)
                     }
@@ -46,11 +54,16 @@ struct OnboardingView: View {
                 .padding(.bottom, 25)
             }
         }
+        .onAppear {
+            if cameraAuthorizationStatus == .authorized {
+                cameraPermissionGranted = true
+            }
+        }
     }
 }
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView()
+        OnboardingView(cameraPermissionGranted: .constant(false))
     }
 }

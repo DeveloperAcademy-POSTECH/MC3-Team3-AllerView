@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4621F59F2A97A6E500D63B4B /* SecretKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4621F59E2A97A6E500D63B4B /* SecretKey.plist */; };
 		46ADDE702A7D6E9800D4F8C1 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */; };
 		46ADDE712A7D6E9800D4F8C1 /* RoundedRectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */; };
 		46ADDE7C2A8C39FF00D4F8C1 /* HapticUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDE7B2A8C39FF00D4F8C1 /* HapticUtility.swift */; };
@@ -43,7 +44,6 @@
 		DBAB22BA2A77A1A1009FB939 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB22B92A77A1A1009FB939 /* LoadingView.swift */; };
 		DBAB22BC2A77A661009FB939 /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = DBAB22BB2A77A661009FB939 /* Loading.json */; };
 		FD0CC0EC2A86C7A3006C702B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0CC0EB2A86C7A3006C702B /* OnboardingView.swift */; };
-		FD7B450C2A96783B00171A90 /* SecretKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD7B450B2A96783B00171A90 /* SecretKey.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4621F59E2A97A6E500D63B4B /* SecretKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SecretKey.plist; path = ../../../../../Downloads/SecretKey.plist; sourceTree = "<group>"; };
 		46ADDE6D2A7D6E9800D4F8C1 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		46ADDE6E2A7D6E9800D4F8C1 /* RoundedRectLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectLabel.swift; sourceTree = "<group>"; };
 		46ADDE7B2A8C39FF00D4F8C1 /* HapticUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticUtility.swift; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 		DBAB22B92A77A1A1009FB939 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DBAB22BB2A77A661009FB939 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 		FD0CC0EB2A86C7A3006C702B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		FD7B450B2A96783B00171A90 /* SecretKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SecretKey.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,7 +238,7 @@
 		DBA6CDF12A7AEB22001888DF /* OpenAI */ = {
 			isa = PBXGroup;
 			children = (
-				FD7B450B2A96783B00171A90 /* SecretKey.plist */,
+				4621F59E2A97A6E500D63B4B /* SecretKey.plist */,
 				DB6AA9822A72B76100E86884 /* Service.swift */,
 				DBA6CDF82A7AF256001888DF /* Chat.swift */,
 			);
@@ -354,7 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7AB8922A5BE2D60074CBBF /* Preview Assets.xcassets in Resources */,
-				FD7B450C2A96783B00171A90 /* SecretKey.plist in Resources */,
+				4621F59F2A97A6E500D63B4B /* SecretKey.plist in Resources */,
 				DB7AB88F2A5BE2D60074CBBF /* Assets.xcassets in Resources */,
 				5EA809B82A7AB44600666CDA /* Launch Screen.storyboard in Resources */,
 				DBAB22BC2A77A661009FB939 /* Loading.json in Resources */,
@@ -577,10 +577,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = Q535Z3S7Z3;
+				DEVELOPMENT_TEAM = XKDG839GBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow Cameras to scan ingredients and analyze food allergies.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
@@ -610,10 +610,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AllerView/Preview Content\"";
-				DEVELOPMENT_TEAM = Q535Z3S7Z3;
+				DEVELOPMENT_TEAM = XKDG839GBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Needed a Permission to access the camera.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow Cameras to scan ingredients and analyze food allergies.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
